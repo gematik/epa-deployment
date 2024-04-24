@@ -2,6 +2,10 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.1
+
+### fixed
+- Optimized release process
 
 ## Release 1.0.0
 - Initial version
