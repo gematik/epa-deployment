@@ -1,0 +1,14 @@
+server:
+  port: 443
+tigerProxy:
+  adminPort: 8080
+  proxyPort: 443
+  tls:
+    domainName: tiger-proxy
+    serverRootCa: "/app/config/ca.p12;changeit"
+    #ocspSignerIdentity: "myOcspSigner.p12;Password"
+  proxyRoutes:
+    - from: /information/api/v1/
+      to: http://vau-proxy-server:8080/information/api/v1/
+    - from: /VAU
+      to: http://vau-proxy-server:8080/VAU

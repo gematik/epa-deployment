@@ -1,0 +1,58 @@
+{
+    "active": true,
+    "alias": [
+      "Zahnarztpraxis am Bahnhof"
+    ],
+    "contact": [
+      {
+        "name": {
+          "text": "Empfang Zahnarztpraxis Dr. Mustermann"
+        },
+        "purpose": {
+          "coding": [
+            {
+              "code": "PATINF",
+              "display": "Patient",
+              "system": "http://terminology.hl7.org/CodeSystem/contactentity-type"
+            }
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "030 1234567"
+          }
+        ]
+      }
+    ],
+    "identifier": [
+      {
+        "system": "https://gematik.de/fhir/sid/telematik-id",
+        "value": "2-2.58.00000040"
+      }
+    ],
+    "meta": {
+      "profile": [
+        "https://gematik.de/fhir/directory/StructureDefinition/OrganizationDirectory"
+      ],
+      "tag": [
+        {
+          "code": "ldap",
+          "system": "https://gematik.de/fhir/directory/CodeSystem/Origin"
+        }
+      ]
+    },
+    "name": "Zahnarztpraxis Dr. Mustermann",
+    "resourceType": "Organization",
+    "type": [
+      {
+        "coding": [
+          {
+            "code": "1.2.276.0.76.4.51",
+            "display": "Zahnarztpraxis",
+            "system": "https://gematik.de/fhir/directory/CodeSystem/OrganizationProfessionOID"
+          }
+        ]
+      }
+    ]
+}

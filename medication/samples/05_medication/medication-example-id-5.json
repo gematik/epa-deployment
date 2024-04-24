@@ -1,0 +1,38 @@
+{
+  "resourceType": "Medication",
+  "id": "example-epa-medication-1",
+  "meta": {
+    "profile": [
+      "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication"
+    ]
+  },
+  "extension": [
+    {
+      "valueIdentifier": {
+        "system": "https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier",
+        "value": "160.153.303.257.459_20240122"
+      },
+      "url": "https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension"
+    }
+  ],
+  "identifier": [
+    {
+      "system": "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+      "value": "B517B68E5764DD32896EF1F8771F861EC2DC30250A4EE6E2C2923CBE26DD8A9F"
+    },
+    {
+      "system": "https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier",
+      "value": "6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459"
+    }
+  ],
+  "status": "active",
+  "code": {
+    "coding": [
+      {
+        "system": "http://fhir.de/CodeSystem/ask",
+        "code": "5682",
+        "display": "Ibuprofen"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "resourceType": "MedicationRequest",
+  "meta": {
+    "profile": [
+      "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication-request"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "priority": "asap",
+  "medicationReference": {
+    "reference": "Medication/7"
+  },
+  "authoredOn": "2024-01-01T12:22:48",
+  "subject": {
+    "reference": "Patient/4"
+  },
+  "dosageInstruction": [
+    {
+      "text": "1-0-1"
+    }
+  ],
+  "requester" : {
+    "reference" : "Practitioner/3",
+    "display" : "Dr. Max Manfred Mustermann"
+  },
+  "dispenseRequest": {
+    "quantity": {
+      "code": "{Package}",
+      "system": "http://unitsofmeasure.org",
+      "value": 1
+    }
+  },
+  "substitution": {
+    "allowedBoolean": "true"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://fhirtutorial.example/patient",
+      "value": "Z1234567891"
+    }
+  ],
+  "name": [
+    {
+      "family": "Chalmers",
+      "given": [
+        "Peter"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(03) 5555 6473",
+      "use": "work"
+    }
+  ]
+}
