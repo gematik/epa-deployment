@@ -1,0 +1,70 @@
+zion:
+  serverPort: 8080
+  mockResponses:
+    getConsentDecisionInformation:
+      # add importance to choose this response, because getConsentDecisionInformation AND getRecordStatus matches
+      importance: +1
+      request:
+        method: 'GET'
+        path: '/information/api/v1/ehr/{insurantId}/consentdecisions'
+      nested-responses:
+        200:
+          response:
+            statusCode: 200
+            body: '[{ "functionId": "medication", "decision": "permit" }, { "functionId": "erp-submission", "decision": "permit" }]'
+        404:
+          importance: +1
+          request-criterions:
+            - "'${insurantId}' == 'X000000404'"
+          response:
+            statusCode: 404
+            body: '{ "errorCode": "noHealthRecord" }'
+        409:
+          importance: +1
+          request-criterions:
+            - "'${insurantId}' == 'X000000409'"
+          response:
+            statusCode: 409
+            body: '{ "errorCode": "statusMismatch" }'
+
+    getRecordStatus:
+      request:
+        method: 'GET'
+        path: '/information/api/v1/ehr/{insurantId}'
+      nested-responses:
+        200:
+          response:
+            statusCode: 200
+        404:
+          importance: +1
+          request-criterions:
+            - "'${insurantId}' == 'X000000404'"
+          response:
+            statusCode: 404
+            body: '{ "errorCode": "noHealthRecord" }'
+        409:
+          importance: +1
+          request-criterions:
+            - "'${insurantId}' == 'X000000409'"
+          response:
+            statusCode: 409
+            body: '{ "errorCode": "statusMismatch" }'
+
+    setUserExperienceResult:
+      request:
+        method: 'POST'
+        path: '/information/api/v1/userexperience'
+      assignments:
+        useragent: "$.header.x-useragent"
+      nested-responses:
+        200:
+          response:
+            statusCode: 200
+        409: # parameter useragent is mandatory
+          importance: +1
+          request-criterions:
+            # if not set value is like search string
+            - "'${useragent}' == '$.header.x-useragent'"
+          response:
+            statusCode: 409
+            body: '{ "errorCode": "requestMismatch", "errorDetail": "Header x-useragent is missing" }'

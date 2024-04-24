@@ -1,0 +1,102 @@
+version: "3.8"
+
+# Common Health Check Properties
+x-healthcheck-config: &healthcheck-ref
+  interval: 15s
+  timeout: 10s
+  retries: 100
+  start_period: 30s
+
+name: dc-mocks
+services:
+  tiger-proxy:
+    image: gematik1/tiger-proxy-image:3.0.2
+    container_name: tiger-proxy
+    restart: 'always'
+    environment:
+      - SPRING_CONFIG_LOCATION=/app/config/application.yaml
+    networks:
+      - mock-network
+    volumes:
+      - ./tiger-proxy:/app/config
+    ports:
+      - "443:443"
+      - "8086:8080"
+
+  vau-proxy-server:
+    image: eu.gcr.io/gematik-all-infra-prod/epa/vau-proxy-server:latest
+    container_name: vau-proxy-server
+    restart: 'always'
+    healthcheck:
+      <<: *healthcheck-ref
+      test: "wget -T5 -qO- http://localhost:8080/actuator/health | grep UP || exit 1"
+    environment:
+      - SERVER_SSL_ENABLED=false
+      - SERVER_PORT=8080
+      # TLS config with custom cert
+      #- SERVER_PORT=443
+      #- SERVER_SSL_KEY_STORE=/app/config/keystore.p12
+      - SERVICES_INFORMATION_SERVICE_URL=http://information-service:8080
+      - SERVICES_AUTHORIZATION_SERVICE_URL=http://authorization-service:8086
+      - SERVICES_MEDICATION_SERVICE_URL=http://medication-service:8080
+      - SERVICES_MEDICATION_RENDER_SERVICE_URL=http://medication-render-service:8080
+    networks:
+      - mock-network
+    volumes:
+      - ./vau-proxy:/app/config
+    ports:
+      - "8081:8080"
+
+  information-service:
+    image: gematik1/tiger-zion-image:3.0.2
+    container_name: information-service
+    restart: 'always'
+    environment:
+      - SPRING_CONFIG_LOCATION=/app/config/application.yaml
+    networks:
+      - mock-network
+    volumes:
+      - ./information:/app/config
+    ports:
+      - "8082:8080"
+
+  authorization-service:
+    image: eu.gcr.io/gematik-all-infra-prod/idm/asforepa:latest
+    container_name: authorization-service
+    restart: 'always'
+    environment:
+      # RU
+      - ASFOREPA_IDP_DIENST_URL=https://idp-ref.app.ti-dienste.de
+      - ASFOREPA_CLIENT_ID=GEMgemaePAAHdL9ZU23R
+      - ASFOREPA_REDIRECT_URI=https://test-ps.gematik.de/ePA
+      - ASFOREPA_SCOPES=gem-auth,openid
+    networks:
+      - mock-network
+    ports:
+      - "8083:8080"
+
+  medication-service:
+    image: hapiproject/hapi:latest
+    container_name: medication-service
+    restart: 'always'
+    networks:
+      - mock-network
+    ports:
+      - "8084:8080"
+
+  medication-render-service:
+    image: eu.gcr.io/gematik-all-infra-prod/epa-medication-render:latest
+    container_name: medication-render-service
+    restart: 'always'
+    environment:
+      - SERVER_PORT=8080
+      - FHIR_SERVER_HOST=medication-service
+      - FHIR_SERVER_PORT=8080
+    networks:
+      - mock-network
+    ports:
+      - "8085:8080"
+
+networks:
+  mock-network:
+    name: mock-network

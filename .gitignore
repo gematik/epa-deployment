@@ -1,0 +1,11 @@
+/.idea/
+/certs/*.pem
+/certs/*.p12
+
+README_INTERNAL.md
+dc-clients.yml
+dc-mocks-internal.yml
+certs
+
+jenkinsfiles
+
