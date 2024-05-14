@@ -24,7 +24,7 @@ services:
       - "8086:8080"
 
   vau-proxy-server:
-    image: gematik1/epa-vau-proxy-server:1.0.1
+    image: gematik1/epa-vau-proxy-server:1.0.3
     container_name: vau-proxy-server
     restart: 'always'
     healthcheck:

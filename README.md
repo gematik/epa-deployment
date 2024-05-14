@@ -1,96 +1,49 @@
 # ePA-deployment
 
-![epa-deployment.png](/doc/img/draw-io/epa-deployment.png)
+## Motivation
 
-### Project includes docker-compose and other relevant files to run all relevant mock services for ePA in a docker environment.
+The project is intended to provide a simple way to run the ePA backend services in a local docker environment and includes docker-compose and other relevant files. This should help to get a better understanding of the ePA services and should help to develop & test **ePA 3.0.x** for PS applications.
 
-#### Overview of the backend mock services
+> [!IMPORTANT]
+This project uses mock implementations based on the ePA specification and focuses on some selected backend services. The mock implementations try to realize many aspects of the specification, but are not 1:1 equivalent to a productive environment. The specification is always leading and should be used as a reference.
 
-##### Tiger Proxy (tiger-proxy)
+In particular, the following uses cases are covered:
+- Perform VAU handshake and send and receive encrypted data
+- Create a user session with the ePA authorization service and IDP (RU)
+- Create an entitlement **(not included yet)**
+- Get the medication list (eML) for a patient as XHTML and PDF/A document
 
-The tiger proxy is a reverse proxy which is used to route the incoming requests to the correct service. It is accessible via port 443 as it is using TLS/SSL. The proxy is also doing the SSL termination for the services. The configuration of the proxy is done in the `/tiger-proxy/application.yaml` file.
+## Setup
 
-**Limitations**:
+### Prerequisites
 
-* server certificate is generated on-the-fly using the `/tiger-proxy/ca.p12` as authority chain
-* OCSP stabling is currently not supported
+You the following tools to run the services:
 
-##### VAU Proxy Server (vau-proxy-server)
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/products/docker-desktop/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Curl](https://curl.se/)
 
-By specification some services inside the ePA has to be encrypted/decrypted by the VAU. The VAU Proxy Client handles the VAU handshake for a given PS instance. This handshake enables the VAU Proxy Client to encrypt messages which can be decrypted by the VAU Proxy Server before the messages are passed onto ePA services.
+You need the following system resources to run the services:
 
-**Limitations**:
+- at least 4 GB of RAM
+- the following ports should be available:
+  - for the ePA backend services **443** (https)
+  - port range to directly access the mock services via the exposed ports (**8081-8090**)
 
-* interface operation/path to request the status of user authentication is not supported (A_25143) > `/VAU-Status as HTTP-GET`
-* interface operation/path to request AUT-VAU certifcate + certifacate chain is not supported (A_24957) >  `/CertData as HTTP-GET`
+### Running the services with docker-compose
 
-##### Information Service (information-service)
-
-This service provides information about the health record of a patient. The capabilities of the service are described detailed in following openAPI specification: [InformationService](https://github.com/gematik/ePA-Basic/blob/ePA-3.0/src/openapi/I_Information_Service.yaml).
-
-**Limitations**:
-
-* for consent decisions it will always send "permit" for "medication" as well as "erp-submission"
-* for record status it will always send HTTP code 200 (OK)
-* false case for both operations:
-  * to get HTTP code 404 use insurantId "X000000404" as path parameter
-  * to get HTTP code 409 use insurantId "X000000409" as path parameter
-* for userexperience it is checked that the header x-useragent is set, otherwise HTTP code 409 is given
-
-##### Authorization Service (authorization-service)
-
-The authorization service is a component which is known from OAuth2.
-Together with the IDP server it is responsible for the authentication and authorization of the user (User of a PS).
-The authentication flow is described here: [Authentication Flow](https://gemspec.gematik.de/docs/gemILF/gemILF_PS_ePA/latest/#3.4.2).
-As IDP the reference IDP is used which is addressed by the following URL: [IDP](https://idp-ref.app.ti-dienste.de).
-All necessary configurations like clientID are already set in the IDP.
-
-**Limitations**:
-
-* it will not end user session after 20 Min. (A_25006)
-
-##### Medication Render Service (medication-render-service)
-
-The medication render service is responsible for rendering the medication list (eML) data in a human readable form.
-The service is described in the following openAPI specification: [MedicationRenderService](https://github.com/gematik/ePA-Medication/blob/ePA-3.0/src/openapi/I_Medication_Service_eML_Render.yaml).
-
-##### Medication Service (medication-service)
-
-The medication service is a HAPI FHIR server which provides the medication relevant data. The details about ePA Medication can be found in the related repository: [ePA-Medication](https://github.com/gematik/ePA-Medication/tree/ePA-3.0).
-
-#### Using the services
-
-The services can be accessed directly by using the exposed ports.
-The following table shows the services and the related ports and protocols.
-This should also give an overview of the ports to be opened in your setup.
-
-| Service                   | Port | Protocol   |
-| ------------------------- | ---- | ---------- |
-| tiger-proxy               | 443  | https      |
-| vau-proxy-server          | 8081 | http       |
-| information-service       | 8082 | http       |
-| authorization-service     | 8083 | http       |
-| medication-service        | 8084 | http       |
-| medication-render-service | 8085 | http       |
-| tiger-proxy (admin)       | 8086 | http       |
-
-#### Running the services
-
-Start the services with the following command
-
+Start the mock services with the following command
 ```bash
 docker-compose -f dc-mocks.yml up
 ```
 
 Stop these services with the following command
-
 ```bash
 docker-compose -f dc-mocks.yml down
 ```
 
-Accessing the services directly via the exposed ports.
-
-##### Medication Service
+### Importing default data to the Medication Service
 
 To import medications related data to the medication-service execute the following script from the medication folder:
 
@@ -99,65 +52,122 @@ cd medication
 ./import.sh
 ```
 
-After successful import the data can be accessed via the following curl commands:
+After successful import the data can be accessed via the following curl commands (placeholder <docker-host> have to be replaced with the actual host IP or name):
 
 ```bash
 curl --location http://<docker-host>:8084/fhir/Organization/1
-```
-
-```bash
 curl --location http://<docker-host>:8084/fhir/PractitionerRole/2
-```
-
-```bash
 curl --location http://<docker-host>:8084/fhir/Practitioner/3
-```
-
-```bash
 curl --location http://<docker-host>:8084/fhir/Patient/4
-```
-
-```bash
 curl --location http://<docker-host>:8084/fhir/Medication/5
-```
-
-```bash
 curl --location http://<docker-host>:8084/fhir/MedicationRequest/8
-```
-
-```bash
 curl --location http://<docker-host>:8084/fhir/MedicationDispense/13
 ```
 
-##### Medication Render Service
+## Overview of the backend mock services
 
-To retrieve the eML as XHTML execute the following curl command:
+### Using the services
 
-```bash
-curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/xhtml --header 'Accept: text/html' --header 'x-insurantid: Z1234567891'
-```
+The services can be accessed directly by using the exposed ports.
+The following table shows the services and the related ports and protocols.
+This should also give an overview of the ports to be opened in your setup.
 
-To retrieve the same eML as PDF/A document execute the following curl command:
+| Service                   | Port | Protocol |
+|---------------------------|------|----------|
+| tiger-proxy               | 443  | https    |
+| vau-proxy-server          | 8081 | http     |
+| information-service       | 8082 | http     |
+| authorization-service     | 8083 | http     |
+| medication-service        | 8084 | http     |
+| medication-render-service | 8085 | http     |
+| tiger-proxy (admin)       | 8086 | http     |
 
-```bash
-curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/pdf --header 'Accept: application/pdf' --header 'x-insurantid: Z1234567891' --output eml.pdf
-```
+![epa-deployment.png](/doc/img/draw-io/epa-deployment.png)
 
-##### Information Service
+> [!IMPORTANT]
+> Please use the already existing TI services through the connector e.g. to access the IDP (RU) using the following URL:
+> https://idp-ref.zentral.idp.splitdns.ti-dienste.de
+
+### Tiger Proxy (tiger-proxy)
+
+The tiger proxy is a reverse proxy which is used to route the incoming requests to the correct service. It is accessible via port 443 as it is using TLS/SSL. The proxy is also doing the SSL termination for the services. The configuration of the proxy is done in the `/tiger-proxy/application.yaml` file.
+
+#### Limitations:
+
+* server certificate is generated on-the-fly using the `/tiger-proxy/ca.p12` as authority chain
+* OCSP stabling is currently not supported
+
+### VAU Proxy Server (vau-proxy-server)
+
+By specification some services inside the ePA has to be encrypted/decrypted by the VAU. The VAU Proxy Client handles the VAU handshake for a given PS instance. This handshake enables the VAU Proxy Client to encrypt messages which can be decrypted by the VAU Proxy Server before the messages are passed onto ePA services.
+
+#### Limitations:
+
+* interface operation/path to request the status of user authentication is not fully supported (A_25143) > `/VAU-Status as HTTP-GET`
+  * "User-Authentication" is always "None"
+  * "Connnection-Start" is the timestamp when M3 message of VAU handshake was successfully validated & completed on backend side (typo in gemSpec_Krypt <= 2.32.0)
+* interface operation/path to request AUT-VAU certificate + certificate chain via /CertData as HTTP-GET is not fully supported (A_24957) *
+  * rch_chain uses certificates from https://download.tsl.ti-dienste.de as array content (> RCA5)
+
+### Information Service (information-service)
+
+This service provides information about the health record of a patient. The capabilities of the service are described detailed in following openAPI specification: [InformationService](https://github.com/gematik/ePA-Basic/blob/ePA-3.0/src/openapi/I_Information_Service.yaml).
+
+#### Limitations:
+
+* for consent decisions it will always send "permit" for "medication" as well as "erp-submission"
+* for record status it will always send HTTP code 200 (OK)
+* false case for both operations:
+  * to get HTTP code 404 use insurantId "X000000404" as path parameter
+  * to get HTTP code 409 use insurantId "X000000409" as path parameter
+* for user experience it is checked that the header x-useragent is set, otherwise HTTP code 409 is given
+
+#### Direct example request:
 
 To retrieve the consent decisions of a patient execute the following curl command:
-
 ```bash
 curl --location --request GET http://<docker-host>:8082/information/api/v1/ehr/Z1234567891/consentdecisions
 ```
 
 To retrieve the health record status of a patient execute the following curl command:
-
 ```bash
-curl --location --request GET 'http://<docker-host>:8082/information/api/v1/ehr/Z1234567891'
+curl --location --request GET http://<docker-host>:8082/information/api/v1/ehr/Z1234567891
 ```
 
-#### Resources
+### Authorization Service (authorization-service)
+
+The authorization service is a component which is known from OAuth2.
+Together with the IDP server it is responsible for the authentication and authorization of the user (User of a PS).
+The authentication flow is described here: [Authentication Flow](https://gemspec.gematik.de/docs/gemILF/gemILF_PS_ePA/latest/#3.4.2).
+As IDP the reference IDP is used which is addressed by the following URL: [https://idp-ref.app.ti-dienste.de](https://idp-ref.app.ti-dienste.de).
+All necessary configurations like clientID are already set in the IDP.
+
+#### Limitations:
+
+* it will not end user session after 20 Min. (A_25006)
+
+### Medication Service (medication-service)
+
+The medication service is a HAPI FHIR server which provides the medication relevant data. The details about ePA Medication can be found in the related repository: [ePA-Medication](https://github.com/gematik/ePA-Medication/tree/ePA-3.0).
+
+### Medication Render Service (medication-render-service)
+
+The medication render service is responsible for rendering the medication list (eML) data in a human-readable form.
+The service is described in the following openAPI specification: [MedicationRenderService](https://github.com/gematik/ePA-Medication/blob/ePA-3.0/src/openapi/I_Medication_Service_eML_Render.yaml).
+
+#### Direct example request:
+
+To retrieve the eML as XHTML execute the following curl command:
+```bash
+curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/xhtml --header 'Accept: text/html' --header 'x-insurantid: Z1234567891'
+```
+
+To retrieve the same eML as PDF/A document execute the following curl command:
+```bash
+curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/pdf --header 'Accept: application/pdf' --header 'x-insurantid: Z1234567891' --output eml.pdf
+```
+
+## Resources
 
 - [ePA Implementation Guide](https://gemspec.gematik.de/docs/gemILF/gemILF_PS_ePA/latest/index.html)
 - [ePA-Basic](https://github.com/gematik/ePA-Basic/tree/ePA-3.0.1)
