@@ -2,7 +2,18 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
-## Release 1.0.2
+## Release 1.0.4
+
+### fixed
+- Updated version of vau-proxy-server to 1.0.4
+  - updated to lib-vau 1.0.9
+- Documentation updates
+  - Added information about limitations of the authorization mock services
+  - Added information about the necessary HTTP headers for the VAU handshake and user data decryption in tiger-proxy
+  - Added example traffic of the VAU handshake and the user session creation with authorization service (mock) & IDP (RU)
+
+## Release 1.0.3
+
 ### fixed
 - Updated version of vau-proxy-server to 1.0.3
   - updated to lib-vau 1.0.8
@@ -10,6 +21,8 @@
 - Documentation updates
   - Added information about the required applications, ports & resources
   - Added information about the supported use cases and restrictions
+
+## Release 1.0.2
 
 ### fixed
 - Updated versions of mock services

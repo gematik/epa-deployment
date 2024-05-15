@@ -5,9 +5,10 @@
 The project is intended to provide a simple way to run the ePA backend services in a local docker environment and includes docker-compose and other relevant files. This should help to get a better understanding of the ePA services and should help to develop & test **ePA 3.0.x** for PS applications.
 
 > [!IMPORTANT]
-This project uses mock implementations based on the ePA specification and focuses on some selected backend services. The mock implementations try to realize many aspects of the specification, but are not 1:1 equivalent to a productive environment. The specification is always leading and should be used as a reference.
+> This project uses mock implementations based on the ePA specification and focuses on some selected backend services. The mock implementations try to realize many aspects of the specification, but are not 1:1 equivalent to a productive environment. The specification is always leading and should be used as a reference.
 
 In particular, the following uses cases are covered:
+
 - Perform VAU handshake and send and receive encrypted data
 - Create a user session with the ePA authorization service and IDP (RU)
 - Create an entitlement **(not included yet)**
@@ -34,11 +35,13 @@ You need the following system resources to run the services:
 ### Running the services with docker-compose
 
 Start the mock services with the following command
+
 ```bash
 docker-compose -f dc-mocks.yml up
 ```
 
 Stop these services with the following command
+
 ```bash
 docker-compose -f dc-mocks.yml down
 ```
@@ -64,6 +67,26 @@ curl --location http://<docker-host>:8084/fhir/MedicationRequest/8
 curl --location http://<docker-host>:8084/fhir/MedicationDispense/13
 ```
 
+## Traffic in Tiger WebUI
+
+The Tiger WebUI is a simple web interface to visualize the traffic between the client and the backend services. The WebUI is accessible via the following URL: [http://<docker-host>:8086/webui](http://<docker-host>:8086/webui).
+
+### VAU Handshake & user data decrypted traffic
+
+#### VAU Handshake
+
+The mock application vau-proxy-server sets specific HTTP headers `VAU-DEBUG-S_K1_s2c` and `VAU-DEBUG-S_K1_c2s` in the responses (M2 /M4) to indicate the encrypted data. The tiger-proxy decrypts the data and shows the decrypted data in the request & response body.
+
+> [!IMPORTANT]
+> This not specification compliant and is only supported by this mock implementation (vau-proxy-server in combination with the tiger-proxy).
+
+#### User data
+The ePA client has to set a specific HTTP header `VAU-nonPU-Tracing` in the request to indicate the encrypted data within nonPU environments ([A_24477](https://gemspec.gematik.de/docs/gemSpec/gemSpec_Krypt/latest/index.html#7.7)). Thus, the tiger-proxy decrypts and shows the decrypted data in the request & response body.
+
+The following screenshot shows the decrypted traffic of the VAU handshake between the client and the VAU Proxy Server:
+
+In file [./doc/html/VauHandshakeAndUserSession.mhtml](./doc/html/VauHandshakeAndUserSession.mhtml) you can find an example traffic of the VAU handshake and the user session creation with authorization service (mock) & IDP (RU).
+
 ## Overview of the backend mock services
 
 ### Using the services
@@ -72,8 +95,9 @@ The services can be accessed directly by using the exposed ports.
 The following table shows the services and the related ports and protocols.
 This should also give an overview of the ports to be opened in your setup.
 
+
 | Service                   | Port | Protocol |
-|---------------------------|------|----------|
+| ------------------------- | ---- | -------- |
 | tiger-proxy               | 443  | https    |
 | vau-proxy-server          | 8081 | http     |
 | information-service       | 8082 | http     |
@@ -125,11 +149,13 @@ This service provides information about the health record of a patient. The capa
 #### Direct example request:
 
 To retrieve the consent decisions of a patient execute the following curl command:
+
 ```bash
 curl --location --request GET http://<docker-host>:8082/information/api/v1/ehr/Z1234567891/consentdecisions
 ```
 
 To retrieve the health record status of a patient execute the following curl command:
+
 ```bash
 curl --location --request GET http://<docker-host>:8082/information/api/v1/ehr/Z1234567891
 ```
@@ -144,7 +170,8 @@ All necessary configurations like clientID are already set in the IDP.
 
 #### Limitations:
 
-* it will not end user session after 20 Min. (A_25006)
+* It will not end user session after 20 Min. (A_25006)
+* The validation of the client attest signature is not specification-compliant. Signatures based on Brainpool curves with the algorithm identifier "ES256" are currently rejected as invalid (A_24886)
 
 ### Medication Service (medication-service)
 
@@ -158,11 +185,13 @@ The service is described in the following openAPI specification: [MedicationRend
 #### Direct example request:
 
 To retrieve the eML as XHTML execute the following curl command:
+
 ```bash
 curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/xhtml --header 'Accept: text/html' --header 'x-insurantid: Z1234567891'
 ```
 
 To retrieve the same eML as PDF/A document execute the following curl command:
+
 ```bash
 curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/pdf --header 'Accept: application/pdf' --header 'x-insurantid: Z1234567891' --output eml.pdf
 ```
@@ -172,4 +201,3 @@ curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1
 - [ePA Implementation Guide](https://gemspec.gematik.de/docs/gemILF/gemILF_PS_ePA/latest/index.html)
 - [ePA-Basic](https://github.com/gematik/ePA-Basic/tree/ePA-3.0.1)
 - [ePA-Medication](https://github.com/gematik/ePA-Medication/tree/ePA-3.0)
-
