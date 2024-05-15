@@ -10,3 +10,4 @@ tigerProxy:
   proxyRoutes:
     - from: /
       to: http://vau-proxy-server:8080/
+  activateEpa3VauAnalysis: true
