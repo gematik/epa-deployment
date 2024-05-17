@@ -10,7 +10,7 @@ x-healthcheck-config: &healthcheck-ref
 name: dc-mocks
 services:
   tiger-proxy:
-    image: gematik1/tiger-proxy-image:3.0.3
+    image: gematik1/tiger-proxy-image:3.0.4
     container_name: tiger-proxy
     restart: 'always'
     environment:
@@ -48,7 +48,7 @@ services:
       - "8081:8080"
 
   information-service:
-    image: gematik1/tiger-zion-image:3.0.3
+    image: gematik1/tiger-zion-image:3.0.4
     container_name: information-service
     restart: 'always'
     environment:

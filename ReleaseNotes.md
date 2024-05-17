@@ -2,11 +2,25 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.5
+
+### added
+- Initial setup to run a PS testsuite
+  - Added docker-compose file to run the PS-Testsuite
+  - Added documentation to run the PS-Testsuite
+  - Includes test case for VAU handshake
+
+### updated
+- Updated used docker image version of information-service to 3.0.4
+- Updated version of tiger-proxy to 3.0.4
+
 ## Release 1.0.4
 
-### fixed
+### updated
 - Updated version of vau-proxy-server to 1.0.4
   - updated to lib-vau 1.0.9
+
+## added
 - Documentation updates
   - Added information about limitations of the authorization mock services
   - Added information about the necessary HTTP headers for the VAU handshake and user data decryption in tiger-proxy

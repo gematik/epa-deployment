@@ -1,0 +1,32 @@
+version: "3.8"
+
+# Common Health Check Properties
+x-healthcheck-config: &healthcheck-ref
+  interval: 15s
+  timeout: 10s
+  retries: 100
+  start_period: 30s
+
+name: dc-testsuite
+services:
+  ps-testsuite:
+    image: gematik1/ps-testsuite:1.0.1
+    container_name: ps-testsuite
+    restart: 'no'
+    networks:
+      - mock-network
+    volumes:
+      - ./ps-testsuite/tiger.yaml:/app/tiger.yaml
+      - ps-testsuite-maven:/.m2
+    ports:
+      - "8123:8123"
+      - "8124:8124"
+
+volumes:
+  ps-testsuite-maven:
+    name: ps-testsuite-maven
+
+networks:
+  mock-network:
+    name: mock-network
+    external: true

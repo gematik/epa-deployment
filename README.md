@@ -35,13 +35,11 @@ You need the following system resources to run the services:
 ### Running the services with docker-compose
 
 Start the mock services with the following command
-
 ```bash
 docker-compose -f dc-mocks.yml up
 ```
 
 Stop these services with the following command
-
 ```bash
 docker-compose -f dc-mocks.yml down
 ```
@@ -86,6 +84,51 @@ The ePA client has to set a specific HTTP header `VAU-nonPU-Tracing` in the requ
 The following screenshot shows the decrypted traffic of the VAU handshake between the client and the VAU Proxy Server:
 
 In file [./doc/html/VauHandshakeAndUserSession.mhtml](./doc/html/VauHandshakeAndUserSession.mhtml) you can find an example traffic of the VAU handshake and the user session creation with authorization service (mock) & IDP (RU).
+
+## PS-Testsuite
+
+The PS-Testsuite is a test suite to verify specific functionality of a PS application.
+
+### Running the PS-Testsuite Container in Docker
+
+Start the testsuite container with the following command
+```bash
+docker-compose -f dc-testsuite.yml up
+```
+
+When the container log shows the following message, the testsuite is ready to be used and a webbrowser should call the URL [http://localhost:8123](http://localhost:8123) to go on. Otherwise, the timeout will stop the testsuite and the container stops automatically. In this case you have to rerun the testsuite with the command above.
+```bash
+========================================================================================================================
+  ____ _____  _    ____ _____ ___ _   _  ____  __        _____  ____  _  _______ _     _____        __  _   _ ___         
+ / ___|_   _|/ \  |  _ \_   _|_ _| \ | |/ ___| \ \      / / _ \|  _ \| |/ /  ___| |   / _ \ \      / / | | | |_ _|        
+ \___ \ | | / _ \ | |_) || |  | ||  \| | |  _   \ \ /\ / / | | | |_) | ' /| |_  | |  | | | \ \ /\ / /  | | | || |         
+  ___) || |/ ___ \|  _ < | |  | || |\  | |_| |   \ V  V /| |_| |  _ <| . \|  _| | |__| |_| |\ V  V /   | |_| || |   _ _ _ 
+ |____/ |_/_/   \_\_| \_\|_| |___|_| \_|\____|    \_/\_/  \___/|_| \_\_|\_\_|   |_____\___/  \_/\_/     \___/|___| (_|_|_)
+                                                                                                                          
+========================================================================================================================
+09:21:12.065 [main ] INFO  d.g.t.t.l.TigerDirector - Waiting for workflow Ui to fetch status...
+09:21:12.065 [main ] INFO  d.g.t.t.l.TigerDirector - Workflow UI http://localhost:8123
+```
+
+Stop the testsuite container with the following command
+```bash
+docker-compose -f dc-testsuite.yml down
+```
+
+### Execute the testcases
+
+After calling the URL [http://localhost:8123](http://localhost:8123) in a webbrowser, the workflowUI will be shown. 
+As depicted in [Waiting WorkflowUI](./doc/img/testsuite/workflowUI%20-%20start%20and%20wait.png) the testcase for VAU handshake is automatically selected. Now, the testsuite will trace any traffic flow between the client and the mock services on [https://<docker-host>:443](https://<docker-host>:443).
+On the bottom of the page you can see the request to trigger a specific functionality within your PS application. Do so and after the finished execution click on the "Continue" button on the bottom of the page.
+
+Now, the traffic will be analyzed and the results will be shown in the workflowUI. If everything is fine, the testcase will be marked as successful as depicted in [Successful WorkflowUI](./doc/img/testsuite/workflowUI%20-%20successful%20finished.png). 
+
+If the testcase failed, the testcase will be marked as failed as depicted in [Failed WorkflowUI](./doc/img/testsuite/workflowUI%20-%20failed%20finished.png) and you can analyze the reason for the failure e.g. within message flow traced during the execution. Click in the upper right corner button to open the "Rbel Log Details" to have a closer look on the messages itself.
+
+### Testcases
+
+#### VAU Handshake
+The testcase verifies the VAU handshake between the client and the VAU Proxy Server. The testcase will be successful if the VAU handshake is successfully completed with messages M1 to M4.
 
 ## Overview of the backend mock services
 
