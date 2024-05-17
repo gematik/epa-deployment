@@ -1,0 +1,11 @@
+tigerProxy:
+  trafficEndpoints: ["http://tiger-proxy:8080"] # admin port of tiger-proxy
+  activateEpa3VauAnalysis: true
+  fileSaveInfo.writeToFile: true
+  adminPort: 8124
+
+lib:
+  activateWorkflowUi: true
+  workflowUiPort: 8123
+  startBrowser: false
+  trafficVisualization: true
