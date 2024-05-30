@@ -7,5 +7,6 @@ dc-clients.yml
 dc-mocks-internal.yml
 certs
 jenkinsfiles
+vau-proxy/application-client-prod.yaml
 
 

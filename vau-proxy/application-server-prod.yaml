@@ -1,0 +1,25 @@
+server:
+  port: 8080
+  ssl:
+    enabled: false
+services:
+  information-service:
+    routes:
+      '[/information/api/v1/*]' : /information/api/v1/
+      '[/information/api/v1/ehr/*]': /information/api/v1/ehr/
+      '[/information/api/v1/ehr/*/consentdecisions]': /information/api/v1/ehr/*/consentdecisions
+  authorization-service:
+    routes:
+      '[/epa/authz/v1/getNonce]': /epa/authz/v1/getNonce
+      '[/epa/authz/v1/send_authorization_request_sc]': /epa/authz/v1/send_authorization_request_sc
+      '[/epa/authz/v1/send_authcode_sc]': /epa/authz/v1/send_authcode_sc
+  medication-service:
+    routes:
+      '[/epa/medication/api/v1/fhir/Medication]': /epa/medication/api/v1/fhir/Medication
+  medication-render-service:
+    routes:
+      '[/epa/medication/render/v1/eml/xhtml]': /epa/medication/render/v1/eml/xhtml
+      '[/epa/medication/render/v1/eml/pdf]': /epa/medication/render/v1/eml/pdf
+  entitlement-service:
+    routes:
+      '[/epa/basic/api/v1/ps/entitlements]': /epa/basic/api/v1/ps/entitlements
