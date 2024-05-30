@@ -2,6 +2,18 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.6
+
+### fixed
+- Updated version of vau-proxy-server to 1.0.5
+  - fixed issue with encrypted response from medication-render service replying with an eML as PDF/A (content-length != payload size)
+
+### added
+- .env file to set the environment variables for the services (e.g. change exposed ports on docker-host)
+- initial entitlement-service mock
+  - started with all other mock services via dc-mocks.yaml
+  - processes & validates incoming new entitlement request (see README.md)
+
 ## Release 1.0.5
 
 ### added

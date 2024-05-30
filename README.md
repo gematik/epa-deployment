@@ -31,6 +31,7 @@ You need the following system resources to run the services:
 - the following ports should be available:
   - for the ePA backend services **443** (https)
   - port range to directly access the mock services via the exposed ports (**8081-8090**)
+  - for the testsuite **8123-8124** (http)
 
 ### Running the services with docker-compose
 
@@ -67,7 +68,7 @@ curl --location http://<docker-host>:8084/fhir/MedicationDispense/13
 
 ## Traffic in Tiger WebUI
 
-The Tiger WebUI is a simple web interface to visualize the traffic between the client and the backend services. The WebUI is accessible via the following URL: [http://<docker-host>:8086/webui](http://<docker-host>:8086/webui).
+The Tiger WebUI is a simple web interface to visualize the traffic between the client and the backend services. The WebUI is accessible via the following URL: [http://\<docker-host\>:8086/webui](http://localhost:8086/webui).
 
 ### VAU Handshake & user data decrypted traffic
 
@@ -96,7 +97,7 @@ Start the testsuite container with the following command
 docker-compose -f dc-testsuite.yml up
 ```
 
-When the container log shows the following message, the testsuite is ready to be used and a webbrowser should call the URL [http://localhost:8123](http://localhost:8123) to go on. Otherwise, the timeout will stop the testsuite and the container stops automatically. In this case you have to rerun the testsuite with the command above.
+When the container log shows the following message, the testsuite is ready to be used and a webbrowser should call the URL [http://\<docker-host\>:8123](http://localhost:8123) to go on. Otherwise, the timeout will stop the testsuite and the container stops automatically. In this case you have to rerun the testsuite with the command above.
 ```bash
 ========================================================================================================================
   ____ _____  _    ____ _____ ___ _   _  ____  __        _____  ____  _  _______ _     _____        __  _   _ ___         
@@ -117,8 +118,8 @@ docker-compose -f dc-testsuite.yml down
 
 ### Execute the testcases
 
-After calling the URL [http://localhost:8123](http://localhost:8123) in a webbrowser, the workflowUI will be shown. 
-As depicted in [Waiting WorkflowUI](./doc/img/testsuite/workflowUI%20-%20start%20and%20wait.png) the testcase for VAU handshake is automatically selected. Now, the testsuite will trace any traffic flow between the client and the mock services on [https://<docker-host>:443](https://<docker-host>:443).
+After calling the URL [http://\<docker-host\>:8123](http://localhost:8123) in a webbrowser, the workflowUI will be shown. 
+As depicted in [Waiting WorkflowUI](./doc/img/testsuite/workflowUI%20-%20start%20and%20wait.png) the testcase for VAU handshake is automatically selected. Now, the testsuite will trace any traffic flow between the client and the mock services on [https://\<docker-host\>:443](https://localhost:443).
 On the bottom of the page you can see the request to trigger a specific functionality within your PS application. Do so and after the finished execution click on the "Continue" button on the bottom of the page.
 
 Now, the traffic will be analyzed and the results will be shown in the workflowUI. If everything is fine, the testcase will be marked as successful as depicted in [Successful WorkflowUI](./doc/img/testsuite/workflowUI%20-%20successful%20finished.png). 
@@ -138,16 +139,20 @@ The services can be accessed directly by using the exposed ports.
 The following table shows the services and the related ports and protocols.
 This should also give an overview of the ports to be opened in your setup.
 
+| Service                                | Port | Protocol |
+|----------------------------------------| ---- |----------|
+| ePA health record system (tiger-proxy) | 443  | https    |
+| vau-proxy-server                       | 8081 | http     |
+| information-service                    | 8082 | http     |
+| authorization-service                  | 8083 | http     |
+| medication-service                     | 8084 | http     |
+| medication-render-service              | 8085 | http     |
+| tiger-proxy (admin)                    | 8086 | http     |
+| entitlement-service                    | 8087 | http     |
 
-| Service                   | Port | Protocol |
-| ------------------------- | ---- | -------- |
-| tiger-proxy               | 443  | https    |
-| vau-proxy-server          | 8081 | http     |
-| information-service       | 8082 | http     |
-| authorization-service     | 8083 | http     |
-| medication-service        | 8084 | http     |
-| medication-render-service | 8085 | http     |
-| tiger-proxy (admin)       | 8086 | http     |
+> [!NOTE]
+> Please feel free to modify the exposed ports in the '.env' file in order to meet your own requirements.
+> The docker container internal ports are not affected by this change as well as the docker network communication.
 
 ![epa-deployment.png](/doc/img/draw-io/epa-deployment.png)
 
@@ -238,6 +243,29 @@ To retrieve the same eML as PDF/A document execute the following curl command:
 ```bash
 curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/pdf --header 'Accept: application/pdf' --header 'x-insurantid: Z1234567891' --output eml.pdf
 ```
+
+### Entitlement Service (entitlement-service)
+The entitlement Service is responsible for managing entitlements. 
+The service is described in the following openAPI specification: [EntitlementService](https://github.com/gematik/ePA-Basic/blob/ePA-3.0.1/src/openapi/I_Entitlement_Management.yaml).
+
+The entitlement service is NOT linked with the other services, and therefore, if an entitlement is missing, no error message is returned by the other services.
+
+#### Direct example request:
+```bash
+curl --location --request POST \
+  'http://<docker-host>:8087/epa/basic/api/v1/ps/entitlements' \
+  -H 'accept: application/json' \
+  -H 'x-insurantid: Z123456789' \
+  -H 'x-useragent: CLIENTID1234567890AB/2.1.12-45' \
+  -H 'Content-Type: application/json' \
+  -d '{"jwt": "<your valid jwt>"}'
+```
+
+#### Limitations
+- No JWT signature verification
+- No OCSP check during the validation of the client certificate
+- HMAC validation work only with gematik test cards
+
 
 ## Resources
 

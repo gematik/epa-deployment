@@ -20,32 +20,29 @@ services:
     volumes:
       - ./tiger-proxy:/app/config
     ports:
-      - "443:443"
-      - "8086:8080"
+      - "${EPA_PORT}:443"
+      - "${TIGER_PROXY_ADMIN_PORT}:8080"
 
   vau-proxy-server:
-    image: gematik1/epa-vau-proxy-server:1.0.4
+    image: gematik1/epa-vau-proxy-server:1.0.5
     container_name: vau-proxy-server
     restart: 'always'
     healthcheck:
       <<: *healthcheck-ref
       test: "wget -T5 -qO- http://localhost:8080/actuator/health | grep UP || exit 1"
     environment:
-      - SERVER_SSL_ENABLED=false
-      - SERVER_PORT=8080
-      # TLS config with custom cert
-      #- SERVER_PORT=443
-      #- SERVER_SSL_KEY_STORE=/app/config/keystore.p12
+      - SPRING_PROFILES_ACTIVE=server-prod
       - SERVICES_INFORMATION_SERVICE_URL=http://information-service:8080
       - SERVICES_AUTHORIZATION_SERVICE_URL=http://authorization-service:8086
       - SERVICES_MEDICATION_SERVICE_URL=http://medication-service:8080
       - SERVICES_MEDICATION_RENDER_SERVICE_URL=http://medication-render-service:8080
+      - SERVICES_ENTITLEMENT_SERVICE_URL=http://entitlement-service:8080
     networks:
       - mock-network
     volumes:
-      - ./vau-proxy:/app/config
+      - ./vau-proxy/application-server-prod.yaml:/app/config/application-server-prod.yaml
     ports:
-      - "8081:8080"
+      - "${VAU_PROXY_SERVER_PORT}:8080"
 
   information-service:
     image: gematik1/tiger-zion-image:3.0.4
@@ -58,7 +55,7 @@ services:
     volumes:
       - ./information:/app/config
     ports:
-      - "8082:8080"
+      - "${INFORMATION_SERVICE_PORT}:8080"
 
   authorization-service:
     image: gematik1/asforepa:1.0.3
@@ -79,7 +76,7 @@ services:
     networks:
       - mock-network
     ports:
-      - "8083:8086"
+      - "${AUTHORIZATION_SERVICE_PORT}:8086"
 
   medication-service:
     image: hapiproject/hapi:v7.0.3
@@ -88,7 +85,7 @@ services:
     networks:
       - mock-network
     ports:
-      - "8084:8080"
+      - "${MEDICATION_SERVICE_PORT}:8080"
 
   medication-render-service:
     image: gematik1/epa-medication-render:1.0.1
@@ -105,8 +102,21 @@ services:
     networks:
       - mock-network
     ports:
-      - "8085:8080"
+      - "${MEDICATION_RENDER_SERVICE_PORT}:8080"
 
+  entitlement-service:
+    image: gematik1/epa-entitlement:1.0.1
+    container_name: entitlement-service
+    restart: 'always'
+    healthcheck:
+      <<: *healthcheck-ref
+      test: "curl --fail --silent http://localhost:8080/health | grep UP || exit 1"
+    environment:
+      - SERVER_PORT=8080
+    networks:
+      - mock-network
+    ports:
+      - "${ENTITLEMENT_SERVICE_PORT}:8080"
 networks:
   mock-network:
     name: mock-network
