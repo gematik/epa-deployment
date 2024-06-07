@@ -82,9 +82,13 @@ The mock application vau-proxy-server sets specific HTTP headers `VAU-DEBUG-S_K1
 #### User data
 The ePA client has to set a specific HTTP header `VAU-nonPU-Tracing` in the request to indicate the encrypted data within nonPU environments ([A_24477](https://gemspec.gematik.de/docs/gemSpec/gemSpec_Krypt/latest/index.html#7.7)). Thus, the tiger-proxy decrypts and shows the decrypted data in the request & response body.
 
-The following screenshot shows the decrypted traffic of the VAU handshake between the client and the VAU Proxy Server:
+#### VAU and Authorization traffic example
+The offline page [./doc/html/VauHandshakeAndUserSession.mhtml](./doc/html/VauHandshakeAndUserSession.mhtml)  shows a decrypted example traffic of the VAU handshake between the client and the VAU Proxy Server as well as the user session creation with authorization service (mock) & IDP (RU).
 
-In file [./doc/html/VauHandshakeAndUserSession.mhtml](./doc/html/VauHandshakeAndUserSession.mhtml) you can find an example traffic of the VAU handshake and the user session creation with authorization service (mock) & IDP (RU).
+### Entitlement decrypted traffic
+
+#### New entitlement traffic example
+The offline page [./doc/html/SetEntitlement.mhtml](./doc/html/SetEntitlement.mhtml) shows a decrypted example traffic of adding a new entitlement with entitlement service (mock).
 
 ## PS-Testsuite
 
@@ -126,10 +130,19 @@ Now, the traffic will be analyzed and the results will be shown in the workflowU
 
 If the testcase failed, the testcase will be marked as failed as depicted in [Failed WorkflowUI](./doc/img/testsuite/workflowUI%20-%20failed%20finished.png) and you can analyze the reason for the failure e.g. within message flow traced during the execution. Click in the upper right corner button to open the "Rbel Log Details" to have a closer look on the messages itself.
 
+### Choose a testcase
+By default, the execution of the VAU handshake test case is selected. To select a different test case, you must configure it via the .env file, in which you must adjust the value for ‘PS_TESTSUITE_TESTS’ accordingly.
+
 ### Testcases
 
 #### VAU Handshake
-The testcase verifies the VAU handshake between the client and the VAU Proxy Server. The testcase will be successful if the VAU handshake is successfully completed with messages M1 to M4.
+The testcase verifies the VAU handshake between the client and the VAU Proxy Server (mock). The testcase will be successful if the VAU handshake is successfully completed with messages M1 to M4.
+
+#### User Session (login)
+The testcase verifies the message with the authorization service (mock) necessary to create a user session, but **NOT** the messages with the IDP (RU). The testcase will be successful if the user session is successfully created with messages `getNonce`, `send_authorization_request_sc` and `send_authcode_sc`.
+
+#### Entitlement
+The testcase verifies the message with the entitlement service (mock) necessary to create an entitlement. The testcase will be successful if the entitlement is successfully created with the POST message.
 
 ## Overview of the backend mock services
 
@@ -251,6 +264,8 @@ The service is described in the following openAPI specification: [EntitlementSer
 The entitlement service is NOT linked with the other services, and therefore, if an entitlement is missing, no error message is returned by the other services.
 
 #### Direct example request:
+
+Adding a new entitlement:
 ```bash
 curl --location --request POST \
   'http://<docker-host>:8087/epa/basic/api/v1/ps/entitlements' \
@@ -259,6 +274,17 @@ curl --location --request POST \
   -H 'x-useragent: CLIENTID1234567890AB/2.1.12-45' \
   -H 'Content-Type: application/json' \
   -d '{"jwt": "<your valid jwt>"}'
+```
+
+List all existing entitlements stored within the service (only available with the mock service)
+
+> [!IMPORTANT]
+> This is only available with the mock services. In production only the patient and its representative has access to this interface method.
+
+```bash
+curl --location 'http://localhost:8087/epa/basic/api/v1/entitlements' \
+  -H 'x-insurantid: X110435031' \
+  -H 'x-useragent: CLIENTID1234567890AB/2.1.12-45'
 ```
 
 #### Limitations
