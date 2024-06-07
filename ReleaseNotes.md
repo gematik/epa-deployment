@@ -2,6 +2,24 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.7
+
+### updated
+- Updated version of vau-proxy-server to 1.0.6
+  - updated to lib-vau 1.0.10 
+    - Corrected 8 byte request counter using type long (8 bytes) instead of type int (4 bytes)
+- Updated version of authorization-service to 2.0.0
+  - see [release notes](https://github.com/gematik/app-asforepa/blob/main/ReleaseNotes.md) for details
+- Updated version of ps-testsuite to 1.0.4
+  - added testcase for login (user session creation) with authorization-service (mock) & IDP (RU)
+  - added testcase to set an entitlement with entitlement-service (mock)
+- Updated version of tiger-proxy to 3.0.5 & tiger-zion (information-service) to 3.0.5
+  - see [release notes](https://github.com/gematik/app-Tiger/blob/master/ReleaseNotes.md) for details
+- Updated documentation
+  - how to select the testcase when running the testsuite (ps-testsuite container)
+  - example traffic for adding a new entitlement
+  - curl example to get a list of existing entitlements within the mock service
+
 ## Release 1.0.6
 
 ### fixed
