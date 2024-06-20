@@ -5,9 +5,9 @@ server:
 services:
   information-service:
     routes:
-      '[/information/api/v1/*]' : /information/api/v1/
-      '[/information/api/v1/ehr/*]': /information/api/v1/ehr/
-      '[/information/api/v1/ehr/*/consentdecisions]': /information/api/v1/ehr/*/consentdecisions
+      '[/information/api/v1]' : /information/api/v1
+      '[/information/api/v1/ehr]': /information/api/v1/ehr
+      '[/information/api/v1/ehr/consentdecisions]': /information/api/v1/ehr/consentdecisions
   authorization-service:
     routes:
       '[/epa/authz/v1/getNonce]': /epa/authz/v1/getNonce
@@ -15,7 +15,7 @@ services:
       '[/epa/authz/v1/send_authcode_sc]': /epa/authz/v1/send_authcode_sc
   medication-service:
     routes:
-      '[/epa/medication/api/v1/fhir/Medication]': /epa/medication/api/v1/fhir/Medication
+      '[/epa/medication/api/v1/fhir/*]': /fhir/*
   medication-render-service:
     routes:
       '[/epa/medication/render/v1/eml/xhtml]': /epa/medication/render/v1/eml/xhtml

@@ -25,7 +25,7 @@ services:
       - "${TIGER_PROXY_ADMIN_PORT}:8080"
 
   vau-proxy-server:
-    image: gematik1/epa-vau-proxy-server:1.0.6
+    image: gematik1/epa-vau-proxy-server:1.0.7
     container_name: vau-proxy-server
     restart: 'always'
     healthcheck:
@@ -64,7 +64,7 @@ services:
     restart: 'always'
     healthcheck:
       <<: *healthcheck-ref
-      test: "curl --fail --silent http://localhost:8086/actuator/health | grep UP || exit 1"
+      test: "curl --fail --silent http://localhost:8186/actuator/health | grep UP || exit 1"
     environment:
       - SERVER_PORT=8086
       # RU
@@ -73,7 +73,7 @@ services:
       - ASFOREPA_REDIRECT_URI=https://test-ps.gematik.de/ePA
       - ASFOREPA_SCOPES=gem-auth,openid
       - ASFOREPA_LOGLEVEL=debug
-      - MANAGEMENT_PORT=8086
+      - MANAGEMENT_PORT=8186
     networks:
       - mock-network
     ports:

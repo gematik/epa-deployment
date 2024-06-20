@@ -2,6 +2,23 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.8
+
+### updated
+- Updated configuration of information-service
+  - return codes for getRecordStatus & userexperience are changed from 200 to 204 and 201 resp.
+  - use header variable `x-insurantid` to address the health record instead of path variable (C_11834)
+- Updated medication dispense samples
+  - added a sample with substitution
+- Updated version of vau-proxy-server to 1.0.7
+  - updated to lib-vau 1.0.11
+  - added route definition with asterix wildcard for vau-proxy-server
+  - added exception logging in case of VAU handshake errors
+  - fixed handling of hex string with leading zero in sha256 path variable for /CertData.{sha256}-{version}
+
+### fixed
+- Fixed medication reference in the related samples
+
 ## Release 1.0.7
 
 ### updated

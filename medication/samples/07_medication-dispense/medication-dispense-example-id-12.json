@@ -1,6 +1,13 @@
 {
   "resourceType": "MedicationDispense",
   "status": "completed",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2025-01-22T14:43:33.244Z",
+    "profile": [
+      "https://gematik.de/fhir/dev-epa-medication/StructureDefinition/epa-medication-dispense"
+    ]
+  },
   "whenHandedOver" : "2024-01-14T07:13:00+05:00",
   "performer": [
     {
@@ -14,10 +21,8 @@
       "reference": "MedicationRequest/9"
     }
   ],
-  "medication": {
-    "reference": {
-      "reference": "Medication/6"
-    }
+  "medicationReference": {
+    "reference": "Medication/6"
   },
   "quantity": {
     "value": 6,
