@@ -90,6 +90,14 @@ The offline page [./doc/html/VauHandshakeAndUserSession.mhtml](./doc/html/VauHan
 #### New entitlement traffic example
 The offline page [./doc/html/SetEntitlement.mhtml](./doc/html/SetEntitlement.mhtml) shows a decrypted example traffic of adding a new entitlement with entitlement service (mock).
 
+### Medication decrypted traffic
+
+#### Electronic Medication List (eML) as PDF/A traffic example
+The offline page [./doc/html/MedicationPDF.mhtml](./doc/html/MedicationPDF.mhtml) shows a decrypted example traffic of retrieving the entire medication list as PDF/A document with medication render service (mock).
+
+#### Electronic Medication List (eML) as XHTML traffic example
+The offline page [./doc/html/MedicationXHTML.mhtml](./doc/html/MedicationXHTML.mhtml) shows a decrypted example traffic of retrieving the entire medication list as XHTML document with medication render service (mock).
+
 ## PS-Testsuite
 
 The PS-Testsuite is a test suite to verify specific functionality of a PS application.
@@ -255,6 +263,12 @@ To retrieve the same eML as PDF/A document execute the following curl command:
 
 ```bash
 curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/pdf --header 'Accept: application/pdf' --header 'x-insurantid: Z1234567891' --output eml.pdf
+```
+
+To retrieve the eML as FHIR Resource execute the following curl command:
+
+```bash
+curl --location http://localhost:8084/fhir/Medication?status=active
 ```
 
 ### Entitlement Service (entitlement-service)

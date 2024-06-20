@@ -6,12 +6,22 @@ zion:
       importance: +1
       request:
         method: 'GET'
-        path: '/information/api/v1/ehr/{insurantId}/consentdecisions'
+        path: '/information/api/v1/ehr/consentdecisions'
+      assignments:
+        insurantId: "$.header.x-insurantid"
       nested-responses:
         200:
           response:
             statusCode: 200
             body: '[{ "functionId": "medication", "decision": "permit" }, { "functionId": "erp-submission", "decision": "permit" }]'
+        400:
+          importance: +1
+          request-criterions:
+            # if not set value is like search string
+            - "'${insurantId}' == '$.header.x-insurantid'"
+          response:
+            statusCode: 400
+            body: '{ "errorCode": "malformedRequest" }'
         404:
           importance: +1
           request-criterions:
@@ -30,11 +40,21 @@ zion:
     getRecordStatus:
       request:
         method: 'GET'
-        path: '/information/api/v1/ehr/{insurantId}'
+        path: '/information/api/v1/ehr'
+      assignments:
+        insurantId: "$.header.x-insurantid"
       nested-responses:
-        200:
+        204:
           response:
-            statusCode: 200
+            statusCode: 204
+        400:
+          importance: +1
+          request-criterions:
+            # if not set value is like search string
+            - "'${insurantId}' == '$.header.x-insurantid'"
+          response:
+            statusCode: 400
+            body: '{ "errorCode": "malformedRequest" }'
         404:
           importance: +1
           request-criterions:
@@ -57,9 +77,9 @@ zion:
       assignments:
         useragent: "$.header.x-useragent"
       nested-responses:
-        200:
+        201:
           response:
-            statusCode: 200
+            statusCode: 201
         409: # parameter useragent is mandatory
           importance: +1
           request-criterions:
