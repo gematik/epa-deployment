@@ -58,8 +58,8 @@ After successful import the data can be accessed via the following curl commands
 
 ```bash
 curl --location http://<docker-host>:8084/fhir/Organization/1
-curl --location http://<docker-host>:8084/fhir/PractitionerRole/2
-curl --location http://<docker-host>:8084/fhir/Practitioner/3
+curl --location http://<docker-host>:8084/fhir/Practitioner/2
+curl --location http://<docker-host>:8084/fhir/PractitionerRole/3
 curl --location http://<docker-host>:8084/fhir/Patient/4
 curl --location http://<docker-host>:8084/fhir/Medication/5
 curl --location http://<docker-host>:8084/fhir/MedicationRequest/8
@@ -82,6 +82,14 @@ The mock application vau-proxy-server sets specific HTTP headers `VAU-DEBUG-S_K1
 #### User data
 The ePA client has to set a specific HTTP header `VAU-nonPU-Tracing` in the request to indicate the encrypted data within nonPU environments ([A_24477](https://gemspec.gematik.de/docs/gemSpec/gemSpec_Krypt/latest/index.html#7.7)). Thus, the tiger-proxy decrypts and shows the decrypted data in the request & response body.
 
+### Information traffic
+
+#### Record Status traffic example
+The offline page [./doc/html/InformationRecordStatus.mhtml](./doc/html/InformationRecordStatus.mhtml) shows an example traffic of retrieving the status of a patient health record with information service (mock).
+
+#### Consent Decisions traffic example
+The offline page [./doc/html/InformationConsentDecisions.mhtml](./doc/html/InformationConsentDecisions.mhtml) shows an example traffic of retrieving the consent decisions of a patient with information service (mock).
+
 #### VAU and Authorization traffic example
 The offline page [./doc/html/VauHandshakeAndUserSession.mhtml](./doc/html/VauHandshakeAndUserSession.mhtml)  shows a decrypted example traffic of the VAU handshake between the client and the VAU Proxy Server as well as the user session creation with authorization service (mock) & IDP (RU).
 
@@ -97,6 +105,9 @@ The offline page [./doc/html/MedicationPDF.mhtml](./doc/html/MedicationPDF.mhtml
 
 #### Electronic Medication List (eML) as XHTML traffic example
 The offline page [./doc/html/MedicationXHTML.mhtml](./doc/html/MedicationXHTML.mhtml) shows a decrypted example traffic of retrieving the entire medication list as XHTML document with medication render service (mock).
+
+#### Electronic Medication List (eML) as FHIR Resource traffic example
+The offline page [./doc/html/MedicationFHIR.mhtml](./doc/html/MedicationFHIR.mhtml) shows a decrypted example traffic of retrieving the entire medication list as FHIR resource with medication service (mock).
 
 ## PS-Testsuite
 
@@ -143,6 +154,12 @@ By default, the execution of the VAU handshake test case is selected. To select 
 
 ### Testcases
 
+#### Record Status
+The testcase verifies the message with the information service (mock) necessary to retrieve the status of a patient health record. The testcase will be successful if the record status is successfully retrieved with the GET message.
+
+#### Consent Decisions
+The testcase verifies the message with the information service (mock) necessary to retrieve the consent decisions of a patient. The testcase will be successful if the consent decisions are successfully retrieved with the GET message.
+
 #### VAU Handshake
 The testcase verifies the VAU handshake between the client and the VAU Proxy Server (mock). The testcase will be successful if the VAU handshake is successfully completed with messages M1 to M4.
 
@@ -151,6 +168,15 @@ The testcase verifies the message with the authorization service (mock) necessar
 
 #### Entitlement
 The testcase verifies the message with the entitlement service (mock) necessary to create an entitlement. The testcase will be successful if the entitlement is successfully created with the POST message.
+
+#### Medication List (eML) as PDF/A
+The testcase verifies the message with the medication render service (mock) necessary to retrieve the entire medication list as PDF/A document. The testcase will be successful if the medication list is successfully retrieved with the GET message.
+
+#### Medication List (eML) as XHTML
+The testcase verifies the message with the medication render service (mock) necessary to retrieve the entire medication list as XHTML document. The testcase will be successful if the medication list is successfully retrieved with the GET message.
+
+#### Medication List (eML) as FHIR Resource
+The testcase verifies the message with the medication service (mock) necessary to retrieve the entire medication list as FHIR resource. The testcase will be successful if the medication list is successfully retrieved with the GET message.
 
 ## Overview of the backend mock services
 
@@ -240,11 +266,13 @@ All necessary configurations like clientID are already set in the IDP.
 #### Limitations:
 
 * It will not end user session after 20 Min. (A_25006)
-* The validation of the client attest signature is not specification-compliant. Signatures based on Brainpool curves with the algorithm identifier "ES256" are currently rejected as invalid (A_24886)
 
 ### Medication Service (medication-service)
 
 The medication service is a HAPI FHIR server which provides the medication relevant data. The details about ePA Medication can be found in the related repository: [ePA-Medication](https://github.com/gematik/ePA-Medication/tree/ePA-3.0).
+
+#### Limitations:
+- Currently, the HAPI FHIR does not support searching resources by logical references. Therefore, the medication service does not support searching for medication requests by the patient reference. A request like `GET /MedicationRequest?subject:identifier=....` will return an error message, that it is not supported. There is already an open issue in the HAPI FHIR repository: [Issue 4723](https://github.com/hapifhir/hapi-fhir/issues/4723).
 
 ### Medication Render Service (medication-render-service)
 

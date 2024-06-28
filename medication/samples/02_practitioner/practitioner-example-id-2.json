@@ -1,0 +1,43 @@
+{
+  "active": true,
+  "identifier": [
+    {
+      "system": "https://gematik.de/fhir/sid/telematik-id",
+      "value": "1-1.58.00000040"
+    },
+    {
+      "system": "https://fhir.kbv.de/NamingSystem/KBV_NS_Base_ANR",
+      "value": "123456789"
+    }
+  ],
+  "name": [
+    {
+      "family": "Mustermann",
+      "given": [
+        "Max",
+        "Manfred"
+      ],
+      "prefix": [
+        "Dr."
+      ],
+      "text": "Dr. Max Manfred Mustermann"
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "code": "010",
+            "display": "FA Allgemeinmedizin",
+            "system": "https://gematik.de/fhir/directory/CodeSystem/PractitionerProfessionOID"
+          }
+        ]
+      },
+      "issuer": {
+        "reference": "Organization/1"
+      }
+    }
+  ],
+  "resourceType": "Practitioner"
+}
