@@ -5,13 +5,20 @@
     "versionId": "1",
     "lastUpdated": "2025-01-22T14:43:33.244Z",
     "profile": [
-      "https://gematik.de/fhir/dev-epa-medication/StructureDefinition/epa-medication-dispense"
+      "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication-dispense"
     ]
   },
+  "subject": {
+    "identifier": {
+      "system": "http://fhir.de/sid/gkv/kvid-10",
+      "value": "Z1234567891"
+    }
+  },
+  "whenHandedOver": "2024-01-14T07:13:00+05:00",
   "performer": [
     {
       "actor": {
-        "reference": "Practitioner/3"
+        "reference": "Practitioner/2"
       }
     }
   ],

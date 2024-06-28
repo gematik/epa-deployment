@@ -1,0 +1,48 @@
+{
+  "resourceType": "PractitionerRole",
+  "meta": {
+    "tag": [
+      {
+        "system": "https://gematik.de/fhir/directory/CodeSystem/Origin",
+        "code": "ldap"
+      }
+    ],
+    "profile": [
+      "https://gematik.de/fhir/directory/StructureDefinition/PractitionerRoleDirectory"
+    ]
+  },
+  "identifier": [
+    {
+      "system": "http://www.acme.org/practitioners",
+      "value": "23"
+    }
+  ],
+  "active": true,
+  "practitioner" : {
+    "reference": "Practitioner/2"
+  },
+  "organization": {
+    "reference": "Organization/1"
+  },
+  "code": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0286",
+          "code": "RP"
+        }
+      ]
+    }
+  ],
+  "specialty": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "408443003",
+          "display": "General medical practice"
+        }
+      ]
+    }
+  ]
+}

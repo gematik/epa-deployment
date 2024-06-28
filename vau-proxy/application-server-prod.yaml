@@ -5,9 +5,7 @@ server:
 services:
   information-service:
     routes:
-      '[/information/api/v1]' : /information/api/v1
-      '[/information/api/v1/ehr]': /information/api/v1/ehr
-      '[/information/api/v1/ehr/consentdecisions]': /information/api/v1/ehr/consentdecisions
+      '[/dummy]': /dummy
   authorization-service:
     routes:
       '[/epa/authz/v1/getNonce]': /epa/authz/v1/getNonce

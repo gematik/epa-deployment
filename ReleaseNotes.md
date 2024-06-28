@@ -2,6 +2,38 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.9
+
+### updated
+- Updated version of tiger-proxy to 3.1.2 & tiger-zion (information-service) to 3.1.2
+  - see [release notes](https://github.com/gematik/app-Tiger/blob/master/ReleaseNotes.md) for details
+- Updated version of medication-render to 1.0.2
+  - modified code to work with the new referencing structure inside medication requests
+- Updated version of HAPI FHIR server (medication-service) to HAPI 7.2.0
+- Updated version of ps-testsuite to 1.0.7
+  - added testcase for medication retrieving an eML as PDF/A
+  - added testcase for medication retrieving an eML as XHTML
+  - added testcase for medication retrieving an eML as FHIR resource/bundle
+  - added testcase for record status retrieval
+  - added testcase for consent decision retrieval
+
+## added
+- example traffic for retrieving a medication as FHIR resource/bundle
+- example traffic for retrieving the record status
+- example traffic for retrieving the consent decision
+
+### fixed
+- Fixed some FHIR examples
+  - Medication Request sample
+    - Fixed patient & requester reference
+    - Fixed authoredOn
+  - Medication Dispense sample
+    - Fixed patient reference
+    - Fixed profile url
+    - Fixed whenHandedOver date
+  - Patient sample
+    - Fixed identifier system url
+
 ## Release 1.0.8
 
 ### updated
@@ -18,6 +50,10 @@
 
 ### fixed
 - Fixed medication reference in the related samples
+
+### added
+- example traffic for retrieving a medication as PDF/A
+- example traffic for retrieving a medication as XHTML
 
 ## Release 1.0.7
 

@@ -11,9 +11,12 @@
   "medicationReference": {
     "reference": "Medication/7"
   },
-  "authoredOn": "2024-01-01T12:22:48",
+  "authoredOn": "2024-01-01T12:22:48Z",
   "subject": {
-    "reference": "Patient/4"
+    "identifier": {
+      "value": "Z1234567891",
+      "system": "http://fhir.de/sid/gkv/kvid-10"
+    }
   },
   "dosageInstruction": [
     {
@@ -21,8 +24,7 @@
     }
   ],
   "requester" : {
-    "reference" : "Practitioner/3",
-    "display" : "Dr. Max Manfred Mustermann"
+    "reference" : "PractitionerRole/3"
   },
   "dispenseRequest": {
     "quantity": {
@@ -32,6 +34,6 @@
     }
   },
   "substitution": {
-    "allowedBoolean": "true"
+    "allowedBoolean": true
   }
 }

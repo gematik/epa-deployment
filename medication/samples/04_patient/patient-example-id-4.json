@@ -2,7 +2,7 @@
   "resourceType": "Patient",
   "identifier": [
     {
-      "system": "http://fhirtutorial.example/patient",
+      "system": "http://fhir.de/sid/gkv/kvid-10",
       "value": "Z1234567891"
     }
   ],

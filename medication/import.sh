@@ -22,8 +22,8 @@ process_folder() {
 
   case $folder_name in
     "01_organization") context="Organization" ;;
-    "02_practitioner-role") context="PractitionerRole" ;;
-    "03_practitioner") context="Practitioner" ;;
+    "02_practitioner") context="Practitioner" ;;
+    "03_practitioner-role") context="PractitionerRole" ;;
     "04_patient") context="Patient" ;;
     "05_medication") context="Medication" ;;
     "06_medication-request") context="MedicationRequest" ;;
