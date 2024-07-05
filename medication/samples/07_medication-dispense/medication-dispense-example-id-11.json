@@ -18,7 +18,7 @@
   "performer": [
     {
       "actor": {
-        "reference": "Practitioner/2"
+        "reference": "Organization/1"
       }
     }
   ],

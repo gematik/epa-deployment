@@ -1,12 +1,12 @@
 {
     "active": true,
     "alias": [
-      "Zahnarztpraxis am Bahnhof"
+      "Arztpraxis am Bahnhof"
     ],
     "contact": [
       {
         "name": {
-          "text": "Empfang Zahnarztpraxis Dr. Mustermann"
+          "text": "Empfang Arztpraxis Dr. Mustermann"
         },
         "purpose": {
           "coding": [
@@ -42,14 +42,14 @@
         }
       ]
     },
-    "name": "Zahnarztpraxis Dr. Mustermann",
+    "name": "Arztpraxis Dr. Mustermann",
     "resourceType": "Organization",
     "type": [
       {
         "coding": [
           {
-            "code": "1.2.276.0.76.4.51",
-            "display": "Zahnarztpraxis",
+            "code": "1.2.276.0.76.4.50",
+            "display": "Betriebsstätte Arzt",
             "system": "https://gematik.de/fhir/directory/CodeSystem/OrganizationProfessionOID"
           }
         ]
