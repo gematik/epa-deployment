@@ -59,7 +59,7 @@ services:
       - "${INFORMATION_SERVICE_PORT}:8080"
 
   authorization-service:
-    image: gematik1/asforepa:2.0.0
+    image: gematik1/asforepa:2.0.1
     container_name: authorization-service
     restart: 'always'
     healthcheck:
@@ -89,7 +89,7 @@ services:
       - "${MEDICATION_SERVICE_PORT}:8080"
 
   medication-render-service:
-    image: gematik1/epa-medication-render:1.0.2
+    image: gematik1/epa-medication-render:1.0.3
     container_name: medication-render-service
     restart: 'always'
     healthcheck:

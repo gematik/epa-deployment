@@ -29,6 +29,11 @@
   "code": {
     "coding": [
       {
+        "system": "http://fhir.de/CodeSystem/ifa/pzn",
+        "code": "10019621",
+        "display": "IBU-ratiopharm 400mg akut Schmerztabletten"
+      },
+      {
         "system": "http://fhir.de/CodeSystem/ask",
         "code": "5682",
         "display": "Ibuprofen"

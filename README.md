@@ -66,6 +66,18 @@ curl --location http://<docker-host>:8084/fhir/MedicationRequest/8
 curl --location http://<docker-host>:8084/fhir/MedicationDispense/13
 ```
 
+Searching by including references in the result:
+- Query PractitionerRole with the related Organization
+
+```bash
+curl --location http://<docker-host>:8084/fhir/PractitionerRole?_include=PractitionerRole:organization
+```
+
+- Query  MedicationRequest with requester (PractitionerRole) and the Organization related to it
+```bash
+curl --location http://<docker-host>:8084/fhir/MedicationRequest?_include=MedicationRequest:requester&_include:iterate=PractitionerRole:organization
+```
+
 ## Traffic in Tiger WebUI
 
 The Tiger WebUI is a simple web interface to visualize the traffic between the client and the backend services. The WebUI is accessible via the following URL: [http://\<docker-host\>:8086/webui](http://localhost:8086/webui).

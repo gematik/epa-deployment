@@ -2,6 +2,17 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.10
+- Updated version of medication-render to 1.0.3
+  - internal updates due to FHIR sample fixes
+- Updated version of authorization-service to 2.0.1
+  - see [release notes](https://github.com/gematik/app-asforepa/blob/main/ReleaseNotes.md) for details
+    e.g. bug fix in send_authcode_sc response (JSON structure for HTTP CODE 2xx)t
+- Updated VauHandshakeAndUserSessionCreation example due to authorization-service fix
+
+### fixed
+- Fixed some FHIR sample for PractitionerRole
+
 ## Release 1.0.9
 
 ### updated
