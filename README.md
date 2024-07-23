@@ -125,6 +125,25 @@ The offline page [./doc/html/MedicationFHIR.mhtml](./doc/html/MedicationFHIR.mht
 
 The PS-Testsuite is a test suite to verify specific functionality of a PS application.
 
+### Proxy configuration for PS-Testsuite
+
+As the testsuite container obtains Maven artefacts during execution, the internet must be accessible for the container. If the internet is only accessible via a proxy server, the settings in the [./ps-testsuite/settins.xml](./ps-testsuite/settins.xml) must be adjusted for the execution of the PS-Testsuite container. Please note that the parameter `<active>true</active>` must be set to activate the settings and the docker volume `ps-testsuite-maven` must be deleted to apply the changes.
+
+To do this, the following entries must be adjusted:
+
+```xml
+  <proxy>
+    <id>optional</id>
+    <active>true</active>
+    <protocol>https</protocol>
+    <host>proxy.example.com</host>
+    <port>8080</port>
+    <username>user</username>
+    <password>password</password>
+    <nonProxyHosts>localhost|127.0.0.1</nonProxyHosts>
+  </proxy>
+```
+
 ### Running the PS-Testsuite Container in Docker
 
 Start the testsuite container with the following command
@@ -249,8 +268,8 @@ This service provides information about the health record of a patient. The capa
 * for consent decisions it will always send "permit" for "medication" as well as "erp-submission"
 * for record status it will always send HTTP code 200 (OK)
 * false case for both operations:
-  * to get HTTP code 404 use insurantId "X000000404" as path parameter
-  * to get HTTP code 409 use insurantId "X000000409" as path parameter
+  * to get HTTP code 404 use "X000000404" as header parameter 'x-insurantid'
+  * to get HTTP code 409 use "X000000409" as header parameter 'x-insurantid'
 * for user experience it is checked that the header x-useragent is set, otherwise HTTP code 409 is given
 
 #### Direct example request:
@@ -258,13 +277,13 @@ This service provides information about the health record of a patient. The capa
 To retrieve the consent decisions of a patient execute the following curl command:
 
 ```bash
-curl --location --request GET http://<docker-host>:8082/information/api/v1/ehr/Z1234567891/consentdecisions
+curl -H "x-insurantid: Z1234567890" --location --request GET http://<docker-host>:8082/information/api/v1/ehr/consentdecisions
 ```
 
 To retrieve the health record status of a patient execute the following curl command:
 
 ```bash
-curl --location --request GET http://<docker-host>:8082/information/api/v1/ehr/Z1234567891
+curl -H "x-insurantid: Z1234567890"  --location --request GET http://<docker-host>:8082/information/api/v1/ehr
 ```
 
 ### Authorization Service (authorization-service)
@@ -346,6 +365,25 @@ curl --location 'http://localhost:8087/epa/basic/api/v1/entitlements' \
 - No OCSP check during the validation of the client certificate
 - HMAC validation work only with gematik test cards
 
+## Troubleshooting / FAQs
+
+### VAU-Proxy-Server
+
+#### Response with Transcript Error (5)
+
+The decryption of the incoming message was faulty. In this case, a look at the logs from the VAU proxy server can help. Additional information about the exact cause of the error should be written in the log.
+
+If this does not help, please send us the log file in a service ticket.
+
+```bash
+docker logs vau-proxy-server > vau-proxy-server.log
+```
+
+### IDP
+
+#### IDP sends HTTP Response Code 403
+
+Please make sure that you use HTTP/1.1 when communicating with the IDP. 
 
 ## Resources
 

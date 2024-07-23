@@ -2,12 +2,33 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.11
+
+### updated
+
+- Updated version of tiger-proxy to 3.1.3 & tiger-zion (information-service) to 3.1.3
+  - see [release notes](https://github.com/gematik/app-Tiger/blob/master/ReleaseNotes.md) for details
+- Updated version of entitlement-service to 1.0.2
+  - updated pattern for x-useragent validation
+- Updated version of authorization-service to 2.0.3
+  - see [release notes](https://github.com/gematik/app-asforepa/blob/main/ReleaseNotes.md) for details
+   e.g. updated pattern for x-useragent validation
+   e.g. send matching ErrorResponse with ErrorCode as defined in OpenAPI for Authorization Service
+- Update version of ps-testsuite to 1.0.8
+  - updated plugin to validate FHIR resources against epa-medication 3.0.2
+- Update ReadMe
+  - maven proxy configuration for ps-testsuite to access the internet
+  - introduce FAQ section (finding during support)
+  - update examples for information service due to insurant parameter change
+
 ## Release 1.0.10
+
+### updated
 - Updated version of medication-render to 1.0.3
   - internal updates due to FHIR sample fixes
 - Updated version of authorization-service to 2.0.1
   - see [release notes](https://github.com/gematik/app-asforepa/blob/main/ReleaseNotes.md) for details
-    e.g. bug fix in send_authcode_sc response (JSON structure for HTTP CODE 2xx)t
+    e.g. bug fix in send_authcode_sc response (JSON structure for HTTP CODE 2xx)
 - Updated VauHandshakeAndUserSessionCreation example due to authorization-service fix
 
 ### fixed
