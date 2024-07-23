@@ -10,7 +10,7 @@ x-healthcheck-config: &healthcheck-ref
 name: dc-testsuite
 services:
   ps-testsuite:
-    image: gematik1/ps-testsuite:1.0.7
+    image: gematik1/ps-testsuite:1.0.8
     container_name: ps-testsuite
     restart: 'no'
     environment:
@@ -20,6 +20,8 @@ services:
     volumes:
       - ./ps-testsuite/tiger.yaml:/app/tiger.yaml
       - ps-testsuite-maven:/.m2
+      # has to be 'copied' AFTER the volume is mounted
+      - ./ps-testsuite/settings.xml:/.m2/settings.xml
     ports:
       - "8123:8123"
       - "8124:8124"
