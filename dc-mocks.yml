@@ -25,7 +25,7 @@ services:
       - "${TIGER_PROXY_ADMIN_PORT}:8080"
 
   vau-proxy-server:
-    image: gematik1/epa-vau-proxy-server:1.0.8
+    image: gematik1/epa-vau-proxy-server:1.0.9
     container_name: vau-proxy-server
     restart: 'always'
     healthcheck:
@@ -38,6 +38,7 @@ services:
       - SERVICES_MEDICATION_SERVICE_URL=http://medication-service:8080
       - SERVICES_MEDICATION_RENDER_SERVICE_URL=http://medication-render-service:8080
       - SERVICES_ENTITLEMENT_SERVICE_URL=http://entitlement-service:8080
+      - LIB_VAU_LOGGING_LEVEL=${LIB_VAU_LOGGING_LEVEL}
     networks:
       - mock-network
     volumes:
@@ -106,7 +107,7 @@ services:
       - "${MEDICATION_RENDER_SERVICE_PORT}:8080"
 
   entitlement-service:
-    image: gematik1/epa-entitlement:1.0.2
+    image: gematik1/epa-entitlement:1.0.3
     container_name: entitlement-service
     restart: 'always'
     healthcheck:

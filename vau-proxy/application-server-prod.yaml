@@ -21,3 +21,6 @@ services:
   entitlement-service:
     routes:
       '[/epa/basic/api/v1/ps/entitlements]': /epa/basic/api/v1/ps/entitlements
+logging:
+  level:
+    de.gematik.vau.lib: ${LIB_VAU_LOGGING_LEVEL:INFO}

@@ -2,6 +2,22 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.12
+
+### updated
+- Updated version of entitlement-service to 1.0.3
+  - updated server web interface to release version of ePA 3.0.2 (OpenAPI I_Entitlement_Management.yaml)
+- Updated version of vau-proxy-server to 1.0.9
+  - updated to lib-vau 1.0.12
+    - Extended trace logging for received encrypted VAU messages (user data)
+    - Error message with more details in case of an exception during the VAU decryption process
+  - VAU-DEBUG-S_K2_c2s_keyConfirmation base64 encoding (instead of base64url encoding)
+  - DER coded Komponenten-PKI-CA is given back when /CertData is called (valid until 08/2025)
+  - UnknownKeyIdException includes the unknown key id in the error message (not in HEX Format)
+- Update ReadMe
+  - how to enable lib-vau TRACE logging for troubleshooting
+  - correct HTTP status code docu returned by information-service (204)
+
 ## Release 1.0.11
 
 ### updated
