@@ -1,0 +1,95 @@
+{
+  "resourceType": "Medication",
+  "id": "example-epa-medication-snomed-9",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2024-01-01T01:01:01.000+00:00",
+    "profile":  [
+      "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication"
+    ]
+  },
+  "identifier":  [
+    {
+      "system": "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+      "value": "B849184C973EA5FA7D9751E6FAA6AFCFFD100183596239F84DD2C0DB4C751D67"
+    }
+  ],
+  "code": {
+    "coding":  [
+      {
+        "system": "http://fhir.de/CodeSystem/ifa/pzn",
+        "code": "10019621",
+        "display": "IBU-ratiopharm 400mg akut Schmerztabletten"
+      },
+      {
+        "system": "http://fhir.de/CodeSystem/bfarm/atc",
+        "code": "M01AE01",
+        "display": "Ibuprofen",
+        "version": "2022"
+      }
+    ]
+  },
+  "form": {
+    "coding":  [
+      {
+        "system": "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM",
+        "code": "TAB",
+        "display": "Tabletten",
+        "version": "1.10"
+      },
+      {
+        "system": "http://standardterms.edqm.eu",
+        "code": "12200",
+        "display": "Tablet"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385055001",
+        "version": "http://snomed.info/sct/11000274103/version/20240515",
+        "display": "Tablet (basic dose form)"
+      }
+    ]
+  },
+  "amount": {
+    "numerator": {
+      "value": 50,
+      "code": "{Tablet}",
+      "system": "http://unitsofmeasure.org",
+      "unit": "Tablet"
+    },
+    "denominator": {
+      "value": 1,
+      "code": "{Package}",
+      "system": "http://unitsofmeasure.org",
+      "unit": "Package"
+    }
+  },
+  "ingredient":  [
+    {
+      "itemCodeableConcept": {
+        "coding":  [
+          {
+            "code": "387207008",
+            "system": "http://snomed.info/sct",
+            "version": "http://snomed.info/sct/11000274103/version/20240515",
+            "display": "Ibuprofen (substance)"
+          }
+        ]
+      },
+      "strength": {
+        "numerator": {
+          "value": 400,
+          "code": "mg",
+          "system": "http://unitsofmeasure.org",
+          "unit": "MilliGram"
+        },
+        "denominator": {
+          "value": 1,
+          "code": "{Tablet}",
+          "system": "http://unitsofmeasure.org",
+          "unit": "Tablet"
+        }
+      }
+    }
+  ]
+}

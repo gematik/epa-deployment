@@ -24,7 +24,7 @@
   ],
   "authorizingPrescription": [
     {
-      "reference": "MedicationRequest/10"
+      "reference": "MedicationRequest/12"
     }
   ],
   "medicationReference": {

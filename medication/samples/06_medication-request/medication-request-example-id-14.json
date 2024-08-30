@@ -9,9 +9,9 @@
   "intent": "order",
   "priority": "asap",
   "medicationReference": {
-    "reference": "Medication/5"
+    "reference": "Medication/9"
   },
-  "authoredOn": "2024-01-13T12:22:48Z",
+  "authoredOn": "2024-07-01T12:22:48Z",
   "subject": {
     "identifier": {
       "value": "Z1234567891",

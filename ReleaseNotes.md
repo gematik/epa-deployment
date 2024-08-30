@@ -2,6 +2,15 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.13
+
+### updated
+- Updated certificate for tiger-proxy
+- Updated version of medication-render to 1.0.5
+- Added more medication samples
+- Updated testsuite to 1.0.9
+
+
 ## Release 1.0.12
 
 ### updated

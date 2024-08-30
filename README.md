@@ -269,7 +269,7 @@ The tiger proxy is a reverse proxy which is used to route the incoming requests 
 
 #### Limitations:
 
-* server certificate is generated on-the-fly using the `/tiger-proxy/ca.p12` as authority chain
+* server certificate is generated on-the-fly using the `/tiger-proxy/root.p12` as authority chain
 * OCSP stabling is currently not supported
 
 ### VAU Proxy Server (vau-proxy-server)
@@ -373,7 +373,7 @@ curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1
 To retrieve the eML as FHIR Resource execute the following curl command:
 
 ```bash
-curl --location http://localhost:8084/fhir/Medication?status=active
+curl --location http://<docker-host>:8084/fhir/Medication?status=active
 ```
 
 ### Entitlement Service (entitlement-service)
