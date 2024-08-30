@@ -1,6 +1,7 @@
 tigerProxy:
   trafficEndpoints: ["http://tiger-proxy:8080"] # admin port of tiger-proxy
-  activateEpa3VauAnalysis: true
+  activateRbelParsingFor:
+    - epa3-vau
   fileSaveInfo.writeToFile: true
   adminPort: 8124
 

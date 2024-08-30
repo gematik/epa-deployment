@@ -1,0 +1,48 @@
+{
+  "resourceType": "MedicationDispense",
+  "meta": {
+    "profile":  [
+      "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication-dispense"
+    ]
+  },
+  "status": "completed",
+  "category": {
+    "coding":  [
+      {
+        "code": "prescription",
+        "system": "https://gematik.de/fhir/terminology/CodeSystem/EPAMedicationDispenseCategoryCS",
+        "display": "prescription dispense"
+      }
+    ]
+  },
+  "authorizingPrescription": [
+    {
+      "reference": "MedicationRequest/13"
+    }
+  ],
+  "medicationReference": {
+    "reference": "Medication/8"
+  },
+  "subject": {
+    "identifier": {
+      "system": "http://fhir.de/sid/gkv/kvid-10",
+      "value": "Z1234567891"
+    }
+  },
+  "whenHandedOver": "2024-07-22",
+  "performer":  [
+    {
+      "actor": {
+        "reference": "Organization/1"
+      }
+    }
+  ],
+  "dosageInstruction":  [
+    {
+      "text": "1-0-0-0"
+    }
+  ],
+  "substitution": {
+    "wasSubstituted": false
+  }
+}
