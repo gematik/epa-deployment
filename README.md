@@ -11,7 +11,7 @@ In particular, the following uses cases are covered:
 
 - Perform VAU handshake and send and receive encrypted data
 - Create a user session with the ePA authorization service and IDP (RU)
-- Create an entitlement **(not included yet)**
+- Create an entitlement
 - Get the medication list (eML) for a patient as XHTML and PDF/A document
 
 ## Setup
@@ -53,19 +53,19 @@ To import medications related data to the medication-service execute the followi
 
 ```bash
 cd medication
-./import.sh
+./import-tx.sh
 ```
 
 After successful import the data can be accessed via the following curl commands (placeholder <docker-host> have to be replaced with the actual host IP or name):
 
 ```bash
-curl --location http://<docker-host>:8084/fhir/Organization/1
-curl --location http://<docker-host>:8084/fhir/Practitioner/2
-curl --location http://<docker-host>:8084/fhir/PractitionerRole/3
-curl --location http://<docker-host>:8084/fhir/Patient/4
-curl --location http://<docker-host>:8084/fhir/Medication/5
-curl --location http://<docker-host>:8084/fhir/MedicationRequest/8
-curl --location http://<docker-host>:8084/fhir/MedicationDispense/13
+curl --location http://<docker-host>:8084/fhir/Organization
+curl --location http://<docker-host>:8084/fhir/Practitioner
+curl --location http://<docker-host>:8084/fhir/PractitionerRole
+curl --location http://<docker-host>:8084/fhir/Patient
+curl --location http://<docker-host>:8084/fhir/Medication
+curl --location http://<docker-host>:8084/fhir/MedicationRequest
+curl --location http://<docker-host>:8084/fhir/MedicationDispense
 ```
 
 Searching by including references in the result:
@@ -103,27 +103,27 @@ The ePA client has to set a specific HTTP header `VAU-nonPU-Tracing` in the requ
 
 #### Record Status traffic example
 
-The offline page [./doc/html/InformationRecordStatus.mhtml](./doc/html/InformationRecordStatus.mhtml) shows an example traffic of retrieving the status of a patient health record with information service (mock).
+The offline page [./doc/html/InformationRecordStatus.html](./doc/html/InformationRecordStatus.html) shows an example traffic of retrieving the status of a patient health record with information service (mock).
 
 #### Consent Decisions traffic example
 
-The offline page [./doc/html/InformationConsentDecisions.mhtml](./doc/html/InformationConsentDecisions.mhtml) shows an example traffic of retrieving the consent decisions of a patient with information service (mock).
+The offline page [./doc/html/InformationConsentDecision.html](./doc/html/InformationConsentDecision.html) shows an example traffic of retrieving the consent decisions of a patient with information service (mock).
 
 #### VAU and Authorization traffic example
 
-The offline page [./doc/html/VauHandshakeAndUserSession.mhtml](./doc/html/VauHandshakeAndUserSession.mhtml)  shows a decrypted example traffic of the VAU handshake between the client and the VAU Proxy Server as well as the user session creation with authorization service (mock) & IDP (RU).
+The offline page [./doc/html/VauHandshakeAndUserSession.html](./doc/html/VauHandshakeAndUserSession.html)  shows a decrypted example traffic of the VAU handshake between the client and the VAU Proxy Server as well as the user session creation with authorization service (mock) & IDP (RU).
 
 ### Entitlement decrypted traffic
 
 #### New entitlement traffic example
 
-The offline page [./doc/html/SetEntitlement.mhtml](./doc/html/SetEntitlement.mhtml) shows a decrypted example traffic of adding a new entitlement with entitlement service (mock).
+The offline page [./doc/html/SetEntitlement.html](./doc/html/SetEntitlement.html) shows a decrypted example traffic of adding a new entitlement with entitlement service (mock).
 
 ### Medication decrypted traffic
 
 #### Electronic Medication List (eML) as PDF/A traffic example
 
-The offline page [./doc/html/MedicationPDF.mhtml](./doc/html/MedicationPDF.mhtml) shows a decrypted example traffic of retrieving the entire medication list as PDF/A document with medication render service (mock).
+The offline page [./doc/html/MedicationPDF.html](./doc/html/MedicationPDF.html) shows a decrypted example traffic of retrieving the entire medication list as PDF/A document with medication render service (mock).
 
 #### Electronic Medication List (eML) as XHTML traffic example
 
@@ -131,7 +131,7 @@ The offline page [./doc/html/MedicationXHTML.mhtml](./doc/html/MedicationXHTML.m
 
 #### Electronic Medication List (eML) as FHIR Resource traffic example
 
-The offline page [./doc/html/MedicationFHIR.mhtml](./doc/html/MedicationFHIR.mhtml) shows a decrypted example traffic of retrieving the entire medication list as FHIR resource with medication service (mock).
+The offline page [./doc/html/MedicationFHIR.html](./doc/html/MedicationFHIR.html) shows a decrypted example traffic of retrieving the entire medication list as FHIR resource with medication service (mock).
 
 ## PS-Testsuite
 
@@ -276,6 +276,10 @@ The tiger proxy is a reverse proxy which is used to route the incoming requests 
 
 By specification some services inside the ePA has to be encrypted/decrypted by the VAU. The VAU Proxy Client handles the VAU handshake for a given PS instance. This handshake enables the VAU Proxy Client to encrypt messages which can be decrypted by the VAU Proxy Server before the messages are passed onto ePA services.
 
+#### Triggering a VAU Restart
+
+To trigger a restart of a VAU connection, you can send the request with the user data to `/<VAU-CID>/restart` instead of `/<VAU-CID>`. This will cause the VAU proxy server to release the connection by deleting the VAU-CID on the server side and the server state machine will be removed. A new VAU session is NOT created automatically. VAU proxy server sends a response as specified in A_24772. The VAU client must therefore start a new handshake.
+
 #### Lib-vau traces for troubleshooting
 
 To additionally activate trace information in this container, set the variable [LIB_VAU_LOGGING_LEVEL](.env) to the value TRACE. It gives you additional information like the encrypted message right before it is decrypted. Therefore, you have to redeploy the container (not only restart).
@@ -416,6 +420,16 @@ curl --location 'http://localhost:8087/epa/basic/api/v1/entitlements' \
 
 ## Troubleshooting / FAQs
 
+### PS-Testsuite
+
+In case of a failed test run and the writing of a support ticket in the gematik Service Desk, it is useful to attach the *.tgr file with the recorded messages. This makes it possible to import the traces into a local Tiger application in order to display the communication and its message details.
+
+To do this, you must execute the following command to copy the *.tgr from the ps-testsuite container to the local directory.
+
+```bash
+docker cp ps-testsuite:/app/tiger-proxy.tgr .
+```
+
 ### VAU-Proxy-Server
 
 #### Response with Transcript Error (5)
@@ -428,6 +442,21 @@ If this does not help, please send us the log file in a service ticket.
 
 ```bash
 docker logs vau-proxy-server > vau-proxy-server.log
+```
+
+#### Response with Transcript Error: Cannot invoke "io.netty.handler.codec.http.FullHttpRequest.uri()" because "innerRequest" is null
+
+The decryption was successful, and you can see the decrypted message in vau-proxy-server logs.
+But the netty lib was not able to convert the incoming HTTP request string into an object. This could be, due to a malformed inner HTTP Request. Please make sure you follow the RFC specification.
+
+Example Requests:
+```
+GET /epa/authz/v1/getNonce HTTP/1.1<CRLF>
+Content-Length: 0<CRLF>
+x-useragent: PSSIM123456789012345/1.2.4<CRLF>
+Host: localhost:443<CRLF>
+<CRLF>
+<CRLF>
 ```
 
 ### IDP

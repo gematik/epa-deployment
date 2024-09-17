@@ -1,0 +1,2156 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RbelLog für local_tiger_proxy:62875</title><script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script><script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script><script src="https://code.jquery.com/jquery-1.12.4.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/xml.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.11/dayjs.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/stackoverflow-dark.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><link rel="icon" type="image/png" href="data:image/png;base64,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
+"><style id="rbel_css">/*
+ * ${GEMATIK_COPYRIGHT_STATEMENT}
+ */
+
+.sidebar {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: sticky;
+    vertical-align: top;
+    max-height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.logo {
+    vertical-align: middle;
+    margin: 1rem;
+    margin-bottom: 0;
+}
+
+.logo img {
+    max-width: 100%;
+    max-height: 250px;
+}
+
+.navbar-title {
+    color: rgb(2, 154, 207);
+}
+
+.navbar-version {
+    line-height: 4rem;
+}
+
+.header {
+    border-bottom: 3px solid #ddd;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    background: #eee;
+}
+
+.table, .card {
+    max-width: 100%;
+}
+
+.card {
+    background: #ddd;
+}
+
+.json-note {
+    position: relative;
+    border-radius: .4em;
+    border: 1px solid #6b999f;
+    color: #8aecf7;
+    padding: 0.3rem;
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+
+h1.title {
+    font-size: 1.5rem;
+}
+
+h2.title {
+    font-size: 1.25rem;
+    color: currentColor;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 1.25rem;
+    margin-bottom: .5rem;
+    color: #373a3c;
+}
+
+div.message-header {
+    padding: .4rem;
+}
+
+.notification .tile .message-body {
+    padding: .25rem;
+}
+.is-size-4 {
+    font-size: 1.3rem !important;
+}
+td {
+    padding: .3rem !important;
+    border-style: unset;
+}
+.card-content{
+    padding: .5rem;
+}
+pre {
+    color: #fa4 !important;
+    background-color: #444 !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: .5rem;
+    font-size: .7em;
+    margin-bottom: 0;
+}
+
+prekey {
+    color: orangered !important;
+    background-color: #444 !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: .2rem;
+}
+
+pre.json {
+    color: greenyellow !important;
+}
+
+pre.binary {
+    max-width: 800px;
+    padding: 0.7rem 1.5rem;
+}
+
+pre.value, pre.json, pre.value div, pre.json div {
+    word-break: break-all;
+    white-space: break-spaces;
+}
+
+pre.json {
+    word-break: break-all;
+    white-space: break-spaces;
+    color: greenyellow !important;
+    margin-top: 0.75rem;
+}
+
+
+.text-ellipsis {
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card-header-title {
+    padding: 0.5rem 1rem;
+}
+
+.msg-sequence {
+    height: 2.5rem !important;
+}
+
+@media print {
+    .column.menu {
+        position: static !important;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+        vertical-align: top;
+        width: 100%;
+        height: auto;
+        margin-left: 5rem;
+        column-count: 3;
+    }
+
+    .columns.is-fullheight {
+        display: block !important;
+    }
+
+    pre, pre.json, pre.value {
+        color: darkred !important;
+        background-color: white !important;
+    }
+
+    .card {
+        background: white;
+    }
+
+    .page-break {
+        break-before: page;
+    }
+
+    div pre.json, div pre.value {
+        break-inside: avoid-page;
+    }
+
+    i.fa-angle-double-up, i.fa-angle-double-down, i.fa-toggle-on, i.fa-toggle-off {
+        display: none;
+    }
+}
+
+@page {
+    size: 594mm 420mm;
+}
+
+
+.radio-item {
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+}
+
+.radio-item input[type='radio'] {
+    display: none;
+}
+
+.radio-item label {
+    color: #aaa;
+    font-weight: normal;
+}
+
+.radio-item label:before {
+    content: " ";
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 5px 0 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 11px;
+    border: 2px solid #666;
+    background-color: transparent;
+}
+
+.radio-item input[type=radio]:checked + label:after {
+    border-radius: 11px;
+    border: 2px solid #469408;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 9px;
+    left: 14px;
+    color: #469408;
+    content: " ";
+    display: block;
+    background: #469408;
+}
+
+.led {
+    width: 10px;
+    height: 10px;
+    background: #666;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.led-active {
+    background: #469408;
+}
+
+.led-error {
+    background: #c04608;
+}
+
+.modal-background {
+    background-color: rgba(10, 10, 10, .36);
+}
+
+.box.routeentry {
+    padding: 1rem;
+}
+
+.routeListDiv button {
+    height: 100%;
+    width: 100%;
+}
+
+#sidebar-menu, .menu + div {
+    padding-bottom: 10rem;
+}
+
+#scrollLockBtn,
+#collapsibleMessageHeaderBtn,
+#collapsibleMessageDetailsBtn,
+.dropdown-toggle {
+    color: #aaa;
+}
+
+#scrollLockBtn,
+#collapsibleMessageHeaderBtn,
+#collapsibleMessageDetailsBtn {
+    display:inline-flex;
+}
+
+@media screen and (max-width: 1023px) {
+    .navbar-menu {
+        display: flex;
+    }
+}
+
+.navbar {
+    margin-top: -0.75rem;
+}
+
+.navbar-item, .navbar-link {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    color: rgba(255,255,255,.7);
+}
+
+.navbar-end .navbar-item {
+    align-items: center;
+}
+
+.msglist {
+    max-width: 80%;
+}
+
+.msglist.embeddedlist {
+    max-width: 100% !important;
+}
+
+.nested.dropdown > .dropdown-menu {
+    display: none;
+}
+
+.nested.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.nested.dropdown .dropdown-menu {
+    top: -15px;
+    margin-left: 100%;
+}
+
+.nested.dropdown .dropdown-trigger button::after {
+    content: '  ⦠';
+    margin-left: 0.5rem;
+}
+
+.nested.dropdown .dropdown-trigger button {
+    padding: 0px 0px;
+    border: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    height: 2em;
+}
+.dropdown-content-black {
+    background-color: #373a3c;
+}
+
+.copyToClipboard-button {
+    filter: invert(100%);
+    margin-left: 2em;
+    margin-top: 0.5em;
+}
+.dropdown-content {
+    max-height: 100vh;
+    overflow: auto;
+}
+.box {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #ddd;
+    color: #444;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+#contextParent {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+}
+.col.is-one-fifth {
+    flex: none;
+    width: 20%;
+}
+
+.is-size-1 {
+    font-size:3rem!important
+}
+
+.is-size-2 {
+    font-size:2.5rem!important
+}
+
+.is-size-3 {
+    font-size:2rem!important
+}
+
+.is-size-5{
+    font-size:1.25rem!important
+}
+.is-size-6{
+    font-size:1rem!important
+}
+.is-size-7{
+    font-size:.75rem!important
+}
+
+a.has-text-link:focus,
+a.has-text-link:hover{
+    color:#205bbc!important
+}
+.has-text-dark{
+    color:#373a3c!important
+}
+a.has-text-dark:focus,
+a.has-text-dark:hover{color:#1f2021!important}
+.has-text-weight-bold{font-weight:700!important}
+.has-text-weight-light{font-weight:300!important}
+
+.has-text-warning {
+    color: #9b479f!important;
+}
+
+a {
+    cursor: pointer;
+    color: #029acf;
+    text-decoration: none;
+}
+a.mt-3.is-block {
+    text-decoration: none;
+}
+
+.has-background-dark{background-color:#373a3c!important}
+.has-text-danger{color:#d9831f!important}
+.has-text-success {
+    color: #469408!important;
+    text-decoration: none;
+}
+.has-text-link {
+    color: #029acf!important;
+}
+
+.button .icon:last-child:not(:first-child) {
+    margin-left: 0.25em;
+    margin-right: calc(-0.5em - 1px);
+}
+
+.tile.is-ancestor:last-child {
+    margin-bottom: -0.75rem;
+}
+
+.tile.is-ancestor {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    margin-top: -0.75rem;
+}
+
+.tile {
+    align-items: stretch;
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: -webkit-min-content;
+    min-height: -moz-min-content;
+    min-height: min-content;
+}
+
+.tile.is-child {
+    margin: 0!important;
+}
+
+.tile.is-vertical>.tile.is-child {
+    margin-top: 1.5rem!important;
+}
+.tile.is-vertical {
+    flex-direction: column;
+}
+.tile.is-parent {
+    padding-left: 1rem;
+    padding-top: 0rem;
+    padding-bottom: 0.75rem;
+}
+.card-header {
+    padding: 0rem 0rem;
+}
+.notification {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    padding: 1rem 1rem 1rem 1rem;
+    position: relative;
+}
+
+.notification.is-primary {
+    background-color: #fef6f5;
+    color: #d9230f;
+    border: 1px solid #f7958a;
+}
+
+.notification.is-info {
+    background-color: #f5fdfe;
+    color: #0fc5d9;
+    border: 1px solid #8aecf7;
+}
+.notification.is-success {
+    background-color: #f9fef5;
+    color: #469408;
+    border: 1px solid #90f540;
+}
+.notification .title {
+    color: currentColor;
+}
+
+.modal-button {
+    background-color: #fff;
+    padding: 0.2rem 0.2rem;
+}
+
+.tag:not(body).is-info.is-light {
+    background-color: #ecfcfe;
+    color: #0a8694;
+}
+
+.tag:not(body) {
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    color: #444;
+    display: inline-flex;
+    font-size: .75rem;
+    height: 2em;
+    justify-content: center;
+    line-height: 1.5;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    white-space: nowrap;
+}
+.msg-sequence {
+    height: 2.5rem !important;
+}
+
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.btn-dark {
+    border: 1px solid #27292b;
+    background-image: linear-gradient(180deg,#3e4244 0%,#373a3c 60%,#303234 100%);
+    -webkit-filter: none;
+    filter: none;
+}
+
+article.message {
+    margin: .5rem !important;
+}
+
+.message-body {
+    color: #444;
+    padding: 0.25rem;
+}
+
+.filteredMessage {
+    margin-top: 15px;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+#jexlModal,
+#filterModal {
+    max-width: 75%;
+}
+
+.tab {
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+.tabs {
+    align-items: stretch;
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: center;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.tabs > .icon {
+    margin-right: 0.5rem;
+}
+.field {
+    display: flex;
+}
+.field-label {
+    margin-right: 1.5rem;
+    text-align: right;
+}
+
+.buttons.is-right {
+    justify-content: flex-end;
+    display: flex;
+}
+
+#executeJexlQuery {
+    margin-right: 0.5rem;
+}
+
+.jexlstyle {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #469408!important;
+    border-color: #469408!important;
+}
+
+.btn-outline-success {
+    border-color: #469408!important;
+    color: #469408;
+}
+
+.btn-outline-success:hover {
+    background-color: #469408;
+    border-color: #469408;
+    color: #fff;
+}
+
+.text-success {
+    color: #469408!important;
+}
+
+.notification.is-warning {
+    background-color: #fcf8fc;
+    color: #9b479f;
+    border: 1px solid #d6a7d8;
+}
+
+.message.is-warning .message-header {
+    background-color: #9b479f;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container.page-break {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.bg-success {
+    background-color: #469408!important;
+}
+</style></head><body style="overflow-x: hidden;"><div id="navbardiv"></div><section class="main-content"><section class="row header"><div class="col-1 h-100 my-auto logo"><img src="data:image/png;base64,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
+" id="test-tiger-logo"></div><div class="col is-size-6"><div class="row my-auto"><div class="col navbar-title is-size-3 h-100 my-auto">RbelLog für local_tiger_proxy:62875</div><span class="col-2 is-size-7 navbar-version">3.3.0</span></div><div></div></div></section></section><section class="row is-fullheight" id="test-rbel-section"><div class=" col is-one-fifth menu is-size-4 sidebar"><h2 class="mb-3 ms-2">Flow</h2><div class="ms-1" id="sidebar-menu"></div></div><div class="col ms-6"><div class="created fst-italic is-size-6 float-end me-6">Created Thu, 12 Sep 2024 08:39:43 +0200</div><div><div><div class="container page-break mx-3 mt-5"><div class="card full-width test-card msg-card"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="full-width"><a name="a79aedc6-9752-4b22-97b8-7f66c7d29fa7"></a><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 msg-toggle has-text-link"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogjMXXpGiXK38lrD34YpJS" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogjMXXpGiXK38lrD34YpJS" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of </p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogjMXXpGiXK38lrD34YpJS"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogjMXXpGiXK38lrD34YpJS" style="white-space: pre-wrap;word-wrap: break-word;">POST /1725955499076 HTTP/1.1
+User-Agent: HAPI-FHIR/7.4.0 (FHIR Client; FHIR 4.0.1/R4; apache)
+Accept-Encoding: gzip
+Accept: application/octet-stream
+x-target-fqdn: https://host.docker.internal:443
+Content-Length: 428
+Content-Type: application/octet-stream
+VAU-nonPU-Tracing: 083B2Ev7CM756kppSqJiHoPSwtc+8qwSNKxgO9gVl3A= wcxbKcWkd3yb1Qvb1NFt2gssKrxYh1oOzUsVpFJaieg=
+Forwarded: proto=https;host=&quot;vau-proxy-ps-sim:8080&quot;;for=&quot;172.19.0.2:56492&quot;
+X-Forwarded-For: 172.19.0.2
+X-Forwarded-Proto: https
+X-Forwarded-Port: 443
+X-Forwarded-Host: host.docker.internal
+host: host.docker.internal
+
+        J�H���-ӄO�zT���ez(���V5���y񮊅       J�x����L�c����3�7�
+8N�[���M�n��&lt;���,wmpV7���NW�jA�R*�mm�&lt;��m�nS��C7��i�_V��f�^!��E��Z���bB��L����m��g\���W#��Q���u�Ք6�(�i�-�;OrSA��V�o�H�����6����;1�Vm|�D�(���e9�&gt;��?I� ή*�%���h�z�����y��?K(�c��y��{�3��&gt;���b�jz����}3 q![�n�K)�I-�(b:�,��|���M�5�y�H/���)p_O��PP��#�@Y���O�Cl��s�u(���)�0��q&gt;/o�����H?�L�S���V�ICY�|�x�</pre></div></article></div></div></div></span><span><a class="btn modal-button modal-button-details float-end partner-message-button" onclick="scrollToMessage(&#x27;9ad8d33d-d0bd-4767-b463-aa37b47f15b6&#x27;,251)"><span class="icon is-small"><i class="fas fa-right-left"></i></span></a></span><h1 class="title ms-3 text-ellipsis has-text-link" style="overflow: hidden;"><span class="msg-sequence tag is-info is-light me-3 is-size-4 test-message-number">251</span><i class="fas fa-share me-1" title="Request"></i><span class="has-text-link text-ellipsis"><span class="font-monospace title is-size-6" title="/1725955499076"> POST /1725955499076</span></span><span></span><span></span><span style="display: block;"><span class="is-size-7 ms-4 "><span class="icon"><i class="fas fa-clock"></i></span>06:39:24.768144519Z</span><span class="is-size-7 ms-4">172.18.0.1:58652<span class="icon"><i class="fas fa-arrow-right"></i></span>vau-proxy-server:8080</span></span></h1></div></div></header><div class="card-content test-card-content msg-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-ancestor pe-3"><div class="tile is-parent is-vertical pe-3"><div><div class="container page-break my-3"><div class="card full-width test-card is-primary notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-danger header-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogxisPQC2AQN7F3UerRaHQ" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogxisPQC2AQN7F3UerRaHQ" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogxisPQC2AQN7F3UerRaHQ"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogxisPQC2AQN7F3UerRaHQ" style="white-space: pre-wrap;word-wrap: break-word;">User-Agent: HAPI-FHIR/7.4.0 (FHIR Client; FHIR 4.0.1/R4; apache)
+Accept-Encoding: gzip
+Accept: application/octet-stream
+x-target-fqdn: https://host.docker.internal:443
+Content-Length: 428
+Content-Type: application/octet-stream
+VAU-nonPU-Tracing: 083B2Ev7CM756kppSqJiHoPSwtc+8qwSNKxgO9gVl3A= wcxbKcWkd3yb1Qvb1NFt2gssKrxYh1oOzUsVpFJaieg=
+Forwarded: proto=https;host=&quot;vau-proxy-ps-sim:8080&quot;;for=&quot;172.19.0.2:56492&quot;
+X-Forwarded-For: 172.19.0.2
+X-Forwarded-Proto: https
+X-Forwarded-Port: 443
+X-Forwarded-Host: host.docker.internal
+host: host.docker.internal</pre></div></article></div></div></div></span><div class="text-danger"><h2 class="title">REQ Headers</h2></div></div></div></header><div class="card-content test-card-content msg-header-content test-msg-header-content"><div><table class="table"><tbody><tr><td><pre>User-Agent</pre></td><td><pre class="value"><span class="is-size-7">HAPI-FHIR/7.4.0 (FHIR Client; FHIR 4.0.1/R4; apache)</span></pre></td></tr><tr><td><pre>Accept-Encoding</pre></td><td><pre class="value"><span class="is-size-7">gzip</span></pre></td></tr><tr><td><pre>Accept</pre></td><td><pre class="value"><span class="is-size-7">application/octet-stream</span></pre></td></tr><tr><td><pre>x-target-fqdn</pre></td><td><pre class="value"><div><div>https://host.docker.internal:443</div></div></pre></td></tr><tr><td><pre>Content-Length</pre></td><td><pre class="value"><span class="is-size-7">428</span></pre></td></tr><tr><td><pre>Content-Type</pre></td><td><pre class="value"><span class="is-size-7">application/octet-stream</span></pre></td></tr><tr><td><pre>VAU-nonPU-Tracing</pre></td><td><pre class="value"><span class="is-size-7">083B2Ev7CM756kppSqJiHoPSwtc+8qwSNKxgO9gVl3A= wcxbKcWkd3yb1Qvb1NFt2gssKrxYh1oOzUsVpFJaieg=</span></pre></td></tr><tr><td><pre>Forwarded</pre></td><td><pre class="value"><span class="is-size-7">proto=https;host=&quot;vau-proxy-ps-sim:8080&quot;;for=&quot;172.19.0.2:56492&quot;</span></pre></td></tr><tr><td><pre>X-Forwarded-For</pre></td><td><pre class="value"><span class="is-size-7">172.19.0.2</span></pre></td></tr><tr><td><pre>X-Forwarded-Proto</pre></td><td><pre class="value"><span class="is-size-7">https</span></pre></td></tr><tr><td><pre>X-Forwarded-Port</pre></td><td><pre class="value"><span class="is-size-7">443</span></pre></td></tr><tr><td><pre>X-Forwarded-Host</pre></td><td><pre class="value"><span class="is-size-7">host.docker.internal</span></pre></td></tr><tr><td><pre>host</pre></td><td><pre class="value"><span class="is-size-7">host.docker.internal</span></pre></td></tr></tbody></table></div></div></div></div></div><div><div class="container page-break my-3"><div class="card full-width test-card is-info notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-info body-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogZ4407gKMuc86TXFNzXg5" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogZ4407gKMuc86TXFNzXg5" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogZ4407gKMuc86TXFNzXg5"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogZ4407gKMuc86TXFNzXg5" style="white-space: pre-wrap;word-wrap: break-word;">020001000000000000004a1bba48e5fe902dd3844fb47a54d4fbc1657a287f14a4b6f25635d902d5108479f1ae8a85000000000000004ae77802bbbfbdba4c8b6301aafaf98333ae0512370db0160a384e975b98abeb4df66eb3ff3ce7b5d6d92c776d705637858aa74e57a16a41cc522ab76d6dd33c8de76dad6e0753b9f7431c378dd40369bc5f56a48366a85e21f08945fdc15aba941be86242af0103ee4c92f9198fe36ddcd3675c98b3aa025723c5c951f70dbce7a075bad59436d0289d69e22de23b4f725341f1c656fe186f08d6488abefba107ecaa368da0fa8e3b310314f9566d7cd4448f2880b1d865391dd83eaa903f49181cb300ceae2ae425fd071bf90ebb68b87aa8b114e5fbfa0e7992c31e3f4b28c31a63acec7984a87bc9133382dd3ee2e8b1c662da6a7ade1fc1f0b5d17d33007121035ba86efd1a4b29a2492d8528623aec2c9b907c12e0e718e04dbf350e1cf9799c482fd9f7800b29705f4fc50fed50501b80e723a54059f4a6d24fac436cdee573907528dc1bce02c3290412d130f2d2c2857102013e2f6f04bdd8ea0ec9ef483ff3144cd35304c9edd256d7494359847cf278a5</pre></div></article></div></div></div></span><div class="text-info"><h2 class="title">REQ Body</h2></div></div></div></header><div class="card-content test-card-content msg-body-content test-msg-body-content"><div><div style="width:100%;"><h1 class="font-monospace title">VAU EPA 3 Encrypted Message<span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogRxX3h45fmkhMKPGQgqaW" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogRxX3h45fmkhMKPGQgqaW" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogRxX3h45fmkhMKPGQgqaW"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogRxX3h45fmkhMKPGQgqaW" style="white-space: pre-wrap;word-wrap: break-word;">020001000000000000004a1bba48e5fe902dd3844fb47a54d4fbc1657a287f14a4b6f25635d902d5108479f1ae8a85000000000000004ae77802bbbfbdba4c8b6301aafaf98333ae0512370db0160a384e975b98abeb4df66eb3ff3ce7b5d6d92c776d705637858aa74e57a16a41cc522ab76d6dd33c8de76dad6e0753b9f7431c378dd40369bc5f56a48366a85e21f08945fdc15aba941be86242af0103ee4c92f9198fe36ddcd3675c98b3aa025723c5c951f70dbce7a075bad59436d0289d69e22de23b4f725341f1c656fe186f08d6488abefba107ecaa368da0fa8e3b310314f9566d7cd4448f2880b1d865391dd83eaa903f49181cb300ceae2ae425fd071bf90ebb68b87aa8b114e5fbfa0e7992c31e3f4b28c31a63acec7984a87bc9133382dd3ee2e8b1c662da6a7ade1fc1f0b5d17d33007121035ba86efd1a4b29a2492d8528623aec2c9b907c12e0e718e04dbf350e1cf9799c482fd9f7800b29705f4fc50fed50501b80e723a54059f4a6d24fac436cdee573907528dc1bce02c3290412d130f2d2c2857102013e2f6f04bdd8ea0ec9ef483ff3144cd35304c9edd256d7494359847cf278a5</pre></div></article></div></div></div></span></h1><div class="tile is-ancestor pe-3"><div class="tile is-vertical is-parent pe-3"><div class="tile is-child box notification pe-3 is-primary"><h2 class="title">Header</h2><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogdfJcDNCtMACZhoRn5wpl" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogdfJcDNCtMACZhoRn5wpl" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogdfJcDNCtMACZhoRn5wpl"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogdfJcDNCtMACZhoRn5wpl" style="white-space: pre-wrap;word-wrap: break-word;">020001000000000000004a1bba48e5fe902dd3844fb47a54d4fbc1657a287f14a4b6f25635d902d5108479</pre></div></article></div></div></div></span><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Version: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">02</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>PU: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">00</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Request?: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">01</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Request Counter: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">74</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Key ID: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">1bba48e5fe902dd3844fb47a54d4fbc1657a287f14a4b6f25635d902d5108479</span></div></div></div><div class="tile is-child box notification pe-3 is-info"><h2 class="title">Message</h2><div class="container page-break mx-3 mt-5"><div class="card full-width test-card msg-card"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="full-width"><a name="16d2e580-17eb-4625-991d-5a465b023c36"></a><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 msg-toggle has-text-link"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialog3SRu1Vn6YZCnoNCWJPjF" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialog3SRu1Vn6YZCnoNCWJPjF" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialog3SRu1Vn6YZCnoNCWJPjF"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialog3SRu1Vn6YZCnoNCWJPjF" style="white-space: pre-wrap;word-wrap: break-word;">GET /epa/medication/api/v1/fhir/Medication?_count=10&amp;_offset=0&amp;_total=none&amp;_format=json HTTP/1.1
+User-Agent: HAPI-FHIR/7.4.0 (FHIR Client; FHIR 4.0.1/R4; apache)
+Accept-Encoding: gzip
+Accept: application/fhir+json;q=1.0, application/json+fhir;q=0.9
+x-target-fqdn: https://host.docker.internal:443
+Host: vau-proxy-ps-sim:8080
+Connection: Keep-Alive
+
+</pre></div></article></div></div></div></span><h1 class="title ms-3 text-ellipsis has-text-link" style="overflow: hidden;"><span></span><i class="fas fa-share me-1" title="Request"></i><span class="has-text-link text-ellipsis"><span class="font-monospace title is-size-6" title="/epa/medication/api/v1/fhir/Medication?_count=10&amp;_offset=0&amp;_total=none&amp;_format=json"> GET /epa/medication/api/v1/fhir/Medication?_count=10&amp;_offset=0&amp;_total=none&amp;_format=json</span></span><span></span><span></span><span style="display: block;"><span></span><span></span></span></h1></div></div></header><div class="card-content test-card-content msg-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-ancestor pe-3"><div class="tile is-parent is-vertical pe-3"><div><div class="container page-break my-3"><div class="card full-width test-card is-primary notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-danger header-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogWkA1qkqMr0eNnXLDJZDv" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogWkA1qkqMr0eNnXLDJZDv" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogWkA1qkqMr0eNnXLDJZDv"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogWkA1qkqMr0eNnXLDJZDv" style="white-space: pre-wrap;word-wrap: break-word;">User-Agent: HAPI-FHIR/7.4.0 (FHIR Client; FHIR 4.0.1/R4; apache)
+Accept-Encoding: gzip
+Accept: application/fhir+json;q=1.0, application/json+fhir;q=0.9
+x-target-fqdn: https://host.docker.internal:443
+Host: vau-proxy-ps-sim:8080
+Connection: Keep-Alive</pre></div></article></div></div></div></span><div class="text-danger"><h2 class="title">REQ Headers</h2></div></div></div></header><div class="card-content test-card-content msg-header-content test-msg-header-content"><div><table class="table"><tbody><tr><td><pre>User-Agent</pre></td><td><pre class="value"><span class="is-size-7">HAPI-FHIR/7.4.0 (FHIR Client; FHIR 4.0.1/R4; apache)</span></pre></td></tr><tr><td><pre>Accept-Encoding</pre></td><td><pre class="value"><span class="is-size-7">gzip</span></pre></td></tr><tr><td><pre>Accept</pre></td><td><pre class="value"><span class="is-size-7">application/fhir+json;q=1.0, application/json+fhir;q=0.9</span></pre></td></tr><tr><td><pre>x-target-fqdn</pre></td><td><pre class="value"><div><div>https://host.docker.internal:443</div></div></pre></td></tr><tr><td><pre>Host</pre></td><td><pre class="value"><div><div>vau-proxy-ps-sim:8080</div></div></pre></td></tr><tr><td><pre>Connection</pre></td><td><pre class="value"><span class="is-size-7">Keep-Alive</span></pre></td></tr></tbody></table></div></div></div></div></div><div class="is-info notification container is-child"><h2 class="title">REQ Body Empty</h2></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><div><div class="container page-break mx-3 mt-2"><div class="card full-width test-card msg-card"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="full-width"><a name="9ad8d33d-d0bd-4767-b463-aa37b47f15b6"></a><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 msg-toggle has-text-success"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogo7s52SbuEHPEw1uZszUu" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogo7s52SbuEHPEw1uZszUu" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of </p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogo7s52SbuEHPEw1uZszUu"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogo7s52SbuEHPEw1uZszUu" style="white-space: pre-wrap;word-wrap: break-word;">485454502f312e3120323030204f4b0d0a436f6e74656e742d547970653a206170706c69636174696f6e2f6f637465742d73747265616d0d0a436f6e74656e742d4c656e6774683a20323537340d0a0d0a020002000000000000004a1bba48e5fe902dd3844fb47a54d4fbc1657a287f14a4b6f25635d902d5108479a99b6ae9000000000000004a6be7b9c5933395f38dd75fc3d668fef7a29679b3bce215a9f5bc78e9881fca7e14a5d3cff383bc40634923b37b03e2bd324dca27802cfbffecb729903d98cd71c275feb19c95ff6339a2e5aee6acec2d1b87591b9b361f5efca03d77aa84918bb3f6a4c52e3d6931733699559a8eef09f794d62166be8af06dbf959b5e63a9080546d3af3c1c400022d7d2ff3202b3c187ff543664896de565a053bef04bb46f203ab81ebfbccd1742741ac7b82265b595857e0846bff002da8d4da70caedd232ea0cf0c29e6060c839c51e8ac9a2602b7126546385d1c404e2d8e2fc7feae3ec8cb47f390e5468979f177193618b657a263e541e9d7e18ef3f910466ea556b4c499c991bb03b04f8929409b62d59e3fca6e2d3b7b93bc40eb68490e335b0ea635ced3afa900015801249baccebc7940487e595c7857a9b7efcb895ca98ea3e794259ae3c2ef5e2f507dd341bcd0e0a82fca577ea274721db193339ba325929bd89f0fd7c81c9dc21cd6993ad667c7d65dc1230c100042a52a1e9f61eeb1cd15406a71a38438fff512c10a1775522d80a48911dffaed6a58fa9252fb8efeab1fed42b96e6fe019873adec231122f63bb12ad3b6942f8f8186bb918386b0323207dfdd59c8b197076f36a43db24af896a343fe8575a83b270b66e91811ddfb294587183eb3193ae1e860bd25741bf66cbe71066f1118a74e90a10edb41e5796ac65068a8fa85b9701251a2066df039daf41d1ea9a2cdb5ed3a72721280de4691f61eda5bd05b82fa71902056fff8c56473e94c661e55785fcb40b5b7d9b9dd6c45efa37323380d9c582b364e953315711c52b81838ccb302fe7156ad7aec5a31744cbfdf1ad2961dc2fbb86e6bfb91785e1f6c423518d5641b3322b584cc0d7da8078ea6dab54df17c863001ec0cabea6a7a5338054d329a7e663f9983791bfeb296e7a97c885fe0ca0bfb715b6666264c3a65ef328737262158c0a1be0d86cf4aecd4f8901d2949dd21c63f97653c20435fd4bf2880d1f2653cfcd898cd3b6982dd7f0ff3d922b52ca05e5d989b90ae0a31ad922a2f87914d80ceeeddaac93743c75fda0cee2ed9cd28df6a0fd4da795c73be71f59248b2388d3d1623fc61d69e77d2b83e67ab3c3154f2056dae1738d56421f65a6dbe36f16703aeb489d79fd98920f6feb080d896aea399d657336c21adbfcf80d56b7f8a8fcbf362ef6e12ad8a105e5bc03573fa8937de326aa1d43121bf0b99d8fd05be10f251f7ae7ddf3b819943be7e4202b426f8df13d35aa510f6ecaa95b95840d8a3c2df84478141b113c8f1080ae03c413409845c81240368902de9b339e17e6d355b76710fc988e15b1d9b669959f0d96a755aad8624342158c90cca5eb20cffb330fc147b7bc725202366eee8f8a0a4f44417b9617d73fc8eacf69f0d0d22de078aade96e4e72286a1aabe3bb5b7f414141233d700a62ff5bbe712c787a282c4f0652f65eaaf1e5223d326e0a2c656088bf292b2ca23b3f77bd1a12eb3a3406d7ec5ff30723a419567b66f45f59a9603cff5978133e2e5a333d205bb677199355ba771a8f89c39ea33e3c52ee6f4f2c2ce6beab62ec33d3295c9138bed9364955b6737f4a991d85ffddd5c359d0768011c85e33d7a4c5579188d7629e0a98ea467e99eb841bea1a04b05d5eedbf7a424eb0332af4e570765c32cc4dac6d06784c3917e8725eb66afade809abfe125d6d86cb049c912632072af59b4f65e0dcdd6a609c35425da53143a00c005778a3b9952464917dd92225e53cbe210e8a1afca3edfe3c8409d76318ce73882a80fe3778745578d3ecba08d167f174c9210fdfe31db547a6d468da36d17ff0d3d7dba1bd1a034192717def8268a20de3284ed497017f8afecab296bdd5cc655f2b286dc9a1aba121aad6a0d163895067179314c37f938c9e4f4e4352db78d1c503828a4f59d1d86646a5cdd1d8d1e61714e211837981ac06b2605796508659b075b40e4486607e8806608e2017e0d966a8c0ea00536233b0ef096ff9313ce3126763de0da1a00ca0cf4fb8a1acda26f24496cfb6e60a4e51a19f5aed24c254a21b6fdbe78e2864b07cb44daded09175ff98b02daa6d0df9ec6c0012af24eccddb3c4431c62148529018a97e99fb24726d8765c3b35112afa59f12ddd7631c3568d3d10d603a51564f942a304cb69ce25a81137a89b9aabee0e8a3cb096f152a8f123a508198840083a20a73270943ad774f9679e12e058ede95235e1d158c7d096626b2a864b19466539466c06841762148b7495e9c99e8d0c3c035c5b13a8f72149c9e57d60efd4103ee9fc452fcfb02b31372a64cbf0001c4e4cd064dfcddc55ba7d9fd0855846b0c33db706e25ef942b4814c35dd41e32b71d10cfe9fd3a3ce4ddac74c06fb6b18edab4399f31048d7a4ed620757cfa34d0715e895cb05198d8a9d4e90bf700cdcbf91f2b8d76607259583bd3d902941f840212888c6de5d57c402b80553370e78f22db71e32ff6248bbbfdd3b0305aae39f8a32c312d8ec9177f9fa096e8296167b41eb4367c5d30c55e08fe2b567d5a62ee5a9c407d00dd0c4006ef2d1d82b10118569b03c54a5d62184b71746e6402f6524269279baad4c6c1ff7aed4694ae339413f331d207c8d852990242affbc420ce54f663098bf5735b779b954fe97b4c82d56220835922b878a2ab39bd3c10fa9023d42d3c68486bc695bd3b1e65da9cc89e5a9f76496f37d6b97270fe758444b68367bd8a3a5890dc2a54c2b5c4a1e45652df032e28e74ca8b6cdd45db37232b989ae7a9917e39829ce4f1fc2128c0ad8938d25779d38631cce6036a2aab61be5c639f9ff69e939175b2c52a0179358f48b5a2638875da609db0a59f1769bc4a4bff1800709adfae1a0bfe68adae16889654efe4e59772b0bef0b13281e844720eb22f4dcc40366f719db0a5bd1240c8d1a641ddbc89258f01fbaf104b45187a63add6d4b910fae09f6b7a92e5fa2dbcdb4405e238cca45182a71dc74d1fa2e9ccb31665d01fe3f83a27b0891cf3b38ed3a37eb740c5d2233ef6a8cd40d15f215b4ffa7b482f53eea560f0fd96f245d87f7ed3fe1debfcfcb6d4d67c730938df1de853b1a3107eeee9725083e899b5dd07c019bb0da6f98e401bf9cbd056793d8653a8919d2f3f5064c90a74d1640c1e7e6b3fc0b1e5cfd3dfd2d7d10b6141002be724b98f51172e3503e96063984daf1e4b25e95348078b2a095b759658d928f3d431b728061a04397483c8eb184de087577e276409147a17e4ac23fb328107262ebdf1eafa3e879ef46ff68c11803171e4da08129f2ce96e4383ec72d8be1406bcec075e0643b862b1a4700e221d65fc29a47dbf0e0203553521497ae3c77c661bb2091d675362315c90ee34fd6106acfb0cc550c75c14194a33a59508695210f41a41ac74d3022eef538cacc08238ff06e713e3541587701b24f386f56b4973f8b56e73e436aac193a4d93f4a16b0147af1572fdcfe5b08790ab9ff2dc336fd19ea53099a5f0038e2c5f4d14a4658798f5663c2f2b9</pre></div></article></div></div></div></span><span><a class="btn modal-button modal-button-details float-end partner-message-button" onclick="scrollToMessage(&#x27;a79aedc6-9752-4b22-97b8-7f66c7d29fa7&#x27;,250)"><span class="icon is-small"><i class="fas fa-right-left"></i></span></a></span><h1 class="title ms-3 text-ellipsis has-text-success" style="overflow: hidden;"><span class="msg-sequence tag is-info is-light me-3 is-size-4 test-message-number">252</span><i class="fas fa-reply me-1" title="Response"></i><span></span><span class="font-monospace title ms-3">200</span><span></span><span style=""><span class="is-size-7 ms-4 "><span class="icon"><i class="fas fa-clock"></i></span>06:39:24.800458876Z</span><span class="is-size-7 ms-4">172.18.0.1:58652<span class="icon"><i class="fas fa-arrow-left"></i></span>vau-proxy-server:8080</span></span></h1></div></div></header><div class="card-content test-card-content msg-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-ancestor pe-3"><div class="tile is-parent is-vertical pe-3"><div><div class="container page-break my-3"><div class="card full-width test-card is-primary notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-danger header-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogARMxu66O2z84Q0Gnq9Hr" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogARMxu66O2z84Q0Gnq9Hr" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogARMxu66O2z84Q0Gnq9Hr"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogARMxu66O2z84Q0Gnq9Hr" style="white-space: pre-wrap;word-wrap: break-word;">Content-Type: application/octet-stream
+Content-Length: 2574</pre></div></article></div></div></div></span><div class="text-danger"><h2 class="title">RES Headers</h2></div></div></div></header><div class="card-content test-card-content msg-header-content test-msg-header-content"><div><table class="table"><tbody><tr><td><pre>Content-Type</pre></td><td><pre class="value"><span class="is-size-7">application/octet-stream</span></pre></td></tr><tr><td><pre>Content-Length</pre></td><td><pre class="value"><span class="is-size-7">2574</span></pre></td></tr></tbody></table></div></div></div></div></div><div><div class="container page-break my-3"><div class="card full-width test-card is-info notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-info body-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogMcZbYvnlLtRfcjhdAOln" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogMcZbYvnlLtRfcjhdAOln" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogMcZbYvnlLtRfcjhdAOln"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogMcZbYvnlLtRfcjhdAOln" style="white-space: pre-wrap;word-wrap: break-word;">020002000000000000004a1bba48e5fe902dd3844fb47a54d4fbc1657a287f14a4b6f25635d902d5108479a99b6ae9000000000000004a6be7b9c5933395f38dd75fc3d668fef7a29679b3bce215a9f5bc78e9881fca7e14a5d3cff383bc40634923b37b03e2bd324dca27802cfbffecb729903d98cd71c275feb19c95ff6339a2e5aee6acec2d1b87591b9b361f5efca03d77aa84918bb3f6a4c52e3d6931733699559a8eef09f794d62166be8af06dbf959b5e63a9080546d3af3c1c400022d7d2ff3202b3c187ff543664896de565a053bef04bb46f203ab81ebfbccd1742741ac7b82265b595857e0846bff002da8d4da70caedd232ea0cf0c29e6060c839c51e8ac9a2602b7126546385d1c404e2d8e2fc7feae3ec8cb47f390e5468979f177193618b657a263e541e9d7e18ef3f910466ea556b4c499c991bb03b04f8929409b62d59e3fca6e2d3b7b93bc40eb68490e335b0ea635ced3afa900015801249baccebc7940487e595c7857a9b7efcb895ca98ea3e794259ae3c2ef5e2f507dd341bcd0e0a82fca577ea274721db193339ba325929bd89f0fd7c81c9dc21cd6993ad667c7d65dc1230c100042a52a1e9f61eeb1cd15406a71a38438fff512c10a1775522d80a48911dffaed6a58fa9252fb8efeab1fed42b96e6fe019873adec231122f63bb12ad3b6942f8f8186bb918386b0323207dfdd59c8b197076f36a43db24af896a343fe8575a83b270b66e91811ddfb294587183eb3193ae1e860bd25741bf66cbe71066f1118a74e90a10edb41e5796ac65068a8fa85b9701251a2066df039daf41d1ea9a2cdb5ed3a72721280de4691f61eda5bd05b82fa71902056fff8c56473e94c661e55785fcb40b5b7d9b9dd6c45efa37323380d9c582b364e953315711c52b81838ccb302fe7156ad7aec5a31744cbfdf1ad2961dc2fbb86e6bfb91785e1f6c423518d5641b3322b584cc0d7da8078ea6dab54df17c863001ec0cabea6a7a5338054d329a7e663f9983791bfeb296e7a97c885fe0ca0bfb715b6666264c3a65ef328737262158c0a1be0d86cf4aecd4f8901d2949dd21c63f97653c20435fd4bf2880d1f2653cfcd898cd3b6982dd7f0ff3d922b52ca05e5d989b90ae0a31ad922a2f87914d80ceeeddaac93743c75fda0cee2ed9cd28df6a0fd4da795c73be71f59248b2388d3d1623fc61d69e77d2b83e67ab3c3154f2056dae1738d56421f65a6dbe36f16703aeb489d79fd98920f6feb080d896aea399d657336c21adbfcf80d56b7f8a8fcbf362ef6e12ad8a105e5bc03573fa8937de326aa1d43121bf0b99d8fd05be10f251f7ae7ddf3b819943be7e4202b426f8df13d35aa510f6ecaa95b95840d8a3c2df84478141b113c8f1080ae03c413409845c81240368902de9b339e17e6d355b76710fc988e15b1d9b669959f0d96a755aad8624342158c90cca5eb20cffb330fc147b7bc725202366eee8f8a0a4f44417b9617d73fc8eacf69f0d0d22de078aade96e4e72286a1aabe3bb5b7f414141233d700a62ff5bbe712c787a282c4f0652f65eaaf1e5223d326e0a2c656088bf292b2ca23b3f77bd1a12eb3a3406d7ec5ff30723a419567b66f45f59a9603cff5978133e2e5a333d205bb677199355ba771a8f89c39ea33e3c52ee6f4f2c2ce6beab62ec33d3295c9138bed9364955b6737f4a991d85ffddd5c359d0768011c85e33d7a4c5579188d7629e0a98ea467e99eb841bea1a04b05d5eedbf7a424eb0332af4e570765c32cc4dac6d06784c3917e8725eb66afade809abfe125d6d86cb049c912632072af59b4f65e0dcdd6a609c35425da53143a00c005778a3b9952464917dd92225e53cbe210e8a1afca3edfe3c8409d76318ce73882a80fe3778745578d3ecba08d167f174c9210fdfe31db547a6d468da36d17ff0d3d7dba1bd1a034192717def8268a20de3284ed497017f8afecab296bdd5cc655f2b286dc9a1aba121aad6a0d163895067179314c37f938c9e4f4e4352db78d1c503828a4f59d1d86646a5cdd1d8d1e61714e211837981ac06b2605796508659b075b40e4486607e8806608e2017e0d966a8c0ea00536233b0ef096ff9313ce3126763de0da1a00ca0cf4fb8a1acda26f24496cfb6e60a4e51a19f5aed24c254a21b6fdbe78e2864b07cb44daded09175ff98b02daa6d0df9ec6c0012af24eccddb3c4431c62148529018a97e99fb24726d8765c3b35112afa59f12ddd7631c3568d3d10d603a51564f942a304cb69ce25a81137a89b9aabee0e8a3cb096f152a8f123a508198840083a20a73270943ad774f9679e12e058ede95235e1d158c7d096626b2a864b19466539466c06841762148b7495e9c99e8d0c3c035c5b13a8f72149c9e57d60efd4103ee9fc452fcfb02b31372a64cbf0001c4e4cd064dfcddc55ba7d9fd0855846b0c33db706e25ef942b4814c35dd41e32b71d10cfe9fd3a3ce4ddac74c06fb6b18edab4399f31048d7a4ed620757cfa34d0715e895cb05198d8a9d4e90bf700cdcbf91f2b8d76607259583bd3d902941f840212888c6de5d57c402b80553370e78f22db71e32ff6248bbbfdd3b0305aae39f8a32c312d8ec9177f9fa096e8296167b41eb4367c5d30c55e08fe2b567d5a62ee5a9c407d00dd0c4006ef2d1d82b10118569b03c54a5d62184b71746e6402f6524269279baad4c6c1ff7aed4694ae339413f331d207c8d852990242affbc420ce54f663098bf5735b779b954fe97b4c82d56220835922b878a2ab39bd3c10fa9023d42d3c68486bc695bd3b1e65da9cc89e5a9f76496f37d6b97270fe758444b68367bd8a3a5890dc2a54c2b5c4a1e45652df032e28e74ca8b6cdd45db37232b989ae7a9917e39829ce4f1fc2128c0ad8938d25779d38631cce6036a2aab61be5c639f9ff69e939175b2c52a0179358f48b5a2638875da609db0a59f1769bc4a4bff1800709adfae1a0bfe68adae16889654efe4e59772b0bef0b13281e844720eb22f4dcc40366f719db0a5bd1240c8d1a641ddbc89258f01fbaf104b45187a63add6d4b910fae09f6b7a92e5fa2dbcdb4405e238cca45182a71dc74d1fa2e9ccb31665d01fe3f83a27b0891cf3b38ed3a37eb740c5d2233ef6a8cd40d15f215b4ffa7b482f53eea560f0fd96f245d87f7ed3fe1debfcfcb6d4d67c730938df1de853b1a3107eeee9725083e899b5dd07c019bb0da6f98e401bf9cbd056793d8653a8919d2f3f5064c90a74d1640c1e7e6b3fc0b1e5cfd3dfd2d7d10b6141002be724b98f51172e3503e96063984daf1e4b25e95348078b2a095b759658d928f3d431b728061a04397483c8eb184de087577e276409147a17e4ac23fb328107262ebdf1eafa3e879ef46ff68c11803171e4da08129f2ce96e4383ec72d8be1406bcec075e0643b862b1a4700e221d65fc29a47dbf0e0203553521497ae3c77c661bb2091d675362315c90ee34fd6106acfb0cc550c75c14194a33a59508695210f41a41ac74d3022eef538cacc08238ff06e713e3541587701b24f386f56b4973f8b56e73e436aac193a4d93f4a16b0147af1572fdcfe5b08790ab9ff2dc336fd19ea53099a5f0038e2c5f4d14a4658798f5663c2f2b9</pre></div></article></div></div></div></span><div class="text-info"><h2 class="title">RES Body</h2></div></div></div></header><div class="card-content test-card-content msg-body-content test-msg-body-content"><div><div style="width:100%;"><h1 class="font-monospace title">VAU EPA 3 Encrypted Message<span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogntP8aa43jfx3ezNX6J0T" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogntP8aa43jfx3ezNX6J0T" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogntP8aa43jfx3ezNX6J0T"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogntP8aa43jfx3ezNX6J0T" style="white-space: pre-wrap;word-wrap: break-word;">020002000000000000004a1bba48e5fe902dd3844fb47a54d4fbc1657a287f14a4b6f25635d902d5108479a99b6ae9000000000000004a6be7b9c5933395f38dd75fc3d668fef7a29679b3bce215a9f5bc78e9881fca7e14a5d3cff383bc40634923b37b03e2bd324dca27802cfbffecb729903d98cd71c275feb19c95ff6339a2e5aee6acec2d1b87591b9b361f5efca03d77aa84918bb3f6a4c52e3d6931733699559a8eef09f794d62166be8af06dbf959b5e63a9080546d3af3c1c400022d7d2ff3202b3c187ff543664896de565a053bef04bb46f203ab81ebfbccd1742741ac7b82265b595857e0846bff002da8d4da70caedd232ea0cf0c29e6060c839c51e8ac9a2602b7126546385d1c404e2d8e2fc7feae3ec8cb47f390e5468979f177193618b657a263e541e9d7e18ef3f910466ea556b4c499c991bb03b04f8929409b62d59e3fca6e2d3b7b93bc40eb68490e335b0ea635ced3afa900015801249baccebc7940487e595c7857a9b7efcb895ca98ea3e794259ae3c2ef5e2f507dd341bcd0e0a82fca577ea274721db193339ba325929bd89f0fd7c81c9dc21cd6993ad667c7d65dc1230c100042a52a1e9f61eeb1cd15406a71a38438fff512c10a1775522d80a48911dffaed6a58fa9252fb8efeab1fed42b96e6fe019873adec231122f63bb12ad3b6942f8f8186bb918386b0323207dfdd59c8b197076f36a43db24af896a343fe8575a83b270b66e91811ddfb294587183eb3193ae1e860bd25741bf66cbe71066f1118a74e90a10edb41e5796ac65068a8fa85b9701251a2066df039daf41d1ea9a2cdb5ed3a72721280de4691f61eda5bd05b82fa71902056fff8c56473e94c661e55785fcb40b5b7d9b9dd6c45efa37323380d9c582b364e953315711c52b81838ccb302fe7156ad7aec5a31744cbfdf1ad2961dc2fbb86e6bfb91785e1f6c423518d5641b3322b584cc0d7da8078ea6dab54df17c863001ec0cabea6a7a5338054d329a7e663f9983791bfeb296e7a97c885fe0ca0bfb715b6666264c3a65ef328737262158c0a1be0d86cf4aecd4f8901d2949dd21c63f97653c20435fd4bf2880d1f2653cfcd898cd3b6982dd7f0ff3d922b52ca05e5d989b90ae0a31ad922a2f87914d80ceeeddaac93743c75fda0cee2ed9cd28df6a0fd4da795c73be71f59248b2388d3d1623fc61d69e77d2b83e67ab3c3154f2056dae1738d56421f65a6dbe36f16703aeb489d79fd98920f6feb080d896aea399d657336c21adbfcf80d56b7f8a8fcbf362ef6e12ad8a105e5bc03573fa8937de326aa1d43121bf0b99d8fd05be10f251f7ae7ddf3b819943be7e4202b426f8df13d35aa510f6ecaa95b95840d8a3c2df84478141b113c8f1080ae03c413409845c81240368902de9b339e17e6d355b76710fc988e15b1d9b669959f0d96a755aad8624342158c90cca5eb20cffb330fc147b7bc725202366eee8f8a0a4f44417b9617d73fc8eacf69f0d0d22de078aade96e4e72286a1aabe3bb5b7f414141233d700a62ff5bbe712c787a282c4f0652f65eaaf1e5223d326e0a2c656088bf292b2ca23b3f77bd1a12eb3a3406d7ec5ff30723a419567b66f45f59a9603cff5978133e2e5a333d205bb677199355ba771a8f89c39ea33e3c52ee6f4f2c2ce6beab62ec33d3295c9138bed9364955b6737f4a991d85ffddd5c359d0768011c85e33d7a4c5579188d7629e0a98ea467e99eb841bea1a04b05d5eedbf7a424eb0332af4e570765c32cc4dac6d06784c3917e8725eb66afade809abfe125d6d86cb049c912632072af59b4f65e0dcdd6a609c35425da53143a00c005778a3b9952464917dd92225e53cbe210e8a1afca3edfe3c8409d76318ce73882a80fe3778745578d3ecba08d167f174c9210fdfe31db547a6d468da36d17ff0d3d7dba1bd1a034192717def8268a20de3284ed497017f8afecab296bdd5cc655f2b286dc9a1aba121aad6a0d163895067179314c37f938c9e4f4e4352db78d1c503828a4f59d1d86646a5cdd1d8d1e61714e211837981ac06b2605796508659b075b40e4486607e8806608e2017e0d966a8c0ea00536233b0ef096ff9313ce3126763de0da1a00ca0cf4fb8a1acda26f24496cfb6e60a4e51a19f5aed24c254a21b6fdbe78e2864b07cb44daded09175ff98b02daa6d0df9ec6c0012af24eccddb3c4431c62148529018a97e99fb24726d8765c3b35112afa59f12ddd7631c3568d3d10d603a51564f942a304cb69ce25a81137a89b9aabee0e8a3cb096f152a8f123a508198840083a20a73270943ad774f9679e12e058ede95235e1d158c7d096626b2a864b19466539466c06841762148b7495e9c99e8d0c3c035c5b13a8f72149c9e57d60efd4103ee9fc452fcfb02b31372a64cbf0001c4e4cd064dfcddc55ba7d9fd0855846b0c33db706e25ef942b4814c35dd41e32b71d10cfe9fd3a3ce4ddac74c06fb6b18edab4399f31048d7a4ed620757cfa34d0715e895cb05198d8a9d4e90bf700cdcbf91f2b8d76607259583bd3d902941f840212888c6de5d57c402b80553370e78f22db71e32ff6248bbbfdd3b0305aae39f8a32c312d8ec9177f9fa096e8296167b41eb4367c5d30c55e08fe2b567d5a62ee5a9c407d00dd0c4006ef2d1d82b10118569b03c54a5d62184b71746e6402f6524269279baad4c6c1ff7aed4694ae339413f331d207c8d852990242affbc420ce54f663098bf5735b779b954fe97b4c82d56220835922b878a2ab39bd3c10fa9023d42d3c68486bc695bd3b1e65da9cc89e5a9f76496f37d6b97270fe758444b68367bd8a3a5890dc2a54c2b5c4a1e45652df032e28e74ca8b6cdd45db37232b989ae7a9917e39829ce4f1fc2128c0ad8938d25779d38631cce6036a2aab61be5c639f9ff69e939175b2c52a0179358f48b5a2638875da609db0a59f1769bc4a4bff1800709adfae1a0bfe68adae16889654efe4e59772b0bef0b13281e844720eb22f4dcc40366f719db0a5bd1240c8d1a641ddbc89258f01fbaf104b45187a63add6d4b910fae09f6b7a92e5fa2dbcdb4405e238cca45182a71dc74d1fa2e9ccb31665d01fe3f83a27b0891cf3b38ed3a37eb740c5d2233ef6a8cd40d15f215b4ffa7b482f53eea560f0fd96f245d87f7ed3fe1debfcfcb6d4d67c730938df1de853b1a3107eeee9725083e899b5dd07c019bb0da6f98e401bf9cbd056793d8653a8919d2f3f5064c90a74d1640c1e7e6b3fc0b1e5cfd3dfd2d7d10b6141002be724b98f51172e3503e96063984daf1e4b25e95348078b2a095b759658d928f3d431b728061a04397483c8eb184de087577e276409147a17e4ac23fb328107262ebdf1eafa3e879ef46ff68c11803171e4da08129f2ce96e4383ec72d8be1406bcec075e0643b862b1a4700e221d65fc29a47dbf0e0203553521497ae3c77c661bb2091d675362315c90ee34fd6106acfb0cc550c75c14194a33a59508695210f41a41ac74d3022eef538cacc08238ff06e713e3541587701b24f386f56b4973f8b56e73e436aac193a4d93f4a16b0147af1572fdcfe5b08790ab9ff2dc336fd19ea53099a5f0038e2c5f4d14a4658798f5663c2f2b9</pre></div></article></div></div></div></span></h1><div class="tile is-ancestor pe-3"><div class="tile is-vertical is-parent pe-3"><div class="tile is-child box notification pe-3 is-primary"><h2 class="title">Header</h2><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogHd4Ak5Ziqypnpi0K8HSW" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogHd4Ak5Ziqypnpi0K8HSW" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogHd4Ak5Ziqypnpi0K8HSW"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogHd4Ak5Ziqypnpi0K8HSW" style="white-space: pre-wrap;word-wrap: break-word;">020002000000000000004a1bba48e5fe902dd3844fb47a54d4fbc1657a287f14a4b6f25635d902d5108479</pre></div></article></div></div></div></span><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Version: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">02</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>PU: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">00</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Request?: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">02</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Request Counter: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">74</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Key ID: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">1bba48e5fe902dd3844fb47a54d4fbc1657a287f14a4b6f25635d902d5108479</span></div></div></div><div class="tile is-child box notification pe-3 is-info"><h2 class="title">Message</h2><div class="container page-break mx-3 mt-2"><div class="card full-width test-card msg-card"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="full-width"><a name="aaf292c7-eae0-458b-96bf-a526a471f7c5"></a><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 msg-toggle has-text-success"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogVRmrr1AF2ysMwdUaLwBx" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogVRmrr1AF2ysMwdUaLwBx" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogVRmrr1AF2ysMwdUaLwBx"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogVRmrr1AF2ysMwdUaLwBx" style="white-space: pre-wrap;word-wrap: break-word;">HTTP/1.1 200 OK
+X-Powered-By: HAPI FHIR 7.2.0 REST Server (FHIR Server; FHIR 4.0.1/R4)
+X-Request-ID: YYMt4CM5qIEtJZyu
+Last-Modified: Thu, 12 Sep 2024 06:39:24 GMT
+Content-Encoding: gzip
+Content-Type: application/fhir+json;charset=UTF-8
+Date: Thu, 12 Sep 2024 06:39:24 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+content-length: 2152
+
+�      ��Z�n�8�?O!x��;�IJ�D�B�6�d��m;3�D�����&amp;)�J��dK�7ɑ�4�&#x27;�F���;����(��?B&#x27;ai�&#x27;.;���N_��y���S��{E��$K�+z�LD�HJ�)&amp;��Q&lt;�:���3&gt;�����I����d�|H!:�/�&gt;������&gt; &gt;�|F6Ǒ2&#x27;q&#x27;)�f���7��xx�&#x27;��h64��x{�E�$˦�^/d���Ĕ%����*PAo4��Ѳ�7Σ�?Fq:٫��q�� �8�W�9�3&#x27;x��Am���l�8�] ��{X�%�U��� 8{�^�����6D�j�|�2j�e�%KR&gt;�	�#�8j�&gt;F]&quot;�y�T�-�v�6�&amp;�ո&quot;�����:l��#?`��JǤ�3c�=�_t=6s�:��[��,��,O��F~�m�!��+n�F�X`Q:��߫�W&quot;�/O��)_7��rr�\�����0�G&gt;K���+�_:A���jKR��:�X��R߻�
+��r�	�B,u% uV�2��b�D���q���,���U����YPo�����f�+�:��NT+D6M	��X6�UE��d@h�e�&quot;��-DLSը�Y�ˣ����GN&#x27;����OF�uD��(��H�2�&quot;:2�(QU4,Q�a=��c���[�h��:w���6��&#x27;eg�9��MT���+: H	��^�O��S��΁~&amp;&amp;�o�&#x27;	�p,8y&amp;����%7�3X�7G%�~�z�NzьmF7̋T{yC�H3&#x27;��b��f�%����ω������y����fER&#x27;�2 {#
+ԭd`�g��ol�*x;vܖ^o�`Wd��Ē!���Pդ�J%Uր�j(&amp;�d��@C�E-� ]�dMB��&#x27;E��9d�*.�_4ʋ ��6a�&#x27;8y*��gh3���|�~�Gc�|�p�&#x27;�9K�a�|w�Gc��sR���,^` ��^�^��L\�(-�&#x27;u�l�;	v�S��rh�9���$L���vY��� �LV�Yu�8���XS���6���Nd�c�/��F�9΂�
+�3��e�l}�o0�d8q��q��S��@Sp��bp% :�A+C+�&amp;��l��O������E�l�na�s�/6�ZGe�x��e��u�w�RM�QȜ���n�ܙ��E8�X� ��l�n����#?��/w�K��5�M���䉲y��I�H&lt;cҭ�D;9&lt;�5R\��h��m.���&lt;م&lt;�T)�.�&quot;�%���T`�BM��$ɂ�)�����L�r�eՒ�oyr?~O�w1�\c����d`��2̠L:��?�b��DU:�ؽ�K��9O����djuo�ZBhk����]��y�%��d�o!��@14mBM� ��*,��)�%!�6�F���J6R�ԑ)ـb���!�b	��_i�X���)�
+\��-(���R�h^��&lt;JQ�	P4�ǂ���r�ɼ.?mĽ��6�jރŉ)2Ro&gt;�Wr$���
+P���x���&quot;�G�÷?��KÄe�r&amp;	��l�������O�7ǃ⇩[ƛ��_�ؿmt&quot;�B��SM�葇���K�r&amp;���[(I� c 6�� �:��
+g��~!r������Φ��2Mr�5�C���	� ����x���7�%W��y7�&gt;Ϟv۠��N���h�7-&quot;y�1�1:&#x27;����QL�?_-��2��lPE�4lk�I-bk�lö���H�0%H��*�&amp;2���f���z�9P��$�{�z�����_�ϸ����~�`�w�{�ٮ@������¶��mT��RA@@]ДĄi&gt;,6��^���2������|@l�����6l��!������	$�Fc&quot;y&quot;���ҕ�/\M$�:��ѯN/�ӈ��j�{��h����㹔ѡU��TU�t�������ԛ��7Q,�\R[H��zKm!][H��m1�Q_�*���tm!�~ʎ
+��^*�K�B(�*P�����ӵt}c�ӱ�
+�j���-��6Ϋm)]9��zGU�h/e�e�VT�5W�﵃#퍩�W0���=�춘��b�������^ַ�tm1]M�쨲��T#��lU#oK����L2�\&gt;�j�-�{z=Җӵ����m9][Nז�m��ϻ��O��7���kP  </pre></div></article></div></div></div></span><h1 class="title ms-3 text-ellipsis has-text-success" style="overflow: hidden;"><span></span><i class="fas fa-reply me-1" title="Response"></i><span></span><span class="font-monospace title ms-3">200</span><span></span><span style=""><span></span><span></span></span></h1></div></div></header><div class="card-content test-card-content msg-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-ancestor pe-3"><div class="tile is-parent is-vertical pe-3"><div><div class="container page-break my-3"><div class="card full-width test-card is-primary notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-danger header-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogx7x1w3FWCusq7OFBZPdC" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogx7x1w3FWCusq7OFBZPdC" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogx7x1w3FWCusq7OFBZPdC"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogx7x1w3FWCusq7OFBZPdC" style="white-space: pre-wrap;word-wrap: break-word;">X-Powered-By: HAPI FHIR 7.2.0 REST Server (FHIR Server; FHIR 4.0.1/R4)
+X-Request-ID: YYMt4CM5qIEtJZyu
+Last-Modified: Thu, 12 Sep 2024 06:39:24 GMT
+Content-Encoding: gzip
+Content-Type: application/fhir+json;charset=UTF-8
+Date: Thu, 12 Sep 2024 06:39:24 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+content-length: 2152</pre></div></article></div></div></div></span><div class="text-danger"><h2 class="title">RES Headers</h2></div></div></div></header><div class="card-content test-card-content msg-header-content test-msg-header-content"><div><table class="table"><tbody><tr><td><pre>X-Powered-By</pre></td><td><pre class="value"><span class="is-size-7">HAPI FHIR 7.2.0 REST Server (FHIR Server; FHIR 4.0.1/R4)</span></pre></td></tr><tr><td><pre>X-Request-ID</pre></td><td><pre class="value"><span class="is-size-7">YYMt4CM5qIEtJZyu</span></pre></td></tr><tr><td><pre>Last-Modified</pre></td><td><pre class="value"><span class="is-size-7">Thu, 12 Sep 2024 06:39:24 GMT</span></pre></td></tr><tr><td><pre>Content-Encoding</pre></td><td><pre class="value"><span class="is-size-7">gzip</span></pre></td></tr><tr><td><pre>Content-Type</pre></td><td><pre class="value"><span class="is-size-7">application/fhir+json;charset=UTF-8</span></pre></td></tr><tr><td><pre>Date</pre></td><td><pre class="value"><span class="is-size-7">Thu, 12 Sep 2024 06:39:24 GMT</span></pre></td></tr><tr><td><pre>Keep-Alive</pre></td><td><pre class="value"><span class="is-size-7">timeout=60</span></pre></td></tr><tr><td><pre>Connection</pre></td><td><pre class="value"><span class="is-size-7">keep-alive</span></pre></td></tr><tr><td><pre>content-length</pre></td><td><pre class="value"><span class="is-size-7">2152</span></pre></td></tr></tbody></table></div></div></div></div></div><div><div class="container page-break my-3"><div class="card full-width test-card is-info notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-info body-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogFcb7Z8kTmUlIdIgbz5wi" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogFcb7Z8kTmUlIdIgbz5wi" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogFcb7Z8kTmUlIdIgbz5wi"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogFcb7Z8kTmUlIdIgbz5wi" style="white-space: pre-wrap;word-wrap: break-word;">{
+  &quot;resourceType&quot;: &quot;Bundle&quot;,
+  &quot;id&quot;: &quot;32a2433c-d446-45c2-b30a-9567fa7d50e8&quot;,
+  &quot;meta&quot;: {
+    &quot;lastUpdated&quot;: &quot;2024-09-12T06:39:24.787+00:00&quot;
+  },
+  &quot;type&quot;: &quot;searchset&quot;,
+  &quot;link&quot;: [ {
+    &quot;relation&quot;: &quot;self&quot;,
+    &quot;url&quot;: &quot;http://medication-service:8080/fhir/Medication?_count=10&amp;_format=json&amp;_offset=0&amp;_total=none&quot;
+  }, {
+    &quot;relation&quot;: &quot;next&quot;,
+    &quot;url&quot;: &quot;http://medication-service:8080/fhir/Medication?_count=10&amp;_format=json&amp;_offset=10&amp;_total=none&quot;
+  } ],
+  &quot;entry&quot;: [ {
+    &quot;fullUrl&quot;: &quot;http://medication-service:8080/fhir/Medication/5&quot;,
+    &quot;resource&quot;: {
+      &quot;resourceType&quot;: &quot;Medication&quot;,
+      &quot;id&quot;: &quot;5&quot;,
+      &quot;meta&quot;: {
+        &quot;versionId&quot;: &quot;1&quot;,
+        &quot;lastUpdated&quot;: &quot;2024-09-10T08:51:52.640+00:00&quot;,
+        &quot;source&quot;: &quot;#pnhC5YCx61yZNLaF&quot;,
+        &quot;profile&quot;: [ &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication&quot; ]
+      },
+      &quot;extension&quot;: [ {
+        &quot;url&quot;: &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension&quot;,
+        &quot;valueIdentifier&quot;: {
+          &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier&quot;,
+          &quot;value&quot;: &quot;160.153.303.257.459_20240122&quot;
+        }
+      } ],
+      &quot;identifier&quot;: [ {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier&quot;,
+        &quot;value&quot;: &quot;B517B68E5764DD32896EF1F8771F861EC2DC30250A4EE6E2C2923CBE26DD8A9F&quot;
+      }, {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier&quot;,
+        &quot;value&quot;: &quot;6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459&quot;
+      } ],
+      &quot;code&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/ifa/pzn&quot;,
+          &quot;code&quot;: &quot;10019621&quot;,
+          &quot;display&quot;: &quot;IBU-ratiopharm 400mg akut Schmerztabletten&quot;
+        }, {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/ask&quot;,
+          &quot;code&quot;: &quot;5682&quot;,
+          &quot;display&quot;: &quot;Ibuprofen&quot;
+        } ]
+      },
+      &quot;status&quot;: &quot;active&quot;
+    },
+    &quot;search&quot;: {
+      &quot;mode&quot;: &quot;match&quot;
+    }
+  }, {
+    &quot;fullUrl&quot;: &quot;http://medication-service:8080/fhir/Medication/6&quot;,
+    &quot;resource&quot;: {
+      &quot;resourceType&quot;: &quot;Medication&quot;,
+      &quot;id&quot;: &quot;6&quot;,
+      &quot;meta&quot;: {
+        &quot;versionId&quot;: &quot;1&quot;,
+        &quot;lastUpdated&quot;: &quot;2024-09-10T08:51:52.908+00:00&quot;,
+        &quot;source&quot;: &quot;#FBUiBngzF7xlJgac&quot;,
+        &quot;profile&quot;: [ &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication&quot; ]
+      },
+      &quot;extension&quot;: [ {
+        &quot;url&quot;: &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension&quot;,
+        &quot;valueIdentifier&quot;: {
+          &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier&quot;,
+          &quot;value&quot;: &quot;160.153.303.257.459_20240122&quot;
+        }
+      } ],
+      &quot;identifier&quot;: [ {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier&quot;,
+        &quot;value&quot;: &quot;8F6E41946E798D9C89384A0D2C9C7D9E4F6F0A2DE9EF62B7A4A26A329400735F&quot;
+      }, {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier&quot;,
+        &quot;value&quot;: &quot;6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459&quot;
+      } ],
+      &quot;code&quot;: {
+        &quot;text&quot;: &quot;Infusion bestehend aus 85mg Doxorubicin aufgeloest zur Verabreichung in 250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung&quot;
+      },
+      &quot;status&quot;: &quot;active&quot;,
+      &quot;form&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;http://standardterms.edqm.eu&quot;,
+          &quot;code&quot;: &quot;11210000&quot;,
+          &quot;display&quot;: &quot;Solution for infusion&quot;
+        } ]
+      },
+      &quot;ingredient&quot;: [ {
+        &quot;itemCodeableConcept&quot;: {
+          &quot;coding&quot;: [ {
+            &quot;system&quot;: &quot;http://fhir.de/CodeSystem/bfarm/atc&quot;,
+            &quot;code&quot;: &quot;L01DB01&quot;,
+            &quot;display&quot;: &quot;Doxorubicin&quot;
+          } ]
+        },
+        &quot;isActive&quot;: true,
+        &quot;strength&quot;: {
+          &quot;numerator&quot;: {
+            &quot;value&quot;: 85,
+            &quot;unit&quot;: &quot;mg&quot;,
+            &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+            &quot;code&quot;: &quot;mg&quot;
+          },
+          &quot;denominator&quot;: {
+            &quot;value&quot;: 250,
+            &quot;unit&quot;: &quot;Milliliter&quot;,
+            &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+            &quot;code&quot;: &quot;mL&quot;
+          }
+        }
+      } ]
+    },
+    &quot;search&quot;: {
+      &quot;mode&quot;: &quot;match&quot;
+    }
+  }, {
+    &quot;fullUrl&quot;: &quot;http://medication-service:8080/fhir/Medication/7&quot;,
+    &quot;resource&quot;: {
+      &quot;resourceType&quot;: &quot;Medication&quot;,
+      &quot;id&quot;: &quot;7&quot;,
+      &quot;meta&quot;: {
+        &quot;versionId&quot;: &quot;1&quot;,
+        &quot;lastUpdated&quot;: &quot;2024-09-10T08:51:53.159+00:00&quot;,
+        &quot;source&quot;: &quot;#ASLLYn7ccLMhQJu4&quot;,
+        &quot;profile&quot;: [ &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication&quot; ]
+      },
+      &quot;extension&quot;: [ {
+        &quot;url&quot;: &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension&quot;,
+        &quot;valueIdentifier&quot;: {
+          &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier&quot;,
+          &quot;value&quot;: &quot;160.153.303.257.459_20240122&quot;
+        }
+      } ],
+      &quot;identifier&quot;: [ {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier&quot;,
+        &quot;value&quot;: &quot;E8827EB3FC26FE461BF2D7C0E0C91A703B233E13E4F309D88C138459D9EF48E3&quot;
+      }, {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier&quot;,
+        &quot;value&quot;: &quot;6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459&quot;
+      } ],
+      &quot;code&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;https://fhir.kbv.de/CodeSystem/KBV_CS_ERP_Medication_Type&quot;,
+          &quot;code&quot;: &quot;freitext&quot;
+        } ],
+        &quot;text&quot;: &quot;250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung&quot;
+      },
+      &quot;status&quot;: &quot;active&quot;
+    },
+    &quot;search&quot;: {
+      &quot;mode&quot;: &quot;match&quot;
+    }
+  }, {
+    &quot;fullUrl&quot;: &quot;http://medication-service:8080/fhir/Medication/8&quot;,
+    &quot;resource&quot;: {
+      &quot;resourceType&quot;: &quot;Medication&quot;,
+      &quot;id&quot;: &quot;8&quot;,
+      &quot;meta&quot;: {
+        &quot;versionId&quot;: &quot;1&quot;,
+        &quot;lastUpdated&quot;: &quot;2024-09-10T08:51:53.322+00:00&quot;,
+        &quot;source&quot;: &quot;#EcXeIexMiqbuttrA&quot;,
+        &quot;profile&quot;: [ &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication&quot; ]
+      },
+      &quot;identifier&quot;: [ {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier&quot;,
+        &quot;value&quot;: &quot;48E951DFE10F5669D3C66D581E5767DE32CFD788C94693E5C78193DB2D3F095B&quot;
+      } ],
+      &quot;code&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/ifa/pzn&quot;,
+          &quot;code&quot;: &quot;03953522&quot;,
+          &quot;display&quot;: &quot;Metoprolol-ratiopharm® 100 mg Tabletten&quot;
+        }, {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/bfarm/atc&quot;,
+          &quot;version&quot;: &quot;2022&quot;,
+          &quot;code&quot;: &quot;C07AB02&quot;,
+          &quot;display&quot;: &quot;Metoprolol&quot;
+        }, {
+          &quot;system&quot;: &quot;http://snomed.info/sct&quot;,
+          &quot;version&quot;: &quot;http://snomed.info/sct/11000274103/version/20240515&quot;,
+          &quot;code&quot;: &quot;7092007&quot;,
+          &quot;display&quot;: &quot;Product containing metoprolol (medicinal product)&quot;
+        } ]
+      },
+      &quot;form&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM&quot;,
+          &quot;version&quot;: &quot;1.10&quot;,
+          &quot;code&quot;: &quot;TAB&quot;,
+          &quot;display&quot;: &quot;Tabletten&quot;
+        }, {
+          &quot;system&quot;: &quot;http://standardterms.edqm.eu&quot;,
+          &quot;code&quot;: &quot;12200&quot;,
+          &quot;display&quot;: &quot;Tablet&quot;
+        }, {
+          &quot;system&quot;: &quot;http://snomed.info/sct&quot;,
+          &quot;version&quot;: &quot;http://snomed.info/sct/11000274103/version/20240515&quot;,
+          &quot;code&quot;: &quot;385055001&quot;,
+          &quot;display&quot;: &quot;Tablet (basic dose form)&quot;
+        } ]
+      },
+      &quot;amount&quot;: {
+        &quot;numerator&quot;: {
+          &quot;value&quot;: 100,
+          &quot;unit&quot;: &quot;MilliGram&quot;,
+          &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+          &quot;code&quot;: &quot;mg&quot;
+        },
+        &quot;denominator&quot;: {
+          &quot;value&quot;: 1,
+          &quot;unit&quot;: &quot;Tablet&quot;,
+          &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+          &quot;code&quot;: &quot;{Tablet}&quot;
+        }
+      }
+    },
+    &quot;search&quot;: {
+      &quot;mode&quot;: &quot;match&quot;
+    }
+  }, {
+    &quot;fullUrl&quot;: &quot;http://medication-service:8080/fhir/Medication/9&quot;,
+    &quot;resource&quot;: {
+      &quot;resourceType&quot;: &quot;Medication&quot;,
+      &quot;id&quot;: &quot;9&quot;,
+      &quot;meta&quot;: {
+        &quot;versionId&quot;: &quot;1&quot;,
+        &quot;lastUpdated&quot;: &quot;2024-09-10T08:51:53.464+00:00&quot;,
+        &quot;source&quot;: &quot;#Ccg2V6wLFUGAMo6Q&quot;,
+        &quot;profile&quot;: [ &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication&quot; ]
+      },
+      &quot;identifier&quot;: [ {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier&quot;,
+        &quot;value&quot;: &quot;B849184C973EA5FA7D9751E6FAA6AFCFFD100183596239F84DD2C0DB4C751D67&quot;
+      } ],
+      &quot;code&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/ifa/pzn&quot;,
+          &quot;code&quot;: &quot;10019621&quot;,
+          &quot;display&quot;: &quot;IBU-ratiopharm 400mg akut Schmerztabletten&quot;
+        }, {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/bfarm/atc&quot;,
+          &quot;version&quot;: &quot;2022&quot;,
+          &quot;code&quot;: &quot;M01AE01&quot;,
+          &quot;display&quot;: &quot;Ibuprofen&quot;
+        } ]
+      },
+      &quot;form&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM&quot;,
+          &quot;version&quot;: &quot;1.10&quot;,
+          &quot;code&quot;: &quot;TAB&quot;,
+          &quot;display&quot;: &quot;Tabletten&quot;
+        }, {
+          &quot;system&quot;: &quot;http://standardterms.edqm.eu&quot;,
+          &quot;code&quot;: &quot;12200&quot;,
+          &quot;display&quot;: &quot;Tablet&quot;
+        }, {
+          &quot;system&quot;: &quot;http://snomed.info/sct&quot;,
+          &quot;version&quot;: &quot;http://snomed.info/sct/11000274103/version/20240515&quot;,
+          &quot;code&quot;: &quot;385055001&quot;,
+          &quot;display&quot;: &quot;Tablet (basic dose form)&quot;
+        } ]
+      },
+      &quot;amount&quot;: {
+        &quot;numerator&quot;: {
+          &quot;value&quot;: 50,
+          &quot;unit&quot;: &quot;Tablet&quot;,
+          &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+          &quot;code&quot;: &quot;{Tablet}&quot;
+        },
+        &quot;denominator&quot;: {
+          &quot;value&quot;: 1,
+          &quot;unit&quot;: &quot;Package&quot;,
+          &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+          &quot;code&quot;: &quot;{Package}&quot;
+        }
+      },
+      &quot;ingredient&quot;: [ {
+        &quot;itemCodeableConcept&quot;: {
+          &quot;coding&quot;: [ {
+            &quot;system&quot;: &quot;http://snomed.info/sct&quot;,
+            &quot;version&quot;: &quot;http://snomed.info/sct/11000274103/version/20240515&quot;,
+            &quot;code&quot;: &quot;387207008&quot;,
+            &quot;display&quot;: &quot;Ibuprofen (substance)&quot;
+          } ]
+        },
+        &quot;strength&quot;: {
+          &quot;numerator&quot;: {
+            &quot;value&quot;: 400,
+            &quot;unit&quot;: &quot;MilliGram&quot;,
+            &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+            &quot;code&quot;: &quot;mg&quot;
+          },
+          &quot;denominator&quot;: {
+            &quot;value&quot;: 1,
+            &quot;unit&quot;: &quot;Tablet&quot;,
+            &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+            &quot;code&quot;: &quot;{Tablet}&quot;
+          }
+        }
+      } ]
+    },
+    &quot;search&quot;: {
+      &quot;mode&quot;: &quot;match&quot;
+    }
+  }, {
+    &quot;fullUrl&quot;: &quot;http://medication-service:8080/fhir/Medication/24&quot;,
+    &quot;resource&quot;: {
+      &quot;resourceType&quot;: &quot;Medication&quot;,
+      &quot;id&quot;: &quot;24&quot;,
+      &quot;meta&quot;: {
+        &quot;versionId&quot;: &quot;1&quot;,
+        &quot;lastUpdated&quot;: &quot;2024-09-10T08:56:17.489+00:00&quot;,
+        &quot;source&quot;: &quot;#ArgUu1arIx6BxTk9&quot;,
+        &quot;profile&quot;: [ &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication&quot; ]
+      },
+      &quot;extension&quot;: [ {
+        &quot;url&quot;: &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension&quot;,
+        &quot;valueIdentifier&quot;: {
+          &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier&quot;,
+          &quot;value&quot;: &quot;160.153.303.257.459_20240122&quot;
+        }
+      } ],
+      &quot;identifier&quot;: [ {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier&quot;,
+        &quot;value&quot;: &quot;B517B68E5764DD32896EF1F8771F861EC2DC30250A4EE6E2C2923CBE26DD8A9F&quot;
+      }, {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier&quot;,
+        &quot;value&quot;: &quot;6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459&quot;
+      } ],
+      &quot;code&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/ifa/pzn&quot;,
+          &quot;code&quot;: &quot;10019621&quot;,
+          &quot;display&quot;: &quot;IBU-ratiopharm 400mg akut Schmerztabletten&quot;
+        }, {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/ask&quot;,
+          &quot;code&quot;: &quot;5682&quot;,
+          &quot;display&quot;: &quot;Ibuprofen&quot;
+        } ]
+      },
+      &quot;status&quot;: &quot;active&quot;
+    },
+    &quot;search&quot;: {
+      &quot;mode&quot;: &quot;match&quot;
+    }
+  }, {
+    &quot;fullUrl&quot;: &quot;http://medication-service:8080/fhir/Medication/25&quot;,
+    &quot;resource&quot;: {
+      &quot;resourceType&quot;: &quot;Medication&quot;,
+      &quot;id&quot;: &quot;25&quot;,
+      &quot;meta&quot;: {
+        &quot;versionId&quot;: &quot;1&quot;,
+        &quot;lastUpdated&quot;: &quot;2024-09-10T08:56:17.590+00:00&quot;,
+        &quot;source&quot;: &quot;#fvpdhg7Hno4zkC3c&quot;,
+        &quot;profile&quot;: [ &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication&quot; ]
+      },
+      &quot;extension&quot;: [ {
+        &quot;url&quot;: &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension&quot;,
+        &quot;valueIdentifier&quot;: {
+          &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier&quot;,
+          &quot;value&quot;: &quot;160.153.303.257.459_20240122&quot;
+        }
+      } ],
+      &quot;identifier&quot;: [ {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier&quot;,
+        &quot;value&quot;: &quot;8F6E41946E798D9C89384A0D2C9C7D9E4F6F0A2DE9EF62B7A4A26A329400735F&quot;
+      }, {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier&quot;,
+        &quot;value&quot;: &quot;6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459&quot;
+      } ],
+      &quot;code&quot;: {
+        &quot;text&quot;: &quot;Infusion bestehend aus 85mg Doxorubicin aufgeloest zur Verabreichung in 250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung&quot;
+      },
+      &quot;status&quot;: &quot;active&quot;,
+      &quot;form&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;http://standardterms.edqm.eu&quot;,
+          &quot;code&quot;: &quot;11210000&quot;,
+          &quot;display&quot;: &quot;Solution for infusion&quot;
+        } ]
+      },
+      &quot;ingredient&quot;: [ {
+        &quot;itemCodeableConcept&quot;: {
+          &quot;coding&quot;: [ {
+            &quot;system&quot;: &quot;http://fhir.de/CodeSystem/bfarm/atc&quot;,
+            &quot;code&quot;: &quot;L01DB01&quot;,
+            &quot;display&quot;: &quot;Doxorubicin&quot;
+          } ]
+        },
+        &quot;isActive&quot;: true,
+        &quot;strength&quot;: {
+          &quot;numerator&quot;: {
+            &quot;value&quot;: 85,
+            &quot;unit&quot;: &quot;mg&quot;,
+            &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+            &quot;code&quot;: &quot;mg&quot;
+          },
+          &quot;denominator&quot;: {
+            &quot;value&quot;: 250,
+            &quot;unit&quot;: &quot;Milliliter&quot;,
+            &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+            &quot;code&quot;: &quot;mL&quot;
+          }
+        }
+      } ]
+    },
+    &quot;search&quot;: {
+      &quot;mode&quot;: &quot;match&quot;
+    }
+  }, {
+    &quot;fullUrl&quot;: &quot;http://medication-service:8080/fhir/Medication/26&quot;,
+    &quot;resource&quot;: {
+      &quot;resourceType&quot;: &quot;Medication&quot;,
+      &quot;id&quot;: &quot;26&quot;,
+      &quot;meta&quot;: {
+        &quot;versionId&quot;: &quot;1&quot;,
+        &quot;lastUpdated&quot;: &quot;2024-09-10T08:56:17.691+00:00&quot;,
+        &quot;source&quot;: &quot;#4QXWwwy3yzFq1pg8&quot;,
+        &quot;profile&quot;: [ &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication&quot; ]
+      },
+      &quot;extension&quot;: [ {
+        &quot;url&quot;: &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension&quot;,
+        &quot;valueIdentifier&quot;: {
+          &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier&quot;,
+          &quot;value&quot;: &quot;160.153.303.257.459_20240122&quot;
+        }
+      } ],
+      &quot;identifier&quot;: [ {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier&quot;,
+        &quot;value&quot;: &quot;E8827EB3FC26FE461BF2D7C0E0C91A703B233E13E4F309D88C138459D9EF48E3&quot;
+      }, {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier&quot;,
+        &quot;value&quot;: &quot;6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459&quot;
+      } ],
+      &quot;code&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;https://fhir.kbv.de/CodeSystem/KBV_CS_ERP_Medication_Type&quot;,
+          &quot;code&quot;: &quot;freitext&quot;
+        } ],
+        &quot;text&quot;: &quot;250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung&quot;
+      },
+      &quot;status&quot;: &quot;active&quot;
+    },
+    &quot;search&quot;: {
+      &quot;mode&quot;: &quot;match&quot;
+    }
+  }, {
+    &quot;fullUrl&quot;: &quot;http://medication-service:8080/fhir/Medication/27&quot;,
+    &quot;resource&quot;: {
+      &quot;resourceType&quot;: &quot;Medication&quot;,
+      &quot;id&quot;: &quot;27&quot;,
+      &quot;meta&quot;: {
+        &quot;versionId&quot;: &quot;1&quot;,
+        &quot;lastUpdated&quot;: &quot;2024-09-10T08:56:17.785+00:00&quot;,
+        &quot;source&quot;: &quot;#BQAIMAHDA8xX56RM&quot;,
+        &quot;profile&quot;: [ &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication&quot; ]
+      },
+      &quot;identifier&quot;: [ {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier&quot;,
+        &quot;value&quot;: &quot;48E951DFE10F5669D3C66D581E5767DE32CFD788C94693E5C78193DB2D3F095B&quot;
+      } ],
+      &quot;code&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/ifa/pzn&quot;,
+          &quot;code&quot;: &quot;03953522&quot;,
+          &quot;display&quot;: &quot;Metoprolol-ratiopharm® 100 mg Tabletten&quot;
+        }, {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/bfarm/atc&quot;,
+          &quot;version&quot;: &quot;2022&quot;,
+          &quot;code&quot;: &quot;C07AB02&quot;,
+          &quot;display&quot;: &quot;Metoprolol&quot;
+        }, {
+          &quot;system&quot;: &quot;http://snomed.info/sct&quot;,
+          &quot;version&quot;: &quot;http://snomed.info/sct/11000274103/version/20240515&quot;,
+          &quot;code&quot;: &quot;7092007&quot;,
+          &quot;display&quot;: &quot;Product containing metoprolol (medicinal product)&quot;
+        } ]
+      },
+      &quot;form&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM&quot;,
+          &quot;version&quot;: &quot;1.10&quot;,
+          &quot;code&quot;: &quot;TAB&quot;,
+          &quot;display&quot;: &quot;Tabletten&quot;
+        }, {
+          &quot;system&quot;: &quot;http://standardterms.edqm.eu&quot;,
+          &quot;code&quot;: &quot;12200&quot;,
+          &quot;display&quot;: &quot;Tablet&quot;
+        }, {
+          &quot;system&quot;: &quot;http://snomed.info/sct&quot;,
+          &quot;version&quot;: &quot;http://snomed.info/sct/11000274103/version/20240515&quot;,
+          &quot;code&quot;: &quot;385055001&quot;,
+          &quot;display&quot;: &quot;Tablet (basic dose form)&quot;
+        } ]
+      },
+      &quot;amount&quot;: {
+        &quot;numerator&quot;: {
+          &quot;value&quot;: 100,
+          &quot;unit&quot;: &quot;MilliGram&quot;,
+          &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+          &quot;code&quot;: &quot;mg&quot;
+        },
+        &quot;denominator&quot;: {
+          &quot;value&quot;: 1,
+          &quot;unit&quot;: &quot;Tablet&quot;,
+          &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+          &quot;code&quot;: &quot;{Tablet}&quot;
+        }
+      }
+    },
+    &quot;search&quot;: {
+      &quot;mode&quot;: &quot;match&quot;
+    }
+  }, {
+    &quot;fullUrl&quot;: &quot;http://medication-service:8080/fhir/Medication/28&quot;,
+    &quot;resource&quot;: {
+      &quot;resourceType&quot;: &quot;Medication&quot;,
+      &quot;id&quot;: &quot;28&quot;,
+      &quot;meta&quot;: {
+        &quot;versionId&quot;: &quot;1&quot;,
+        &quot;lastUpdated&quot;: &quot;2024-09-10T08:56:17.877+00:00&quot;,
+        &quot;source&quot;: &quot;#JZr5BwRk0Iht7V4V&quot;,
+        &quot;profile&quot;: [ &quot;https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication&quot; ]
+      },
+      &quot;identifier&quot;: [ {
+        &quot;system&quot;: &quot;https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier&quot;,
+        &quot;value&quot;: &quot;B849184C973EA5FA7D9751E6FAA6AFCFFD100183596239F84DD2C0DB4C751D67&quot;
+      } ],
+      &quot;code&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/ifa/pzn&quot;,
+          &quot;code&quot;: &quot;10019621&quot;,
+          &quot;display&quot;: &quot;IBU-ratiopharm 400mg akut Schmerztabletten&quot;
+        }, {
+          &quot;system&quot;: &quot;http://fhir.de/CodeSystem/bfarm/atc&quot;,
+          &quot;version&quot;: &quot;2022&quot;,
+          &quot;code&quot;: &quot;M01AE01&quot;,
+          &quot;display&quot;: &quot;Ibuprofen&quot;
+        } ]
+      },
+      &quot;form&quot;: {
+        &quot;coding&quot;: [ {
+          &quot;system&quot;: &quot;https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM&quot;,
+          &quot;version&quot;: &quot;1.10&quot;,
+          &quot;code&quot;: &quot;TAB&quot;,
+          &quot;display&quot;: &quot;Tabletten&quot;
+        }, {
+          &quot;system&quot;: &quot;http://standardterms.edqm.eu&quot;,
+          &quot;code&quot;: &quot;12200&quot;,
+          &quot;display&quot;: &quot;Tablet&quot;
+        }, {
+          &quot;system&quot;: &quot;http://snomed.info/sct&quot;,
+          &quot;version&quot;: &quot;http://snomed.info/sct/11000274103/version/20240515&quot;,
+          &quot;code&quot;: &quot;385055001&quot;,
+          &quot;display&quot;: &quot;Tablet (basic dose form)&quot;
+        } ]
+      },
+      &quot;amount&quot;: {
+        &quot;numerator&quot;: {
+          &quot;value&quot;: 50,
+          &quot;unit&quot;: &quot;Tablet&quot;,
+          &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+          &quot;code&quot;: &quot;{Tablet}&quot;
+        },
+        &quot;denominator&quot;: {
+          &quot;value&quot;: 1,
+          &quot;unit&quot;: &quot;Package&quot;,
+          &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+          &quot;code&quot;: &quot;{Package}&quot;
+        }
+      },
+      &quot;ingredient&quot;: [ {
+        &quot;itemCodeableConcept&quot;: {
+          &quot;coding&quot;: [ {
+            &quot;system&quot;: &quot;http://snomed.info/sct&quot;,
+            &quot;version&quot;: &quot;http://snomed.info/sct/11000274103/version/20240515&quot;,
+            &quot;code&quot;: &quot;387207008&quot;,
+            &quot;display&quot;: &quot;Ibuprofen (substance)&quot;
+          } ]
+        },
+        &quot;strength&quot;: {
+          &quot;numerator&quot;: {
+            &quot;value&quot;: 400,
+            &quot;unit&quot;: &quot;MilliGram&quot;,
+            &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+            &quot;code&quot;: &quot;mg&quot;
+          },
+          &quot;denominator&quot;: {
+            &quot;value&quot;: 1,
+            &quot;unit&quot;: &quot;Tablet&quot;,
+            &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
+            &quot;code&quot;: &quot;{Tablet}&quot;
+          }
+        }
+      } ]
+    },
+    &quot;search&quot;: {
+      &quot;mode&quot;: &quot;match&quot;
+    }
+  } ]
+}</pre></div></article></div></div></div></span><div class="text-info"><h2 class="title">RES Body</h2></div></div></div></header><div class="card-content test-card-content msg-body-content test-msg-body-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-vertical is-parent pe-3"><div class="tile is-child pe-3"><pre class="json language-json">{
+  "resourceType" : "Bundle",
+  "id" : "32a2433c-d446-45c2-b30a-9567fa7d50e8",
+  "meta" : {
+    "lastUpdated" : "2024-09-12T06:39:24.787+00:00"
+  },
+  "type" : "searchset",
+  "link" : [ {
+    "relation" : "self",
+    "url" : "http://medication-service:8080/fhir/Medication?_count=10&_format=json&_offset=0&_total=none"
+  }, {
+    "relation" : "next",
+    "url" : "http://medication-service:8080/fhir/Medication?_count=10&_format=json&_offset=10&_total=none"
+  } ],
+  "entry" : [ {
+    "fullUrl" : "http://medication-service:8080/fhir/Medication/5",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "5",
+      "meta" : {
+        "versionId" : "1",
+        "lastUpdated" : "2024-09-10T08:51:52.640+00:00",
+        "source" : "#pnhC5YCx61yZNLaF",
+        "profile" : [ "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication" ]
+      },
+      "extension" : [ {
+        "url" : "https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension",
+        "valueIdentifier" : {
+          "system" : "https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier",
+          "value" : "160.153.303.257.459_20240122"
+        }
+      } ],
+      "identifier" : [ {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+        "value" : "B517B68E5764DD32896EF1F8771F861EC2DC30250A4EE6E2C2923CBE26DD8A9F"
+      }, {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier",
+        "value" : "6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459"
+      } ],
+      "code" : {
+        "coding" : [ {
+          "system" : "http://fhir.de/CodeSystem/ifa/pzn",
+          "code" : "10019621",
+          "display" : "IBU-ratiopharm 400mg akut Schmerztabletten"
+        }, {
+          "system" : "http://fhir.de/CodeSystem/ask",
+          "code" : "5682",
+          "display" : "Ibuprofen"
+        } ]
+      },
+      "status" : "active"
+    },
+    "search" : {
+      "mode" : "match"
+    }
+  }, {
+    "fullUrl" : "http://medication-service:8080/fhir/Medication/6",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "6",
+      "meta" : {
+        "versionId" : "1",
+        "lastUpdated" : "2024-09-10T08:51:52.908+00:00",
+        "source" : "#FBUiBngzF7xlJgac",
+        "profile" : [ "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication" ]
+      },
+      "extension" : [ {
+        "url" : "https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension",
+        "valueIdentifier" : {
+          "system" : "https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier",
+          "value" : "160.153.303.257.459_20240122"
+        }
+      } ],
+      "identifier" : [ {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+        "value" : "8F6E41946E798D9C89384A0D2C9C7D9E4F6F0A2DE9EF62B7A4A26A329400735F"
+      }, {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier",
+        "value" : "6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459"
+      } ],
+      "code" : {
+        "text" : "Infusion bestehend aus 85mg Doxorubicin aufgeloest zur Verabreichung in 250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung"
+      },
+      "status" : "active",
+      "form" : {
+        "coding" : [ {
+          "system" : "http://standardterms.edqm.eu",
+          "code" : "11210000",
+          "display" : "Solution for infusion"
+        } ]
+      },
+      "ingredient" : [ {
+        "itemCodeableConcept" : {
+          "coding" : [ {
+            "system" : "http://fhir.de/CodeSystem/bfarm/atc",
+            "code" : "L01DB01",
+            "display" : "Doxorubicin"
+          } ]
+        },
+        "isActive" : true,
+        "strength" : {
+          "numerator" : {
+            "value" : 85,
+            "unit" : "mg",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "mg"
+          },
+          "denominator" : {
+            "value" : 250,
+            "unit" : "Milliliter",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "mL"
+          }
+        }
+      } ]
+    },
+    "search" : {
+      "mode" : "match"
+    }
+  }, {
+    "fullUrl" : "http://medication-service:8080/fhir/Medication/7",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "7",
+      "meta" : {
+        "versionId" : "1",
+        "lastUpdated" : "2024-09-10T08:51:53.159+00:00",
+        "source" : "#ASLLYn7ccLMhQJu4",
+        "profile" : [ "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication" ]
+      },
+      "extension" : [ {
+        "url" : "https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension",
+        "valueIdentifier" : {
+          "system" : "https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier",
+          "value" : "160.153.303.257.459_20240122"
+        }
+      } ],
+      "identifier" : [ {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+        "value" : "E8827EB3FC26FE461BF2D7C0E0C91A703B233E13E4F309D88C138459D9EF48E3"
+      }, {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier",
+        "value" : "6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459"
+      } ],
+      "code" : {
+        "coding" : [ {
+          "system" : "https://fhir.kbv.de/CodeSystem/KBV_CS_ERP_Medication_Type",
+          "code" : "freitext"
+        } ],
+        "text" : "250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung"
+      },
+      "status" : "active"
+    },
+    "search" : {
+      "mode" : "match"
+    }
+  }, {
+    "fullUrl" : "http://medication-service:8080/fhir/Medication/8",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "8",
+      "meta" : {
+        "versionId" : "1",
+        "lastUpdated" : "2024-09-10T08:51:53.322+00:00",
+        "source" : "#EcXeIexMiqbuttrA",
+        "profile" : [ "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication" ]
+      },
+      "identifier" : [ {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+        "value" : "48E951DFE10F5669D3C66D581E5767DE32CFD788C94693E5C78193DB2D3F095B"
+      } ],
+      "code" : {
+        "coding" : [ {
+          "system" : "http://fhir.de/CodeSystem/ifa/pzn",
+          "code" : "03953522",
+          "display" : "Metoprolol-ratiopharm® 100 mg Tabletten"
+        }, {
+          "system" : "http://fhir.de/CodeSystem/bfarm/atc",
+          "version" : "2022",
+          "code" : "C07AB02",
+          "display" : "Metoprolol"
+        }, {
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/11000274103/version/20240515",
+          "code" : "7092007",
+          "display" : "Product containing metoprolol (medicinal product)"
+        } ]
+      },
+      "form" : {
+        "coding" : [ {
+          "system" : "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM",
+          "version" : "1.10",
+          "code" : "TAB",
+          "display" : "Tabletten"
+        }, {
+          "system" : "http://standardterms.edqm.eu",
+          "code" : "12200",
+          "display" : "Tablet"
+        }, {
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/11000274103/version/20240515",
+          "code" : "385055001",
+          "display" : "Tablet (basic dose form)"
+        } ]
+      },
+      "amount" : {
+        "numerator" : {
+          "value" : 100,
+          "unit" : "MilliGram",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "mg"
+        },
+        "denominator" : {
+          "value" : 1,
+          "unit" : "Tablet",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "{Tablet}"
+        }
+      }
+    },
+    "search" : {
+      "mode" : "match"
+    }
+  }, {
+    "fullUrl" : "http://medication-service:8080/fhir/Medication/9",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "9",
+      "meta" : {
+        "versionId" : "1",
+        "lastUpdated" : "2024-09-10T08:51:53.464+00:00",
+        "source" : "#Ccg2V6wLFUGAMo6Q",
+        "profile" : [ "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication" ]
+      },
+      "identifier" : [ {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+        "value" : "B849184C973EA5FA7D9751E6FAA6AFCFFD100183596239F84DD2C0DB4C751D67"
+      } ],
+      "code" : {
+        "coding" : [ {
+          "system" : "http://fhir.de/CodeSystem/ifa/pzn",
+          "code" : "10019621",
+          "display" : "IBU-ratiopharm 400mg akut Schmerztabletten"
+        }, {
+          "system" : "http://fhir.de/CodeSystem/bfarm/atc",
+          "version" : "2022",
+          "code" : "M01AE01",
+          "display" : "Ibuprofen"
+        } ]
+      },
+      "form" : {
+        "coding" : [ {
+          "system" : "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM",
+          "version" : "1.10",
+          "code" : "TAB",
+          "display" : "Tabletten"
+        }, {
+          "system" : "http://standardterms.edqm.eu",
+          "code" : "12200",
+          "display" : "Tablet"
+        }, {
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/11000274103/version/20240515",
+          "code" : "385055001",
+          "display" : "Tablet (basic dose form)"
+        } ]
+      },
+      "amount" : {
+        "numerator" : {
+          "value" : 50,
+          "unit" : "Tablet",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "{Tablet}"
+        },
+        "denominator" : {
+          "value" : 1,
+          "unit" : "Package",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "{Package}"
+        }
+      },
+      "ingredient" : [ {
+        "itemCodeableConcept" : {
+          "coding" : [ {
+            "system" : "http://snomed.info/sct",
+            "version" : "http://snomed.info/sct/11000274103/version/20240515",
+            "code" : "387207008",
+            "display" : "Ibuprofen (substance)"
+          } ]
+        },
+        "strength" : {
+          "numerator" : {
+            "value" : 400,
+            "unit" : "MilliGram",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "mg"
+          },
+          "denominator" : {
+            "value" : 1,
+            "unit" : "Tablet",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "{Tablet}"
+          }
+        }
+      } ]
+    },
+    "search" : {
+      "mode" : "match"
+    }
+  }, {
+    "fullUrl" : "http://medication-service:8080/fhir/Medication/24",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "24",
+      "meta" : {
+        "versionId" : "1",
+        "lastUpdated" : "2024-09-10T08:56:17.489+00:00",
+        "source" : "#ArgUu1arIx6BxTk9",
+        "profile" : [ "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication" ]
+      },
+      "extension" : [ {
+        "url" : "https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension",
+        "valueIdentifier" : {
+          "system" : "https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier",
+          "value" : "160.153.303.257.459_20240122"
+        }
+      } ],
+      "identifier" : [ {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+        "value" : "B517B68E5764DD32896EF1F8771F861EC2DC30250A4EE6E2C2923CBE26DD8A9F"
+      }, {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier",
+        "value" : "6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459"
+      } ],
+      "code" : {
+        "coding" : [ {
+          "system" : "http://fhir.de/CodeSystem/ifa/pzn",
+          "code" : "10019621",
+          "display" : "IBU-ratiopharm 400mg akut Schmerztabletten"
+        }, {
+          "system" : "http://fhir.de/CodeSystem/ask",
+          "code" : "5682",
+          "display" : "Ibuprofen"
+        } ]
+      },
+      "status" : "active"
+    },
+    "search" : {
+      "mode" : "match"
+    }
+  }, {
+    "fullUrl" : "http://medication-service:8080/fhir/Medication/25",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "25",
+      "meta" : {
+        "versionId" : "1",
+        "lastUpdated" : "2024-09-10T08:56:17.590+00:00",
+        "source" : "#fvpdhg7Hno4zkC3c",
+        "profile" : [ "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication" ]
+      },
+      "extension" : [ {
+        "url" : "https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension",
+        "valueIdentifier" : {
+          "system" : "https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier",
+          "value" : "160.153.303.257.459_20240122"
+        }
+      } ],
+      "identifier" : [ {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+        "value" : "8F6E41946E798D9C89384A0D2C9C7D9E4F6F0A2DE9EF62B7A4A26A329400735F"
+      }, {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier",
+        "value" : "6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459"
+      } ],
+      "code" : {
+        "text" : "Infusion bestehend aus 85mg Doxorubicin aufgeloest zur Verabreichung in 250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung"
+      },
+      "status" : "active",
+      "form" : {
+        "coding" : [ {
+          "system" : "http://standardterms.edqm.eu",
+          "code" : "11210000",
+          "display" : "Solution for infusion"
+        } ]
+      },
+      "ingredient" : [ {
+        "itemCodeableConcept" : {
+          "coding" : [ {
+            "system" : "http://fhir.de/CodeSystem/bfarm/atc",
+            "code" : "L01DB01",
+            "display" : "Doxorubicin"
+          } ]
+        },
+        "isActive" : true,
+        "strength" : {
+          "numerator" : {
+            "value" : 85,
+            "unit" : "mg",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "mg"
+          },
+          "denominator" : {
+            "value" : 250,
+            "unit" : "Milliliter",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "mL"
+          }
+        }
+      } ]
+    },
+    "search" : {
+      "mode" : "match"
+    }
+  }, {
+    "fullUrl" : "http://medication-service:8080/fhir/Medication/26",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "26",
+      "meta" : {
+        "versionId" : "1",
+        "lastUpdated" : "2024-09-10T08:56:17.691+00:00",
+        "source" : "#4QXWwwy3yzFq1pg8",
+        "profile" : [ "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication" ]
+      },
+      "extension" : [ {
+        "url" : "https://gematik.de/fhir/epa-medication/StructureDefinition/rx-prescription-process-identifier-extension",
+        "valueIdentifier" : {
+          "system" : "https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier",
+          "value" : "160.153.303.257.459_20240122"
+        }
+      } ],
+      "identifier" : [ {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+        "value" : "E8827EB3FC26FE461BF2D7C0E0C91A703B233E13E4F309D88C138459D9EF48E3"
+      }, {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier",
+        "value" : "6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459"
+      } ],
+      "code" : {
+        "coding" : [ {
+          "system" : "https://fhir.kbv.de/CodeSystem/KBV_CS_ERP_Medication_Type",
+          "code" : "freitext"
+        } ],
+        "text" : "250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung"
+      },
+      "status" : "active"
+    },
+    "search" : {
+      "mode" : "match"
+    }
+  }, {
+    "fullUrl" : "http://medication-service:8080/fhir/Medication/27",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "27",
+      "meta" : {
+        "versionId" : "1",
+        "lastUpdated" : "2024-09-10T08:56:17.785+00:00",
+        "source" : "#BQAIMAHDA8xX56RM",
+        "profile" : [ "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication" ]
+      },
+      "identifier" : [ {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+        "value" : "48E951DFE10F5669D3C66D581E5767DE32CFD788C94693E5C78193DB2D3F095B"
+      } ],
+      "code" : {
+        "coding" : [ {
+          "system" : "http://fhir.de/CodeSystem/ifa/pzn",
+          "code" : "03953522",
+          "display" : "Metoprolol-ratiopharm® 100 mg Tabletten"
+        }, {
+          "system" : "http://fhir.de/CodeSystem/bfarm/atc",
+          "version" : "2022",
+          "code" : "C07AB02",
+          "display" : "Metoprolol"
+        }, {
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/11000274103/version/20240515",
+          "code" : "7092007",
+          "display" : "Product containing metoprolol (medicinal product)"
+        } ]
+      },
+      "form" : {
+        "coding" : [ {
+          "system" : "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM",
+          "version" : "1.10",
+          "code" : "TAB",
+          "display" : "Tabletten"
+        }, {
+          "system" : "http://standardterms.edqm.eu",
+          "code" : "12200",
+          "display" : "Tablet"
+        }, {
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/11000274103/version/20240515",
+          "code" : "385055001",
+          "display" : "Tablet (basic dose form)"
+        } ]
+      },
+      "amount" : {
+        "numerator" : {
+          "value" : 100,
+          "unit" : "MilliGram",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "mg"
+        },
+        "denominator" : {
+          "value" : 1,
+          "unit" : "Tablet",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "{Tablet}"
+        }
+      }
+    },
+    "search" : {
+      "mode" : "match"
+    }
+  }, {
+    "fullUrl" : "http://medication-service:8080/fhir/Medication/28",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "28",
+      "meta" : {
+        "versionId" : "1",
+        "lastUpdated" : "2024-09-10T08:56:17.877+00:00",
+        "source" : "#JZr5BwRk0Iht7V4V",
+        "profile" : [ "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication" ]
+      },
+      "identifier" : [ {
+        "system" : "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+        "value" : "B849184C973EA5FA7D9751E6FAA6AFCFFD100183596239F84DD2C0DB4C751D67"
+      } ],
+      "code" : {
+        "coding" : [ {
+          "system" : "http://fhir.de/CodeSystem/ifa/pzn",
+          "code" : "10019621",
+          "display" : "IBU-ratiopharm 400mg akut Schmerztabletten"
+        }, {
+          "system" : "http://fhir.de/CodeSystem/bfarm/atc",
+          "version" : "2022",
+          "code" : "M01AE01",
+          "display" : "Ibuprofen"
+        } ]
+      },
+      "form" : {
+        "coding" : [ {
+          "system" : "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM",
+          "version" : "1.10",
+          "code" : "TAB",
+          "display" : "Tabletten"
+        }, {
+          "system" : "http://standardterms.edqm.eu",
+          "code" : "12200",
+          "display" : "Tablet"
+        }, {
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/11000274103/version/20240515",
+          "code" : "385055001",
+          "display" : "Tablet (basic dose form)"
+        } ]
+      },
+      "amount" : {
+        "numerator" : {
+          "value" : 50,
+          "unit" : "Tablet",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "{Tablet}"
+        },
+        "denominator" : {
+          "value" : 1,
+          "unit" : "Package",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "{Package}"
+        }
+      },
+      "ingredient" : [ {
+        "itemCodeableConcept" : {
+          "coding" : [ {
+            "system" : "http://snomed.info/sct",
+            "version" : "http://snomed.info/sct/11000274103/version/20240515",
+            "code" : "387207008",
+            "display" : "Ibuprofen (substance)"
+          } ]
+        },
+        "strength" : {
+          "numerator" : {
+            "value" : 400,
+            "unit" : "MilliGram",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "mg"
+          },
+          "denominator" : {
+            "value" : 1,
+            "unit" : "Tablet",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "{Tablet}"
+          }
+        }
+      } ]
+    },
+    "search" : {
+      "mode" : "match"
+    }
+  } ]
+}</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><div class="created fst-italic is-size-6 float-end me-6">Created Thu, 12 Sep 2024 08:39:43 +0200</div></div></section></body><script id="mainWebUiScript">/*
+ * Copyright 2024 gematik GmbH
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const menuHtmlTemplateRequest =
+    "<div class=\"ms-1 is-size-7\">\n"
+    + "  <a onclick=\"scrollToMessage('${uuid}',${sequenceNumber})\" class=\"mt-3 is-block\">\n"
+    + "    <div class=\"has-text-link d-flex align-items-center\">\n"
+    + "      <span class=\"tag is-info is-light me-1\">${sequence}</span>\n"
+    + "      <i class=\"fas fa-share\"></i>\n"
+    + "      <span class=\"mx-1\">REQ</span>\n"
+    + "      <span class=\"has-text-dark text-ellipsis ms-auto\">${timestamp}</span>\n"
+    + "    </div>\n"
+    + "    <div class=\"ms-4 has-text-link d-flex align-items-center\">\n"
+    + "      <span class=\"ms-1 has-text-weight-bold text-ellipsis\""
+    + "        title=\"${menuInfoString}\">${menuInfoString}"
+    + "      </span>\n"
+    + "    </div>\n"
+    + "    <div class=\"ms-4 has-text-link d-flex align-items-center\">\n"
+    + "      <span class=\"ms-3 text-ellipsis\""
+    + "        title=\"${additionalInformation}\">${additionalInformation}"
+    + "      </span>\n"
+    + "    </div>\n"
+    + "  </a></div>";
+const menuHtmlTemplateResponse =
+    "<div class=\"ms-1 mb-4 is-size-7\">"
+    + "  <a onclick=\"scrollToMessage('${uuid}',${sequenceNumber})\" class=\"mt-3 is-block\">\n"
+    + "    <div class=\"mb-1 text-success d-flex align-items-center\">\n"
+    + "      <span class=\"tag is-info is-light me-1\">${sequence}</span>\n"
+    + "      <i class=\"fas fa-reply\"></i>\n"
+    + "      <span class=\"ms-1\">RES</span>\n"
+    + "      <span class=\"mx-1 has-text-weight-bold\"\n"
+    + "         title=\"${menuInfoString}\">${menuInfoString}"
+    + "      </span>\n"
+    + "      <span class=\"has-text-dark text-ellipsis ms-auto\">${timestamp}</span>\n"
+    + "    </div>\n"
+    + "    <div class=\"ms-5 mb-4 text-success d-flex align-items-center\">${additionalInformation}\n"
+    + "    </div>\n"
+    + "  </a></div>";
+
+const menuHtmlTemplateSubResponse =
+    "      <i class=\"fas fa-reply\"></i>\n"
+    + "      <span class=\"ms-1\">RES</span>\n"
+    + "      <span class=\"mx-1\" \n"
+    + "         title=\"${additionalInformation}\">${additionalInformation}"
+    + "      </span>\n";
+
+let msgIndex = 1;
+
+// called implicitly by the HTML code created by the server at
+// de.gematik.rbellogger.renderer.RbelHtmlRenderingToolkit.renderDocument (end of method)
+function createMenuEntry(msgMetaData) {
+    let isRequest = msgMetaData.request;
+
+    let menuItem;
+    if (isRequest) {
+        menuItem = menuHtmlTemplateRequest;
+    } else {
+        menuItem = menuHtmlTemplateResponse;
+    }
+    menuItem = menuItem
+        .replace("${uuid}", msgMetaData.uuid)
+        .replace("${sequence}", msgMetaData.sequenceNumber + 1)
+        .replace("${sequenceNumber}", msgMetaData.sequenceNumber);
+    if (msgMetaData.menuInfoString != null) {
+        menuItem = menuItem
+            .replaceAll("${menuInfoString}", msgMetaData.menuInfoString);
+    } else {
+        menuItem = menuItem
+            .replaceAll("${menuInfoString}", " ");
+    }
+    if (msgMetaData.additionalInformation != null &&
+        msgMetaData.additionalInformation.length > 0) {
+        if (isRequest) {
+            menuItem = menuItem
+                .replaceAll("${additionalInformation}",
+                    msgMetaData.additionalInformation[0]);
+        } else {
+            let subMenu = menuHtmlTemplateSubResponse
+                .replaceAll("${additionalInformation}",
+                    msgMetaData.additionalInformation[0]);
+            menuItem = menuItem
+                .replaceAll("${additionalInformation}",
+                    subMenu);
+        }
+    } else {
+        menuItem = menuItem
+            .replaceAll("${additionalInformation}", " ");
+    }
+    if (msgMetaData.timestamp != null) {
+        menuItem = menuItem
+            .replace("${timestamp}",
+                formatTimeStamp(msgMetaData.timestamp));
+    } else {
+        menuItem = menuItem
+            .replace("${timestamp}", " ");
+    }
+    document.getElementById("sidebar-menu")
+        .appendChild(htmlToElement(menuItem));
+}
+
+function formatTimeStamp(timestampIsoString) {
+    const containsZoneId = timestampIsoString.includes('[');
+    let stringToConvert = timestampIsoString;
+    if (containsZoneId) {
+        stringToConvert = timestampIsoString.substring(0,
+            timestampIsoString.indexOf('['));
+    }
+    return dayjs(stringToConvert).format("HH:mm:ss.SSS");
+}
+
+
+function htmlToElement(html) {
+    const template = document.createElement('template');
+    html = html.trim(); // Never return a text node of whitespace as the result
+    template.innerHTML = html;
+    return template.content.firstChild;
+}
+
+
+// noinspection JSUnusedLocalSymbols the sequence number is only used in the tigerProxy context
+function scrollToMessage(uuid, sequenceNumber) {
+    scrollMessageIntoView(uuid);
+}
+
+function scrollMessageIntoView(uuid) {
+    let elements = document.getElementsByName(uuid);
+    if (elements.length > 0) {
+        elements[0].scrollIntoView(true);
+    }
+
+}
+
+function getAll(selector, baseEl) {
+    if (!baseEl) {
+        baseEl = document;
+    }
+    return Array.prototype.slice.call(baseEl.querySelectorAll(selector), 0);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Modals
+    const $modalButtons = getAll('.modal-button');
+    const $copyButtons = getAll('.copyToClipboard-button');
+
+    if ($modalButtons.length > 0) {
+        $modalButtons.forEach(function ($el) {
+            $el.addEventListener('click', function (e) {
+                e.preventDefault();
+                return false;
+            });
+        });
+    }
+
+    if ($copyButtons.length > 0) {
+        $copyButtons.forEach(function ($el) {
+            $el.addEventListener('click', function (e) {
+                let target = $el.dataset.target;
+                let $target = document.getElementById(target);
+                navigator.clipboard.writeText($target.textContent);
+                e.preventDefault();
+                return false;
+            });
+        });
+    }
+});
+
+function toggleCollapsableIcon(target) {
+    const classList = target.classList;
+    const flag = classList.contains("fa-toggle-on");
+    classList.toggle("fa-toggle-on", !flag);
+    classList.toggle("fa-toggle-off", flag);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    let msgCards = document.getElementsByClassName('msg-card');
+    for (let i = 0; i < msgCards.length; i++) {
+        msgCards[i].children[0].children[0].children[0].children[1].addEventListener(
+            'click', e => {
+                e.currentTarget
+                    .parentElement.parentElement.parentElement.parentElement
+                    .childNodes[1].classList.toggle('d-none');
+                toggleCollapsableIcon(e.currentTarget);
+                e.preventDefault();
+                return false;
+            });
+
+        document.querySelectorAll('pre.json').forEach(el => {
+            if (el.getAttribute("data-hljs-highlighted") !== "true") {
+                hljs.highlightElement(el);
+                el.setAttribute("data-hljs-highlighted", "true");
+            }
+        });
+    }
+
+    let notification = document.getElementsByClassName('card notification');
+    for (let i = 0; i < notification.length; i++) {
+        notification[i].children[0].children[0].children[0].children[0].addEventListener(
+            'click', e => {
+                e.currentTarget
+                    .parentElement.parentElement.parentElement.parentElement
+                    .childNodes[1].classList.toggle('d-none');
+                toggleCollapsableIcon(e.currentTarget);
+                e.preventDefault();
+                return false;
+            });
+    }
+});
+</script><script>createMenuEntry({"sequenceNumber":250,"request":true,"menuInfoString":"POST /1725955499076","uuid":"a79aedc6-9752-4b22-97b8-7f66c7d29fa7","timestamp":"2024-09-12T06:39:24.768144519Z"})
+createMenuEntry({"sequenceNumber":251,"request":false,"menuInfoString":"200","uuid":"9ad8d33d-d0bd-4767-b463-aa37b47f15b6","timestamp":"2024-09-12T06:39:24.800458876Z"})</script></html>

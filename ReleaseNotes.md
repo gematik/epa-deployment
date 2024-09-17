@@ -2,6 +2,22 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.14
+
+### updated
+- Updated version of tiger-proxy to 3.3.0 & tiger-zion (information-service) to 3.3.0
+  - see [release notes](https://github.com/gematik/app-Tiger/blob/master/ReleaseNotes.md) for details
+- Updated version of ps-testsuite to 1.0.11
+  - slightly modified ‘accept’ HTTP header checks so that it is proven that the expected content type is part of it
+  - additional checks of JWT 'alg' header parameter to exists and is 'ES256' or 'PS256' when  communicating with the ePA authorization service
+  - updated to tiger-lib version 3.3.0
+- Updated version of vau-proxy-server to 1.0.10
+  - fixed response body of `/{cid}/restart` containing CBOR encoded data without VAU encryption
+- Updated ReadMe
+  - update RBEL traffic examples showing raw (encoded/encrypted) data as well as HTTP request and responses
+  - update RBEL traffic of VAU handshake and user session showing the IDP communication as it is needed for OIDC flow
+  - 
+
 ## Release 1.0.13
 
 ### updated
@@ -9,7 +25,6 @@
 - Updated version of medication-render to 1.0.5
 - Added more medication samples
 - Updated testsuite to 1.0.9
-
 
 ## Release 1.0.12
 
@@ -41,6 +56,12 @@
    e.g. send matching ErrorResponse with ErrorCode as defined in OpenAPI for Authorization Service
 - Update version of ps-testsuite to 1.0.8
   - updated plugin to validate FHIR resources against epa-medication 3.0.2
+- Updated version of vau-proxy-server to 1.0.8
+  - update parameter name "Connection-Start" in Response of /Vau-Status following the specification (typo correction)
+  - added `/{cid}/restart` to destroy a VAU session
+    - the CID will be released
+    - the state machines will be destroyed
+    - a new VAU session will NOT be created
 - Update ReadMe
   - maven proxy configuration for ps-testsuite to access the internet
   - introduce FAQ section (finding during support)
