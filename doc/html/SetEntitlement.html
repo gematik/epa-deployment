@@ -1,0 +1,961 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Set entitlements by ps</title><script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script><script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script><script src="https://code.jquery.com/jquery-1.12.4.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/xml.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.11/dayjs.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/stackoverflow-dark.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><link rel="icon" type="image/png" href="data:image/png;base64,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
+"><style id="rbel_css">/*
+ * ${GEMATIK_COPYRIGHT_STATEMENT}
+ */
+
+.sidebar {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: sticky;
+    vertical-align: top;
+    max-height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.logo {
+    vertical-align: middle;
+    margin: 1rem;
+    margin-bottom: 0;
+}
+
+.logo img {
+    max-width: 100%;
+    max-height: 250px;
+}
+
+.navbar-title {
+    color: rgb(2, 154, 207);
+}
+
+.navbar-version {
+    line-height: 4rem;
+}
+
+.header {
+    border-bottom: 3px solid #ddd;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    background: #eee;
+}
+
+.table, .card {
+    max-width: 100%;
+}
+
+.card {
+    background: #ddd;
+}
+
+.json-note {
+    position: relative;
+    border-radius: .4em;
+    border: 1px solid #6b999f;
+    color: #8aecf7;
+    padding: 0.3rem;
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+
+h1.title {
+    font-size: 1.5rem;
+}
+
+h2.title {
+    font-size: 1.25rem;
+    color: currentColor;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 1.25rem;
+    margin-bottom: .5rem;
+    color: #373a3c;
+}
+
+div.message-header {
+    padding: .4rem;
+}
+
+.notification .tile .message-body {
+    padding: .25rem;
+}
+.is-size-4 {
+    font-size: 1.3rem !important;
+}
+td {
+    padding: .3rem !important;
+    border-style: unset;
+}
+.card-content{
+    padding: .5rem;
+}
+pre {
+    color: #fa4 !important;
+    background-color: #444 !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: .5rem;
+    font-size: .7em;
+    margin-bottom: 0;
+}
+
+prekey {
+    color: orangered !important;
+    background-color: #444 !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: .2rem;
+}
+
+pre.json {
+    color: greenyellow !important;
+}
+
+pre.binary {
+    max-width: 800px;
+    padding: 0.7rem 1.5rem;
+}
+
+pre.value, pre.json, pre.value div, pre.json div {
+    word-break: break-all;
+    white-space: break-spaces;
+}
+
+pre.json {
+    word-break: break-all;
+    white-space: break-spaces;
+    color: greenyellow !important;
+    margin-top: 0.75rem;
+}
+
+
+.text-ellipsis {
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card-header-title {
+    padding: 0.5rem 1rem;
+}
+
+.msg-sequence {
+    height: 2.5rem !important;
+}
+
+@media print {
+    .column.menu {
+        position: static !important;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+        vertical-align: top;
+        width: 100%;
+        height: auto;
+        margin-left: 5rem;
+        column-count: 3;
+    }
+
+    .columns.is-fullheight {
+        display: block !important;
+    }
+
+    pre, pre.json, pre.value {
+        color: darkred !important;
+        background-color: white !important;
+    }
+
+    .card {
+        background: white;
+    }
+
+    .page-break {
+        break-before: page;
+    }
+
+    div pre.json, div pre.value {
+        break-inside: avoid-page;
+    }
+
+    i.fa-angle-double-up, i.fa-angle-double-down, i.fa-toggle-on, i.fa-toggle-off {
+        display: none;
+    }
+}
+
+@page {
+    size: 594mm 420mm;
+}
+
+
+.radio-item {
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+}
+
+.radio-item input[type='radio'] {
+    display: none;
+}
+
+.radio-item label {
+    color: #aaa;
+    font-weight: normal;
+}
+
+.radio-item label:before {
+    content: " ";
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 5px 0 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 11px;
+    border: 2px solid #666;
+    background-color: transparent;
+}
+
+.radio-item input[type=radio]:checked + label:after {
+    border-radius: 11px;
+    border: 2px solid #469408;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 9px;
+    left: 14px;
+    color: #469408;
+    content: " ";
+    display: block;
+    background: #469408;
+}
+
+.led {
+    width: 10px;
+    height: 10px;
+    background: #666;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.led-active {
+    background: #469408;
+}
+
+.led-error {
+    background: #c04608;
+}
+
+.modal-background {
+    background-color: rgba(10, 10, 10, .36);
+}
+
+.box.routeentry {
+    padding: 1rem;
+}
+
+.routeListDiv button {
+    height: 100%;
+    width: 100%;
+}
+
+#sidebar-menu, .menu + div {
+    padding-bottom: 10rem;
+}
+
+#scrollLockBtn,
+#collapsibleMessageHeaderBtn,
+#collapsibleMessageDetailsBtn,
+.dropdown-toggle {
+    color: #aaa;
+}
+
+#scrollLockBtn,
+#collapsibleMessageHeaderBtn,
+#collapsibleMessageDetailsBtn {
+    display:inline-flex;
+}
+
+@media screen and (max-width: 1023px) {
+    .navbar-menu {
+        display: flex;
+    }
+}
+
+.navbar {
+    margin-top: -0.75rem;
+}
+
+.navbar-item, .navbar-link {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    color: rgba(255,255,255,.7);
+}
+
+.navbar-end .navbar-item {
+    align-items: center;
+}
+
+.msglist {
+    max-width: 80%;
+}
+
+.msglist.embeddedlist {
+    max-width: 100% !important;
+}
+
+.nested.dropdown > .dropdown-menu {
+    display: none;
+}
+
+.nested.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.nested.dropdown .dropdown-menu {
+    top: -15px;
+    margin-left: 100%;
+}
+
+.nested.dropdown .dropdown-trigger button::after {
+    content: '  ⦠';
+    margin-left: 0.5rem;
+}
+
+.nested.dropdown .dropdown-trigger button {
+    padding: 0px 0px;
+    border: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    height: 2em;
+}
+.dropdown-content-black {
+    background-color: #373a3c;
+}
+
+.copyToClipboard-button {
+    filter: invert(100%);
+    margin-left: 2em;
+    margin-top: 0.5em;
+}
+.dropdown-content {
+    max-height: 100vh;
+    overflow: auto;
+}
+.box {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #ddd;
+    color: #444;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+#contextParent {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+}
+.col.is-one-fifth {
+    flex: none;
+    width: 20%;
+}
+
+.is-size-1 {
+    font-size:3rem!important
+}
+
+.is-size-2 {
+    font-size:2.5rem!important
+}
+
+.is-size-3 {
+    font-size:2rem!important
+}
+
+.is-size-5{
+    font-size:1.25rem!important
+}
+.is-size-6{
+    font-size:1rem!important
+}
+.is-size-7{
+    font-size:.75rem!important
+}
+
+a.has-text-link:focus,
+a.has-text-link:hover{
+    color:#205bbc!important
+}
+.has-text-dark{
+    color:#373a3c!important
+}
+a.has-text-dark:focus,
+a.has-text-dark:hover{color:#1f2021!important}
+.has-text-weight-bold{font-weight:700!important}
+.has-text-weight-light{font-weight:300!important}
+
+.has-text-warning {
+    color: #9b479f!important;
+}
+
+a {
+    cursor: pointer;
+    color: #029acf;
+    text-decoration: none;
+}
+a.mt-3.is-block {
+    text-decoration: none;
+}
+
+.has-background-dark{background-color:#373a3c!important}
+.has-text-danger{color:#d9831f!important}
+.has-text-success {
+    color: #469408!important;
+    text-decoration: none;
+}
+.has-text-link {
+    color: #029acf!important;
+}
+
+.button .icon:last-child:not(:first-child) {
+    margin-left: 0.25em;
+    margin-right: calc(-0.5em - 1px);
+}
+
+.tile.is-ancestor:last-child {
+    margin-bottom: -0.75rem;
+}
+
+.tile.is-ancestor {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    margin-top: -0.75rem;
+}
+
+.tile {
+    align-items: stretch;
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: -webkit-min-content;
+    min-height: -moz-min-content;
+    min-height: min-content;
+}
+
+.tile.is-child {
+    margin: 0!important;
+}
+
+.tile.is-vertical>.tile.is-child {
+    margin-top: 1.5rem!important;
+}
+.tile.is-vertical {
+    flex-direction: column;
+}
+.tile.is-parent {
+    padding-left: 1rem;
+    padding-top: 0rem;
+    padding-bottom: 0.75rem;
+}
+.card-header {
+    padding: 0rem 0rem;
+}
+.notification {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    padding: 1rem 1rem 1rem 1rem;
+    position: relative;
+}
+
+.notification.is-primary {
+    background-color: #fef6f5;
+    color: #d9230f;
+    border: 1px solid #f7958a;
+}
+
+.notification.is-info {
+    background-color: #f5fdfe;
+    color: #0fc5d9;
+    border: 1px solid #8aecf7;
+}
+.notification.is-success {
+    background-color: #f9fef5;
+    color: #469408;
+    border: 1px solid #90f540;
+}
+.notification .title {
+    color: currentColor;
+}
+
+.modal-button {
+    background-color: #fff;
+    padding: 0.2rem 0.2rem;
+}
+
+.tag:not(body).is-info.is-light {
+    background-color: #ecfcfe;
+    color: #0a8694;
+}
+
+.tag:not(body) {
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    color: #444;
+    display: inline-flex;
+    font-size: .75rem;
+    height: 2em;
+    justify-content: center;
+    line-height: 1.5;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    white-space: nowrap;
+}
+.msg-sequence {
+    height: 2.5rem !important;
+}
+
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.btn-dark {
+    border: 1px solid #27292b;
+    background-image: linear-gradient(180deg,#3e4244 0%,#373a3c 60%,#303234 100%);
+    -webkit-filter: none;
+    filter: none;
+}
+
+article.message {
+    margin: .5rem !important;
+}
+
+.message-body {
+    color: #444;
+    padding: 0.25rem;
+}
+
+.filteredMessage {
+    margin-top: 15px;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+#jexlModal,
+#filterModal {
+    max-width: 75%;
+}
+
+.tab {
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+.tabs {
+    align-items: stretch;
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: center;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.tabs > .icon {
+    margin-right: 0.5rem;
+}
+.field {
+    display: flex;
+}
+.field-label {
+    margin-right: 1.5rem;
+    text-align: right;
+}
+
+.buttons.is-right {
+    justify-content: flex-end;
+    display: flex;
+}
+
+#executeJexlQuery {
+    margin-right: 0.5rem;
+}
+
+.jexlstyle {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #469408!important;
+    border-color: #469408!important;
+}
+
+.btn-outline-success {
+    border-color: #469408!important;
+    color: #469408;
+}
+
+.btn-outline-success:hover {
+    background-color: #469408;
+    border-color: #469408;
+    color: #fff;
+}
+
+.text-success {
+    color: #469408!important;
+}
+
+.notification.is-warning {
+    background-color: #fcf8fc;
+    color: #9b479f;
+    border: 1px solid #d6a7d8;
+}
+
+.message.is-warning .message-header {
+    background-color: #9b479f;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container.page-break {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.bg-success {
+    background-color: #469408!important;
+}
+</style></head><body style="overflow-x: hidden;"><div id="navbardiv"></div><section class="main-content"><section class="row header"><div class="col-1 h-100 my-auto logo"><img src="data:image/png;base64,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
+" id="test-tiger-logo"></div><div class="col is-size-6"><div class="row my-auto"><div class="col navbar-title is-size-3 h-100 my-auto">Set entitlements by ps</div><span class="col-2 is-size-7 navbar-version">3.3.0-2024-09-05 12:51</span></div><div><p></p><p><i>file:///app/src/test/resources/features/entitlement.feature</i></p></div></div></section></section><section class="row is-fullheight" id="test-rbel-section"><div class=" col is-one-fifth menu is-size-4 sidebar"><h2 class="mb-3 ms-2">Flow</h2><div class="ms-1" id="sidebar-menu"></div></div><div class="col ms-6"><div class="created fst-italic is-size-6 float-end me-6">Created Fri, 6 Sep 2024 11:39:46 GMT</div><div><div><div class="container page-break mx-3 mt-5"><div class="card full-width test-card msg-card"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="full-width"><a name="08862bda-caef-4912-a763-9d78388dce75"></a><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 msg-toggle has-text-link"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogwEPJu6gmBm13Vu3NZYmh" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogwEPJu6gmBm13Vu3NZYmh" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of </p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogwEPJu6gmBm13Vu3NZYmh"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogwEPJu6gmBm13Vu3NZYmh" style="white-space: pre-wrap;word-wrap: break-word;">POST /1725622308751 HTTP/1.1
+Accept: application/octet-stream
+Content-Type: application/octet-stream
+User-Agent: Apache-CXF/4.0.5
+x-insurantid: X110435031
+x-target-fqdn: https://host.docker.internal:443
+x-useragent: PSSIM123456789012345/1.2.4
+Content-Length: 2393
+VAU-nonPU-Tracing: Gt/Sc1S42308CuGEyhp9zXM6OKzY06AL0mOjvXB0V5Q= htcazvgOYVF97UczizllsDIQ2MkL8tDjfEyfl9JSFsw=
+Forwarded: proto=https;host=&quot;vau-proxy-ps-sim:8080&quot;;for=&quot;172.19.0.3:44636&quot;
+X-Forwarded-For: 172.19.0.3
+X-Forwarded-Proto: https
+X-Forwarded-Port: 443
+X-Forwarded-Host: host.docker.internal
+host: host.docker.internal
+
+        �U��e��T��zIhC��V��ϻL�=P���\K��       ��X��?�FӨ7���i�N�l�����G,���R���jAH�hZ6��l����N��X�r�]Q_*�m�(T����S��歽&quot;��ź��ܷ�MY�%9؍���5bat��y&amp;���px=G��/���:~n��|���6�%�pji�Kv�U[���Y�Q�����.I���v&quot;�ڞiؐ��=ü�R�;����0��t�~�mU���q�H�*z�=L��&quot;�c���C��rr�}�Ԕ�E	���oRsn�[�I�֮��~bjY�ǩ:�v	w�&quot;���h�hζ�T�����
+�qA��0�$�2�9��va
+X�q�j&amp;�iو��LI�:\����1u+�۸�n����
+�a��ϯ+���-����ӕ��kY��8�&#x27;��j�
+f� ��~^Z�T7�&gt;HL�S��c�F]=j�&amp;�:���7�b`.����^#)dZPm�%�5-Zkk&lt;b�H��6���3��G�_�!����V��3��d!���&amp;q���ޭ���������Ɂ�&lt;؂v�bY4w/�#&quot;�Y��G�����_V&amp;5��
+3�gP:�~��3۽�F76���8w��a��X+��}�{��E6)�2�	J�@~h�:���E�3ʟ�?9�ƽN*�ڵ��-��$\@w�������l��d|s�5�D�&#x27;�Y��B�e0�z̜��a��yG�h?*��~|Z�$��ݺ��k�?�3�U����9�y��&lt;|_,�HZNA����#������z����͔�%�f��5�6�1q�ay�+�9�s&quot;��t c |��x��hF���$�~�t��WA�*���	�}���������ї�&gt;F�}9#�0tU�E��ȣq��&lt;✨Y��S�,��������VIC���A6!U�8��?��d�f%(y���lc�KT�����1�o�
+������1m�j�&amp;��P�ɵ�A�޼��.p+f����j���*T;u�2�U`��H{۸[m�v*V�_O
+Zm͐�W�YF��I�+l��4��(51%�&gt;��Dl�\�2�S�􏀾�*�� �&amp;�ߝ&lt;xC�8����l�[�f
+}��Z�&gt;�7�Q!��]��\�?�S�nxl��.,r�k�h����R��[H��cB�6��
+��hB*�g,	��()�����a�~ș;TVj��&gt;4 G��=3�T�0&gt;�5����^4P�&quot;�E.��Ulߘ;��R) =�0L��6�#p�E�P4�&gt;�J) ��To��a�r��U���D�x�:��� n���?�&#x27;��;J�:\�^P��\�+���^���w
+?�_��*4w���Y�]�%ۉ)��yϻ��f} �Q���K*�/�����~�X��;n�,��&amp;ڱe����:��
+uw�q����,Qb�����STaT-m�ə�mcA�Ѱ/
+i���֓���p��6sy���q�5H?���L��/����N|��#F���F��DT��_P&#x27;������d*�M�bMI�s��k�����r�c�ORC��� 42dǣ^v�X�	I�8��9���R��Q)������,k+�Bݕ�&quot;���,Ƃ��L
+G�-�Alg��d)��G���nj���������C�{L5%�$E��wN/�O)�sJ�g��`as��k�ʇ�N#`�x���6~�rKpf�O���� }�Z��_��X�l��).Ӣf��x�I�r�[rb0���u�l���܀�����X�N��&amp;*��7��Ϩ*#������.�� x���g�xt��Sb�[/x��_���6|*B!�N��u�a�z��j#4��ؗ��F;e6J|�5[����8)r��bz�������j�ƅ��i�T�[M�\� �q(PSl]�/����K��u��a`d��y�v����ɧ;!�z#�U�z�11�4�v�M[�v�$ɣ&gt;�J��bwe?Q��+R��M�o�-h�V�����i6U��]} ����/ߩh�ѐc��O!�(�|V&lt;���M.Rߒ����Q؞����0����Q+��L��$LU&amp;zA�v�VD���&gt;gh��0./Cbb.p�88��2A��X�ċ9���T��U��:��gK�95*T��jB^b�PLɞ�^�������)�&gt;�I���DL��R�f����h��sX{�ē��$�C���D!^�0`�zc��|��*&gt;h�SM/����	�:G�:��j��1�e�Dd����&quot;����&quot;��_^F������z��A�T�.@Hl���{=T��B�r1� �qA��� �&amp;�4�-��j	����s��n�՘4�{������S�0w���2$^�����n(گ��&lt;z</pre></div></article></div></div></div></span><span><a class="btn modal-button modal-button-details float-end partner-message-button" onclick="scrollToMessage(&#x27;2e95af6d-1651-4c1a-9120-73984fcdae0d&#x27;,1)"><span class="icon is-small"><i class="fas fa-right-left"></i></span></a></span><h1 class="title ms-3 text-ellipsis has-text-link" style="overflow: hidden;"><span class="msg-sequence tag is-info is-light me-3 is-size-4 test-message-number">1</span><i class="fas fa-share me-1" title="Request"></i><span class="has-text-link text-ellipsis"><span class="font-monospace title is-size-6" title="/1725622308751"> POST /1725622308751</span></span><span></span><span></span><span style="display: block;"><span class="is-size-7 ms-4 "><span class="icon"><i class="fas fa-clock"></i></span>11:39:43.200171698Z</span><span class="is-size-7 ms-4">172.18.0.1:41500<span class="icon"><i class="fas fa-arrow-right"></i></span>vau-proxy-server:8080</span></span></h1></div></div></header><div class="card-content test-card-content msg-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-ancestor pe-3"><div class="tile is-parent is-vertical pe-3"><div><div class="container page-break my-3"><div class="card full-width test-card is-primary notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-danger header-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogDquXmgYAotfxqsj4PBdL" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogDquXmgYAotfxqsj4PBdL" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogDquXmgYAotfxqsj4PBdL"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogDquXmgYAotfxqsj4PBdL" style="white-space: pre-wrap;word-wrap: break-word;">Accept: application/octet-stream
+Content-Type: application/octet-stream
+User-Agent: Apache-CXF/4.0.5
+x-insurantid: X110435031
+x-target-fqdn: https://host.docker.internal:443
+x-useragent: PSSIM123456789012345/1.2.4
+Content-Length: 2393
+VAU-nonPU-Tracing: Gt/Sc1S42308CuGEyhp9zXM6OKzY06AL0mOjvXB0V5Q= htcazvgOYVF97UczizllsDIQ2MkL8tDjfEyfl9JSFsw=
+Forwarded: proto=https;host=&quot;vau-proxy-ps-sim:8080&quot;;for=&quot;172.19.0.3:44636&quot;
+X-Forwarded-For: 172.19.0.3
+X-Forwarded-Proto: https
+X-Forwarded-Port: 443
+X-Forwarded-Host: host.docker.internal
+host: host.docker.internal</pre></div></article></div></div></div></span><div class="text-danger"><h2 class="title">REQ Headers</h2></div></div></div></header><div class="card-content test-card-content msg-header-content test-msg-header-content"><div><table class="table"><tbody><tr><td><pre>Accept</pre></td><td><pre class="value"><span class="is-size-7">application/octet-stream</span></pre></td></tr><tr><td><pre>Content-Type</pre></td><td><pre class="value"><span class="is-size-7">application/octet-stream</span></pre></td></tr><tr><td><pre>User-Agent</pre></td><td><pre class="value"><span class="is-size-7">Apache-CXF/4.0.5</span></pre></td></tr><tr><td><pre>x-insurantid</pre></td><td><pre class="value"><span class="is-size-7">X110435031</span></pre></td></tr><tr><td><pre>x-target-fqdn</pre></td><td><pre class="value"><div><div>https://host.docker.internal:443</div></div></pre></td></tr><tr><td><pre>x-useragent</pre></td><td><pre class="value"><span class="is-size-7">PSSIM123456789012345/1.2.4</span></pre></td></tr><tr><td><pre>Content-Length</pre></td><td><pre class="value"><span class="is-size-7">2393</span></pre></td></tr><tr><td><pre>VAU-nonPU-Tracing</pre></td><td><pre class="value"><span class="is-size-7">Gt/Sc1S42308CuGEyhp9zXM6OKzY06AL0mOjvXB0V5Q= htcazvgOYVF97UczizllsDIQ2MkL8tDjfEyfl9JSFsw=</span></pre></td></tr><tr><td><pre>Forwarded</pre></td><td><pre class="value"><span class="is-size-7">proto=https;host=&quot;vau-proxy-ps-sim:8080&quot;;for=&quot;172.19.0.3:44636&quot;</span></pre></td></tr><tr><td><pre>X-Forwarded-For</pre></td><td><pre class="value"><span class="is-size-7">172.19.0.3</span></pre></td></tr><tr><td><pre>X-Forwarded-Proto</pre></td><td><pre class="value"><span class="is-size-7">https</span></pre></td></tr><tr><td><pre>X-Forwarded-Port</pre></td><td><pre class="value"><span class="is-size-7">443</span></pre></td></tr><tr><td><pre>X-Forwarded-Host</pre></td><td><pre class="value"><span class="is-size-7">host.docker.internal</span></pre></td></tr><tr><td><pre>host</pre></td><td><pre class="value"><span class="is-size-7">host.docker.internal</span></pre></td></tr></tbody></table></div></div></div></div></div><div><div class="container page-break my-3"><div class="card full-width test-card is-info notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-info body-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialog4Dl7h1a7QTWLDFh3thMR" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialog4Dl7h1a7QTWLDFh3thMR" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialog4Dl7h1a7QTWLDFh3thMR"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialog4Dl7h1a7QTWLDFh3thMR" style="white-space: pre-wrap;word-wrap: break-word;">0200010000000000000005f3a155c7e69d659dfe54bdea7a49681143c8cb56a3f1cfbb4c8c3d50bdbdb65c4b861dab000000000000000598a258b2cd3f9146d3a818378d82c61a69884eaf6ca09f8ba9d1472c91f50cfd52ebf2bced6a41489368185a36a8bd1f6cd6f6cffb4ee3fa1558aa72c25d515f2aff6dcd285416a1acfef5539aabe6adbd220ba096c5baf9e6dcb7a34d59db2539d88dc2f5ae3562610174139ac47926f78fd470783d47b9f42f9784fb3a7e6eecd47caceedc170e36b125b4706a0669a9024b769055055be411d5c359f0b951a285bbcdfa2e49d5e6e4037622ad12da9e69d890aed13dc3bcb352933be5e6c4df3094e27401f2b7a37eac6d55f087d4719b48ac2a7aedba3d4cd6e6229b631e02aab09b0243c6f87272d4157db3d494904509d8df0f9c6f52736ef35bc649dad6aebca17e626a59f7c7a93ad47609778522849cea689f1968ceb6c354b4efe7b4c6e5be1e0a12a57141f09f1dd930e424973206d839fbd07607610a58cd71a56a1526bf69d988a91cef4c49a33a5c8ff6979d31752b8fdbb8dc6ec1c1bcf20ab26118dedbcfaf2bb0bce22d8395acb2d395faa46b59ee93b284af38c727e515fc6abb0a66d2008adb7e5e5a905437f53e484cf0155395f71863c8465d3d6adb26fb3a95a4cc37bb6260112e820dc8c4e9b35e23291b645a506dd1259e06352d5a6b076b3c1d62c448ff9536e189eda501f833e6d647ed1a5f9421b0ecd1c25691f9339cc86421fccce11f2671fa0edfdbdead8db5ac97e2fd8ef2b418ac1fc981cc3cd88276ef625934772fd1230322ad1b59a68d47118083f1f7925f562635b1880a33aa67503ae47eaed233dbbd9f46373681b0e3381c77adca61d21c95582bb9b17dad7ba9ec4536298d3219a6094a8c407e680612d01a3a96a8ed45d30c330cca9f973f39d4c6bd4e2ac2dab5d2ed2d8adc245c4077f78fe4921caed901adc96cc3fc647c73dc358b1501448527fe59edbfcd42fe653098197acc9cb6cd61d5cb7947cd683f2aedbcc47e7c5afd2489901fddba8ba06bda3f9a33c4559889ebc9398279a88b3c7c5f1f14140d2c0581485a1e4e419fcd0216abcc23c0d8d3c082897aada5b5b6cd94df250ccf66cccd35cf3690317f71de6179822b8739a71f7322d7e9742063207cfac678eaa2e9876846b19b9924ba7eb774f78e5741802adffe05d209a27dfca0e708e61090d3d31bf7a6d197df3e46a61d7d3923a93074558b45fee9bdc8a31d1271e9d83ce29ca859b7be53ac2ca911cbc1199fe4e5dee85604494393edf114413621558738b8b43fbf9664cb1b66252879d8c6f96c63a14b5492c9ef06bdd031b46fd50a82f9a9c1a10e05bb316d886a178a26e8cd5008ccc9b59041f5debcc1c72e702b669dfd8fd76aae8eb12a543b75df32fb556093a714487bdbb85b6dc3762a56ea5f4f0a05140e5a6dcd90a9578d5946f2e1491fb82b6cfaf834bdf22835311a25c4053ef0059a446ce95ca732ec53eef48f80bef12a9ef800eea226eddf9d3c781443d338898ba217ca6c935b179a660a7d8be4b65abb3ee837f6511321c5f25d98801c5cf1a23fe853e36e0f1c786ca417cb2e2c72d76bec6802b6a5d70e7f0304c35288cd015b13489fb26342dd36ae960a8bda68422a9f672c09811ce306282984fc9bc9dc61ae7ec8991e3b195407566a96f23e3420479eed3d33a054d8303eb835e1fcbc18c45e3450dd22c7452eb0db556cdf983b84ca5229003dc2304cabdc36af23708b45835034903ed54a2920c0fb546fdcec61f01772c8ee55b5d0c20844b678b43a8e98be20061c6ea104f5ca3ffc27e7d33b4ac33a5ccd5e5098ab5c131ed007112bab9c91015ea7d916ce770a3f1f1cc75fe403eb2a3477d4e8ce1d59e298045de01025db89298cc079cfbbe09b667d009b5195a8d44b2ab52f8e85daf3f37ead5897c83b6e862cbfe88e26dab165e2c0f9f83aafff0a7577c371bc9ee3c12c516284def9eda6e8535461542d6dcec99903e96d6341dbd1b02f0a056995fdfbd693a2e1b7de70ead1367379dac3e57119db35483fd9d4dc4c03adb72fd8dae9d64e7ca3ed2346fc8f8d4699814454e4f55f50279faa86aeacef95b810e7642a11ef4dde624d1b4914a773e68adf7f6b8abf84bc1ed0721bd963994f185243f502d3d60034320364c7a3145e76159a589509498838fee839f5997fd45297815129f6b9a09087862c6b2be642dd950f160b9a220c1889f7a82cc682caff4c0a47db2d8341050c6c67f51aa61a6429b2e847e6e08f1e6e6ae09cb383adddc00b1fb613d2439c7b4c3525de2445b10887774e2faf4f0b29b7734aab6701aeb40d606173e7e3aa6bafca87f01a4e231b609f78d1f2b61090367e94724b70660e804ffa98be021cb4007d9c5aa307de5f11b3b158d36c8a05a5292ed3a266a3f978f349df72c05b72623017f71db5f875956c08c811b7961bdc8087a685f6ac58864e0ca8d2262a0b84ae37bfaecfa82a239a058f858eb517b12e919a0078f9f5c767997874e8ea955362905b2f78c0bf5f0c88b6c4367c1607062a4221e04e7fd0c175fd611beb7ad30fee046a23348ac410d897a2be463b65360b0f4a7c9a355b0eb0daeaf53829721615f21bed62037ac602bc02feb5dac9f2116ae3c68593edab69dc54b45b4dcb5c81208c710e2850536c5d16932f87f6f28bd4110d4b8815a875a5e4616064bda07906ac7690a91d8ef8c9a73b218d7a239b55c97adf311a31d81634e576864d5b8c76e58f24c9a33e9c4a8504fa01627765023f51f4a42b52ecdd4dd56f892d68198956baea011bca14f9fa690f36558ce3895d7d0090ce1cbd872fdfa96812e8a108d1900403631c86a74f218f281ae5817c563c9d82c14d2e52df920fbcfbc910e251d89efa948e1899308989f6d8512be6cc4c19daff24044c55267a41ec76ab5644849e823e6768f9d2302e2f4362622e70f23838fadd324108cdc058edc48b39f9138df3541ff58f55a2d83a9191674b1fbe39352a549c936a01425e62a7504c01c99eeb5ebac5f4cffaa39b29f53e93498aadf3444ce59018a252e36680a49eed9b68d5ff731e587babc493909e24f47f43c4c8ff44215e01b03060b07a63f5d47ca5bc2a3e6881534d2f0bb0ecd7d209cd3a47853afae76ac08731d265f64464f30503aaac0bdf22b7a711868903081522c5dc5f5e46f08907ab9cbe957a82921241a554a22e40486cdded07fa7b3d548ba442f87231a30420ef7114411af3c0c00003c3269b34b52d89976a097fec94caecef73c115cf6ea6d59834c27bf2fbd21fb2b0c7539630771ec71be6bcde3224045edcd4f3b7f6e46e28daafacb73c7a</pre></div></article></div></div></div></span><div class="text-info"><h2 class="title">REQ Body</h2></div></div></div></header><div class="card-content test-card-content msg-body-content test-msg-body-content"><div><div style="width:100%;"><h1 class="font-monospace title">VAU EPA 3 Encrypted Message<span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogtdzk89FIEHLVNBJHkcxy" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogtdzk89FIEHLVNBJHkcxy" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogtdzk89FIEHLVNBJHkcxy"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogtdzk89FIEHLVNBJHkcxy" style="white-space: pre-wrap;word-wrap: break-word;">0200010000000000000005f3a155c7e69d659dfe54bdea7a49681143c8cb56a3f1cfbb4c8c3d50bdbdb65c4b861dab000000000000000598a258b2cd3f9146d3a818378d82c61a69884eaf6ca09f8ba9d1472c91f50cfd52ebf2bced6a41489368185a36a8bd1f6cd6f6cffb4ee3fa1558aa72c25d515f2aff6dcd285416a1acfef5539aabe6adbd220ba096c5baf9e6dcb7a34d59db2539d88dc2f5ae3562610174139ac47926f78fd470783d47b9f42f9784fb3a7e6eecd47caceedc170e36b125b4706a0669a9024b769055055be411d5c359f0b951a285bbcdfa2e49d5e6e4037622ad12da9e69d890aed13dc3bcb352933be5e6c4df3094e27401f2b7a37eac6d55f087d4719b48ac2a7aedba3d4cd6e6229b631e02aab09b0243c6f87272d4157db3d494904509d8df0f9c6f52736ef35bc649dad6aebca17e626a59f7c7a93ad47609778522849cea689f1968ceb6c354b4efe7b4c6e5be1e0a12a57141f09f1dd930e424973206d839fbd07607610a58cd71a56a1526bf69d988a91cef4c49a33a5c8ff6979d31752b8fdbb8dc6ec1c1bcf20ab26118dedbcfaf2bb0bce22d8395acb2d395faa46b59ee93b284af38c727e515fc6abb0a66d2008adb7e5e5a905437f53e484cf0155395f71863c8465d3d6adb26fb3a95a4cc37bb6260112e820dc8c4e9b35e23291b645a506dd1259e06352d5a6b076b3c1d62c448ff9536e189eda501f833e6d647ed1a5f9421b0ecd1c25691f9339cc86421fccce11f2671fa0edfdbdead8db5ac97e2fd8ef2b418ac1fc981cc3cd88276ef625934772fd1230322ad1b59a68d47118083f1f7925f562635b1880a33aa67503ae47eaed233dbbd9f46373681b0e3381c77adca61d21c95582bb9b17dad7ba9ec4536298d3219a6094a8c407e680612d01a3a96a8ed45d30c330cca9f973f39d4c6bd4e2ac2dab5d2ed2d8adc245c4077f78fe4921caed901adc96cc3fc647c73dc358b1501448527fe59edbfcd42fe653098197acc9cb6cd61d5cb7947cd683f2aedbcc47e7c5afd2489901fddba8ba06bda3f9a33c4559889ebc9398279a88b3c7c5f1f14140d2c0581485a1e4e419fcd0216abcc23c0d8d3c082897aada5b5b6cd94df250ccf66cccd35cf3690317f71de6179822b8739a71f7322d7e9742063207cfac678eaa2e9876846b19b9924ba7eb774f78e5741802adffe05d209a27dfca0e708e61090d3d31bf7a6d197df3e46a61d7d3923a93074558b45fee9bdc8a31d1271e9d83ce29ca859b7be53ac2ca911cbc1199fe4e5dee85604494393edf114413621558738b8b43fbf9664cb1b66252879d8c6f96c63a14b5492c9ef06bdd031b46fd50a82f9a9c1a10e05bb316d886a178a26e8cd5008ccc9b59041f5debcc1c72e702b669dfd8fd76aae8eb12a543b75df32fb556093a714487bdbb85b6dc3762a56ea5f4f0a05140e5a6dcd90a9578d5946f2e1491fb82b6cfaf834bdf22835311a25c4053ef0059a446ce95ca732ec53eef48f80bef12a9ef800eea226eddf9d3c781443d338898ba217ca6c935b179a660a7d8be4b65abb3ee837f6511321c5f25d98801c5cf1a23fe853e36e0f1c786ca417cb2e2c72d76bec6802b6a5d70e7f0304c35288cd015b13489fb26342dd36ae960a8bda68422a9f672c09811ce306282984fc9bc9dc61ae7ec8991e3b195407566a96f23e3420479eed3d33a054d8303eb835e1fcbc18c45e3450dd22c7452eb0db556cdf983b84ca5229003dc2304cabdc36af23708b45835034903ed54a2920c0fb546fdcec61f01772c8ee55b5d0c20844b678b43a8e98be20061c6ea104f5ca3ffc27e7d33b4ac33a5ccd5e5098ab5c131ed007112bab9c91015ea7d916ce770a3f1f1cc75fe403eb2a3477d4e8ce1d59e298045de01025db89298cc079cfbbe09b667d009b5195a8d44b2ab52f8e85daf3f37ead5897c83b6e862cbfe88e26dab165e2c0f9f83aafff0a7577c371bc9ee3c12c516284def9eda6e8535461542d6dcec99903e96d6341dbd1b02f0a056995fdfbd693a2e1b7de70ead1367379dac3e57119db35483fd9d4dc4c03adb72fd8dae9d64e7ca3ed2346fc8f8d4699814454e4f55f50279faa86aeacef95b810e7642a11ef4dde624d1b4914a773e68adf7f6b8abf84bc1ed0721bd963994f185243f502d3d60034320364c7a3145e76159a589509498838fee839f5997fd45297815129f6b9a09087862c6b2be642dd950f160b9a220c1889f7a82cc682caff4c0a47db2d8341050c6c67f51aa61a6429b2e847e6e08f1e6e6ae09cb383adddc00b1fb613d2439c7b4c3525de2445b10887774e2faf4f0b29b7734aab6701aeb40d606173e7e3aa6bafca87f01a4e231b609f78d1f2b61090367e94724b70660e804ffa98be021cb4007d9c5aa307de5f11b3b158d36c8a05a5292ed3a266a3f978f349df72c05b72623017f71db5f875956c08c811b7961bdc8087a685f6ac58864e0ca8d2262a0b84ae37bfaecfa82a239a058f858eb517b12e919a0078f9f5c767997874e8ea955362905b2f78c0bf5f0c88b6c4367c1607062a4221e04e7fd0c175fd611beb7ad30fee046a23348ac410d897a2be463b65360b0f4a7c9a355b0eb0daeaf53829721615f21bed62037ac602bc02feb5dac9f2116ae3c68593edab69dc54b45b4dcb5c81208c710e2850536c5d16932f87f6f28bd4110d4b8815a875a5e4616064bda07906ac7690a91d8ef8c9a73b218d7a239b55c97adf311a31d81634e576864d5b8c76e58f24c9a33e9c4a8504fa01627765023f51f4a42b52ecdd4dd56f892d68198956baea011bca14f9fa690f36558ce3895d7d0090ce1cbd872fdfa96812e8a108d1900403631c86a74f218f281ae5817c563c9d82c14d2e52df920fbcfbc910e251d89efa948e1899308989f6d8512be6cc4c19daff24044c55267a41ec76ab5644849e823e6768f9d2302e2f4362622e70f23838fadd324108cdc058edc48b39f9138df3541ff58f55a2d83a9191674b1fbe39352a549c936a01425e62a7504c01c99eeb5ebac5f4cffaa39b29f53e93498aadf3444ce59018a252e36680a49eed9b68d5ff731e587babc493909e24f47f43c4c8ff44215e01b03060b07a63f5d47ca5bc2a3e6881534d2f0bb0ecd7d209cd3a47853afae76ac08731d265f64464f30503aaac0bdf22b7a711868903081522c5dc5f5e46f08907ab9cbe957a82921241a554a22e40486cdded07fa7b3d548ba442f87231a30420ef7114411af3c0c00003c3269b34b52d89976a097fec94caecef73c115cf6ea6d59834c27bf2fbd21fb2b0c7539630771ec71be6bcde3224045edcd4f3b7f6e46e28daafacb73c7a</pre></div></article></div></div></div></span></h1><div class="tile is-ancestor pe-3"><div class="tile is-vertical is-parent pe-3"><div class="tile is-child box notification pe-3 is-primary"><h2 class="title">Header</h2><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogZDYgth0q5606uC3LqtlF" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogZDYgth0q5606uC3LqtlF" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogZDYgth0q5606uC3LqtlF"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogZDYgth0q5606uC3LqtlF" style="white-space: pre-wrap;word-wrap: break-word;">0200010000000000000005f3a155c7e69d659dfe54bdea7a49681143c8cb56a3f1cfbb4c8c3d50bdbdb65c</pre></div></article></div></div></div></span><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Version: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">02</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>PU: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">00</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Request?: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">01</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Request Counter: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">5</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Key ID: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">f3a155c7e69d659dfe54bdea7a49681143c8cb56a3f1cfbb4c8c3d50bdbdb65c</span></div></div></div><div class="tile is-child box notification pe-3 is-info"><h2 class="title">Message</h2><div class="container page-break mx-3 mt-5"><div class="card full-width test-card msg-card"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="full-width"><a name="597679bd-7ee3-4439-b919-1a5c06a0ee72"></a><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 msg-toggle has-text-link"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialoguv0HhXZgQuyPaZjREJNC" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialoguv0HhXZgQuyPaZjREJNC" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialoguv0HhXZgQuyPaZjREJNC"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialoguv0HhXZgQuyPaZjREJNC" style="white-space: pre-wrap;word-wrap: break-word;">POST /epa/basic/api/v1/ps/entitlements HTTP/1.1
+Connection: Upgrade, HTTP2-Settings
+Content-Length: 1907
+Host: vau-proxy-ps-sim:8080
+HTTP2-Settings: AAEAAEAAAAIAAAABAAMAAABkAAQBAAAAAAUAAEAA
+Upgrade: h2c
+Accept: application/json
+Content-Type: application/json
+User-Agent: Apache-CXF/4.0.5
+x-insurantid: X110435031
+x-target-fqdn: https://host.docker.internal:443
+x-useragent: PSSIM123456789012345/1.2.4
+
+{&quot;jwt&quot;:&quot;eyJ0eXAiOiJKV1QiLCJ4NWMiOlsiTUlJRGZ6Q0NBeVdnQXdJQkFnSUhBTHZjNzdrUkREQUtCZ2dxaGtqT1BRUURBakNCbVRFTE1Ba0dBMVVFQmhNQ1JFVXhIekFkQmdOVkJBb01GbWRsYldGMGFXc2dSMjFpU0NCT1QxUXRWa0ZNU1VReFNEQkdCZ05WQkFzTVAwbHVjM1JwZEhWMGFXOXVJR1JsY3lCSFpYTjFibVJvWldsMGMzZGxjMlZ1Y3kxRFFTQmtaWElnVkdWc1pXMWhkR2xyYVc1bWNtRnpkSEoxYTNSMWNqRWZNQjBHQTFVRUF3d1dSMFZOTGxOTlEwSXRRMEU1SUZSRlUxUXRUMDVNV1RBZUZ3MHlNREF4TWpjd01EQXdNREJhRncweU5ERXlNVEV5TXpVNU5UbGFNSUdkTVFzd0NRWURWUVFHRXdKRVJURU9NQXdHQTFVRUJ3d0ZSWE56Wlc0eERqQU1CZ05WQkJFTUJUUTFNVE13TVNNd0lRWURWUVFKREJwU3c3eDBkR1Z1YzJOb1pXbGtaWElnVTNSeVljT2ZaU0EzTmpFZE1Cc0dBMVVFQlJNVU9EQXlOelk0T0RNeE1UQXdNREF4TVRjNE9UUXhLakFvQmdOVkJBTU1JVlZ1Wm1Gc2JHdHlZVzVyWlc1b1lYVnpJR0Z0SUZObFpWUkZVMVF0VDA1TVdUQmFNQlFHQnlxR1NNNDlBZ0VHQ1Nza0F3TUNDQUVCQndOQ0FBU2JicVJ4R1ZHQkxBRUJiMnRuYmJWeXBYMWtNTTdsVjVhdUZ5VGV3a08rcGdJNS9vUW9yU1c1SjJZVVZ6MS9ML083aWtLUE15OW5MYU0rVUIrWkw1WXdvNElCVHpDQ0FVc3dEQVlEVlIwVEFRSC9CQUl3QURBNEJnZ3JCZ0VGQlFjQkFRUXNNQ293S0FZSUt3WUJCUVVITUFHR0hHaDBkSEE2THk5bGFHTmhMbWRsYldGMGFXc3VaR1V2YjJOemNDOHdFd1lEVlIwbEJBd3dDZ1lJS3dZQkJRVUhBd0l3SHdZRFZSMGpCQmd3Rm9BVVlvaWF4Tjc4by9PVE9jdWZrT2NUbWoySnpIVXdIUVlEVlIwT0JCWUVGSnY2elk0clpKTTVrQjRaMEVpeG15eDRuOEQrTUE0R0ExVWREd0VCL3dRRUF3SUhnREFnQmdOVkhTQUVHVEFYTUFvR0NDcUNGQUJNQklFak1Ba0dCeXFDRkFCTUJFMHdlZ1lGS3lRSUF3TUVjVEJ2cENnd0pqRUxNQWtHQTFVRUJoTUNSRVV4RnpBVkJnTlZCQW9NRG1kbGJXRjBhV3NnUW1WeWJHbHVNRU13UVRBL01EMHdEUXdMUzNKaGJtdGxibWhoZFhNd0NRWUhLb0lVQUV3RU5STWhOUzFUVFVNdFFpMVVaWE4wYTJGeWRHVXRPRGd6TVRFd01EQXdNVEUzT0RrME1Bb0dDQ3FHU000OUJBTUNBMGdBTUVVQ0lCQTRCUDgrS1JqSmZCWDNGa2hHQUtoenlsY3JBWTlVU1JaRXcvZURZZWdKQWlFQXAzUHYya2EvSEtpWU9VQkMzaGJSMUVrTzVuQi8rd2x3QUpocS83VkM3MlU9Il0sImFsZyI6IkVTMjU2In0.eyJpYXQiOjE3MjU2MjI3ODIsImV4cCI6MTcyNTYyMzk4MiwiYXVkaXRFdmlkZW5jZSI6IldERXhNRFF6TlRBek1URTNNalUyTWpJM09EQlZXREZqd1FiYWprZWZwN3BobEhPYWVKcnRFYVJmNEw2WHQrYz0ifQ.LI0VMjGvsT3JPD2EaZ3El53YJ7wsuTgFuTKm2qIT1wxhdw-q-KAqNc5R8kj1BfmCNCVnoSrTlHtuUs_2N3q8Og&quot;}</pre></div></article></div></div></div></span><h1 class="title ms-3 text-ellipsis has-text-link" style="overflow: hidden;"><span></span><i class="fas fa-share me-1" title="Request"></i><span class="has-text-link text-ellipsis"><span class="font-monospace title is-size-6" title="/epa/basic/api/v1/ps/entitlements"> POST /epa/basic/api/v1/ps/entitlements</span></span><span></span><span></span><span style="display: block;"><span></span><span></span></span></h1></div></div></header><div class="card-content test-card-content msg-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-ancestor pe-3"><div class="tile is-parent is-vertical pe-3"><div><div class="container page-break my-3"><div class="card full-width test-card is-primary notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-danger header-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogcLqOgs8gy29UIz9TrJRV" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogcLqOgs8gy29UIz9TrJRV" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogcLqOgs8gy29UIz9TrJRV"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogcLqOgs8gy29UIz9TrJRV" style="white-space: pre-wrap;word-wrap: break-word;">Connection: Upgrade, HTTP2-Settings
+Content-Length: 1907
+Host: vau-proxy-ps-sim:8080
+Upgrade: h2c
+Accept: application/json
+Content-Type: application/json
+User-Agent: Apache-CXF/4.0.5
+x-insurantid: X110435031
+x-target-fqdn: https://host.docker.internal:443
+x-useragent: PSSIM123456789012345/1.2.4</pre></div></article></div></div></div></span><div class="text-danger"><h2 class="title">REQ Headers</h2></div></div></div></header><div class="card-content test-card-content msg-header-content test-msg-header-content"><div><table class="table"><tbody><tr><td><pre>Connection</pre></td><td><pre class="value"><span class="is-size-7">Upgrade, HTTP2-Settings</span></pre></td></tr><tr><td><pre>Content-Length</pre></td><td><pre class="value"><span class="is-size-7">1907</span></pre></td></tr><tr><td><pre>Host</pre></td><td><pre class="value"><div><div>vau-proxy-ps-sim:8080</div></div></pre></td></tr><tr><td><pre>Upgrade</pre></td><td><pre class="value"><span class="is-size-7">h2c</span></pre></td></tr><tr><td><pre>Accept</pre></td><td><pre class="value"><span class="is-size-7">application/json</span></pre></td></tr><tr><td><pre>Content-Type</pre></td><td><pre class="value"><span class="is-size-7">application/json</span></pre></td></tr><tr><td><pre>User-Agent</pre></td><td><pre class="value"><span class="is-size-7">Apache-CXF/4.0.5</span></pre></td></tr><tr><td><pre>x-insurantid</pre></td><td><pre class="value"><span class="is-size-7">X110435031</span></pre></td></tr><tr><td><pre>x-target-fqdn</pre></td><td><pre class="value"><div><div>https://host.docker.internal:443</div></div></pre></td></tr><tr><td><pre>x-useragent</pre></td><td><pre class="value"><span class="is-size-7">PSSIM123456789012345/1.2.4</span></pre></td></tr></tbody></table></div></div></div></div></div><div><div class="container page-break my-3"><div class="card full-width test-card is-info notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-info body-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogs0iH5Pgl1P27MViP7Ydw" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogs0iH5Pgl1P27MViP7Ydw" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogs0iH5Pgl1P27MViP7Ydw"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogs0iH5Pgl1P27MViP7Ydw" style="white-space: pre-wrap;word-wrap: break-word;">{&quot;jwt&quot;:&quot;eyJ0eXAiOiJKV1QiLCJ4NWMiOlsiTUlJRGZ6Q0NBeVdnQXdJQkFnSUhBTHZjNzdrUkREQUtCZ2dxaGtqT1BRUURBakNCbVRFTE1Ba0dBMVVFQmhNQ1JFVXhIekFkQmdOVkJBb01GbWRsYldGMGFXc2dSMjFpU0NCT1QxUXRWa0ZNU1VReFNEQkdCZ05WQkFzTVAwbHVjM1JwZEhWMGFXOXVJR1JsY3lCSFpYTjFibVJvWldsMGMzZGxjMlZ1Y3kxRFFTQmtaWElnVkdWc1pXMWhkR2xyYVc1bWNtRnpkSEoxYTNSMWNqRWZNQjBHQTFVRUF3d1dSMFZOTGxOTlEwSXRRMEU1SUZSRlUxUXRUMDVNV1RBZUZ3MHlNREF4TWpjd01EQXdNREJhRncweU5ERXlNVEV5TXpVNU5UbGFNSUdkTVFzd0NRWURWUVFHRXdKRVJURU9NQXdHQTFVRUJ3d0ZSWE56Wlc0eERqQU1CZ05WQkJFTUJUUTFNVE13TVNNd0lRWURWUVFKREJwU3c3eDBkR1Z1YzJOb1pXbGtaWElnVTNSeVljT2ZaU0EzTmpFZE1Cc0dBMVVFQlJNVU9EQXlOelk0T0RNeE1UQXdNREF4TVRjNE9UUXhLakFvQmdOVkJBTU1JVlZ1Wm1Gc2JHdHlZVzVyWlc1b1lYVnpJR0Z0SUZObFpWUkZVMVF0VDA1TVdUQmFNQlFHQnlxR1NNNDlBZ0VHQ1Nza0F3TUNDQUVCQndOQ0FBU2JicVJ4R1ZHQkxBRUJiMnRuYmJWeXBYMWtNTTdsVjVhdUZ5VGV3a08rcGdJNS9vUW9yU1c1SjJZVVZ6MS9ML083aWtLUE15OW5MYU0rVUIrWkw1WXdvNElCVHpDQ0FVc3dEQVlEVlIwVEFRSC9CQUl3QURBNEJnZ3JCZ0VGQlFjQkFRUXNNQ293S0FZSUt3WUJCUVVITUFHR0hHaDBkSEE2THk5bGFHTmhMbWRsYldGMGFXc3VaR1V2YjJOemNDOHdFd1lEVlIwbEJBd3dDZ1lJS3dZQkJRVUhBd0l3SHdZRFZSMGpCQmd3Rm9BVVlvaWF4Tjc4by9PVE9jdWZrT2NUbWoySnpIVXdIUVlEVlIwT0JCWUVGSnY2elk0clpKTTVrQjRaMEVpeG15eDRuOEQrTUE0R0ExVWREd0VCL3dRRUF3SUhnREFnQmdOVkhTQUVHVEFYTUFvR0NDcUNGQUJNQklFak1Ba0dCeXFDRkFCTUJFMHdlZ1lGS3lRSUF3TUVjVEJ2cENnd0pqRUxNQWtHQTFVRUJoTUNSRVV4RnpBVkJnTlZCQW9NRG1kbGJXRjBhV3NnUW1WeWJHbHVNRU13UVRBL01EMHdEUXdMUzNKaGJtdGxibWhoZFhNd0NRWUhLb0lVQUV3RU5STWhOUzFUVFVNdFFpMVVaWE4wYTJGeWRHVXRPRGd6TVRFd01EQXdNVEUzT0RrME1Bb0dDQ3FHU000OUJBTUNBMGdBTUVVQ0lCQTRCUDgrS1JqSmZCWDNGa2hHQUtoenlsY3JBWTlVU1JaRXcvZURZZWdKQWlFQXAzUHYya2EvSEtpWU9VQkMzaGJSMUVrTzVuQi8rd2x3QUpocS83VkM3MlU9Il0sImFsZyI6IkVTMjU2In0.eyJpYXQiOjE3MjU2MjI3ODIsImV4cCI6MTcyNTYyMzk4MiwiYXVkaXRFdmlkZW5jZSI6IldERXhNRFF6TlRBek1URTNNalUyTWpJM09EQlZXREZqd1FiYWprZWZwN3BobEhPYWVKcnRFYVJmNEw2WHQrYz0ifQ.LI0VMjGvsT3JPD2EaZ3El53YJ7wsuTgFuTKm2qIT1wxhdw-q-KAqNc5R8kj1BfmCNCVnoSrTlHtuUs_2N3q8Og&quot;}</pre></div></article></div></div></div></span><div class="text-info"><h2 class="title">REQ Body</h2></div></div></div></header><div class="card-content test-card-content msg-body-content test-msg-body-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-vertical is-parent pe-3"><div class="tile is-child pe-3"><pre class="json language-json">{
+  "jwt" : "eyJ0eXAiOiJKV1QiLCJ4NWMiOlsiTUlJRGZ6Q0NBeVdnQXdJQkFnSUhBTHZjNzdrUkREQUtCZ2dxaGtqT1BRUURBakNCbVRFTE1Ba0dBMVVFQmhNQ1JFVXhIekFkQmdOVkJBb01GbWRsYldGMGFXc2dSMjFpU0NCT1QxUXRWa0ZNU1VReFNEQkdCZ05WQkFzTVAwbHVjM1JwZEhWMGFXOXVJR1JsY3lCSFpYTjFibVJvWldsMGMzZGxjMlZ1Y3kxRFFTQmtaWElnVkdWc1pXMWhkR2xyYVc1bWNtRnpkSEoxYTNSMWNqRWZNQjBHQTFVRUF3d1dSMFZOTGxOTlEwSXRRMEU1SUZSRlUxUXRUMDVNV1RBZUZ3MHlNREF4TWpjd01EQXdNREJhRncweU5ERXlNVEV5TXpVNU5UbGFNSUdkTVFzd0NRWURWUVFHRXdKRVJURU9NQXdHQTFVRUJ3d0ZSWE56Wlc0eERqQU1CZ05WQkJFTUJUUTFNVE13TVNNd0lRWURWUVFKREJwU3c3eDBkR1Z1YzJOb1pXbGtaWElnVTNSeVljT2ZaU0EzTmpFZE1Cc0dBMVVFQlJNVU9EQXlOelk0T0RNeE1UQXdNREF4TVRjNE9UUXhLakFvQmdOVkJBTU1JVlZ1Wm1Gc2JHdHlZVzVyWlc1b1lYVnpJR0Z0SUZObFpWUkZVMVF0VDA1TVdUQmFNQlFHQnlxR1NNNDlBZ0VHQ1Nza0F3TUNDQUVCQndOQ0FBU2JicVJ4R1ZHQkxBRUJiMnRuYmJWeXBYMWtNTTdsVjVhdUZ5VGV3a08rcGdJNS9vUW9yU1c1SjJZVVZ6MS9ML083aWtLUE15OW5MYU0rVUIrWkw1WXdvNElCVHpDQ0FVc3dEQVlEVlIwVEFRSC9CQUl3QURBNEJnZ3JCZ0VGQlFjQkFRUXNNQ293S0FZSUt3WUJCUVVITUFHR0hHaDBkSEE2THk5bGFHTmhMbWRsYldGMGFXc3VaR1V2YjJOemNDOHdFd1lEVlIwbEJBd3dDZ1lJS3dZQkJRVUhBd0l3SHdZRFZSMGpCQmd3Rm9BVVlvaWF4Tjc4by9PVE9jdWZrT2NUbWoySnpIVXdIUVlEVlIwT0JCWUVGSnY2elk0clpKTTVrQjRaMEVpeG15eDRuOEQrTUE0R0ExVWREd0VCL3dRRUF3SUhnREFnQmdOVkhTQUVHVEFYTUFvR0NDcUNGQUJNQklFak1Ba0dCeXFDRkFCTUJFMHdlZ1lGS3lRSUF3TUVjVEJ2cENnd0pqRUxNQWtHQTFVRUJoTUNSRVV4RnpBVkJnTlZCQW9NRG1kbGJXRjBhV3NnUW1WeWJHbHVNRU13UVRBL01EMHdEUXdMUzNKaGJtdGxibWhoZFhNd0NRWUhLb0lVQUV3RU5STWhOUzFUVFVNdFFpMVVaWE4wYTJGeWRHVXRPRGd6TVRFd01EQXdNVEUzT0RrME1Bb0dDQ3FHU000OUJBTUNBMGdBTUVVQ0lCQTRCUDgrS1JqSmZCWDNGa2hHQUtoenlsY3JBWTlVU1JaRXcvZURZZWdKQWlFQXAzUHYya2EvSEtpWU9VQkMzaGJSMUVrTzVuQi8rd2x3QUpocS83VkM3MlU9Il0sImFsZyI6IkVTMjU2In0.eyJpYXQiOjE3MjU2MjI3ODIsImV4cCI6MTcyNTYyMzk4MiwiYXVkaXRFdmlkZW5jZSI6IldERXhNRFF6TlRBek1URTNNalUyTWpJM09EQlZXREZqd1FiYWprZWZwN3BobEhPYWVKcnRFYVJmNEw2WHQrYz0ifQ.LI0VMjGvsT3JPD2EaZ3El53YJ7wsuTgFuTKm2qIT1wxhdw-q-KAqNc5R8kj1BfmCNCVnoSrTlHtuUs_2N3q8Og"
+}</pre><article class="message is-ancestor notification is-warning my-6 py-3 px-3"><div class="message-header"><h2 class="title" style="word-break: keep-all;">body.decrypted.body.jwt.content</h2><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogXxYvO28TxbmJEjsPLGIo" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogXxYvO28TxbmJEjsPLGIo" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.body.jwt.content</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogXxYvO28TxbmJEjsPLGIo"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogXxYvO28TxbmJEjsPLGIo" style="white-space: pre-wrap;word-wrap: break-word;">eyJ0eXAiOiJKV1QiLCJ4NWMiOlsiTUlJRGZ6Q0NBeVdnQXdJQkFnSUhBTHZjNzdrUkREQUtCZ2dxaGtqT1BRUURBakNCbVRFTE1Ba0dBMVVFQmhNQ1JFVXhIekFkQmdOVkJBb01GbWRsYldGMGFXc2dSMjFpU0NCT1QxUXRWa0ZNU1VReFNEQkdCZ05WQkFzTVAwbHVjM1JwZEhWMGFXOXVJR1JsY3lCSFpYTjFibVJvWldsMGMzZGxjMlZ1Y3kxRFFTQmtaWElnVkdWc1pXMWhkR2xyYVc1bWNtRnpkSEoxYTNSMWNqRWZNQjBHQTFVRUF3d1dSMFZOTGxOTlEwSXRRMEU1SUZSRlUxUXRUMDVNV1RBZUZ3MHlNREF4TWpjd01EQXdNREJhRncweU5ERXlNVEV5TXpVNU5UbGFNSUdkTVFzd0NRWURWUVFHRXdKRVJURU9NQXdHQTFVRUJ3d0ZSWE56Wlc0eERqQU1CZ05WQkJFTUJUUTFNVE13TVNNd0lRWURWUVFKREJwU3c3eDBkR1Z1YzJOb1pXbGtaWElnVTNSeVljT2ZaU0EzTmpFZE1Cc0dBMVVFQlJNVU9EQXlOelk0T0RNeE1UQXdNREF4TVRjNE9UUXhLakFvQmdOVkJBTU1JVlZ1Wm1Gc2JHdHlZVzVyWlc1b1lYVnpJR0Z0SUZObFpWUkZVMVF0VDA1TVdUQmFNQlFHQnlxR1NNNDlBZ0VHQ1Nza0F3TUNDQUVCQndOQ0FBU2JicVJ4R1ZHQkxBRUJiMnRuYmJWeXBYMWtNTTdsVjVhdUZ5VGV3a08rcGdJNS9vUW9yU1c1SjJZVVZ6MS9ML083aWtLUE15OW5MYU0rVUIrWkw1WXdvNElCVHpDQ0FVc3dEQVlEVlIwVEFRSC9CQUl3QURBNEJnZ3JCZ0VGQlFjQkFRUXNNQ293S0FZSUt3WUJCUVVITUFHR0hHaDBkSEE2THk5bGFHTmhMbWRsYldGMGFXc3VaR1V2YjJOemNDOHdFd1lEVlIwbEJBd3dDZ1lJS3dZQkJRVUhBd0l3SHdZRFZSMGpCQmd3Rm9BVVlvaWF4Tjc4by9PVE9jdWZrT2NUbWoySnpIVXdIUVlEVlIwT0JCWUVGSnY2elk0clpKTTVrQjRaMEVpeG15eDRuOEQrTUE0R0ExVWREd0VCL3dRRUF3SUhnREFnQmdOVkhTQUVHVEFYTUFvR0NDcUNGQUJNQklFak1Ba0dCeXFDRkFCTUJFMHdlZ1lGS3lRSUF3TUVjVEJ2cENnd0pqRUxNQWtHQTFVRUJoTUNSRVV4RnpBVkJnTlZCQW9NRG1kbGJXRjBhV3NnUW1WeWJHbHVNRU13UVRBL01EMHdEUXdMUzNKaGJtdGxibWhoZFhNd0NRWUhLb0lVQUV3RU5STWhOUzFUVFVNdFFpMVVaWE4wYTJGeWRHVXRPRGd6TVRFd01EQXdNVEUzT0RrME1Bb0dDQ3FHU000OUJBTUNBMGdBTUVVQ0lCQTRCUDgrS1JqSmZCWDNGa2hHQUtoenlsY3JBWTlVU1JaRXcvZURZZWdKQWlFQXAzUHYya2EvSEtpWU9VQkMzaGJSMUVrTzVuQi8rd2x3QUpocS83VkM3MlU9Il0sImFsZyI6IkVTMjU2In0.eyJpYXQiOjE3MjU2MjI3ODIsImV4cCI6MTcyNTYyMzk4MiwiYXVkaXRFdmlkZW5jZSI6IldERXhNRFF6TlRBek1URTNNalUyTWpJM09EQlZXREZqd1FiYWprZWZwN3BobEhPYWVKcnRFYVJmNEw2WHQrYz0ifQ.LI0VMjGvsT3JPD2EaZ3El53YJ7wsuTgFuTKm2qIT1wxhdw-q-KAqNc5R8kj1BfmCNCVnoSrTlHtuUs_2N3q8Og</pre></div></article></div></div></div></span></div><div class="message-body px-0"><div class="notification tile is-parent pe-3"><div class="notification tile is-child box pe-3"><h1 class="font-monospace title">JWT<span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogFd3iXb7MTTCU2IzPvUiJ" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogFd3iXb7MTTCU2IzPvUiJ" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.body.jwt.content</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogFd3iXb7MTTCU2IzPvUiJ"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogFd3iXb7MTTCU2IzPvUiJ" style="white-space: pre-wrap;word-wrap: break-word;">eyJ0eXAiOiJKV1QiLCJ4NWMiOlsiTUlJRGZ6Q0NBeVdnQXdJQkFnSUhBTHZjNzdrUkREQUtCZ2dxaGtqT1BRUURBakNCbVRFTE1Ba0dBMVVFQmhNQ1JFVXhIekFkQmdOVkJBb01GbWRsYldGMGFXc2dSMjFpU0NCT1QxUXRWa0ZNU1VReFNEQkdCZ05WQkFzTVAwbHVjM1JwZEhWMGFXOXVJR1JsY3lCSFpYTjFibVJvWldsMGMzZGxjMlZ1Y3kxRFFTQmtaWElnVkdWc1pXMWhkR2xyYVc1bWNtRnpkSEoxYTNSMWNqRWZNQjBHQTFVRUF3d1dSMFZOTGxOTlEwSXRRMEU1SUZSRlUxUXRUMDVNV1RBZUZ3MHlNREF4TWpjd01EQXdNREJhRncweU5ERXlNVEV5TXpVNU5UbGFNSUdkTVFzd0NRWURWUVFHRXdKRVJURU9NQXdHQTFVRUJ3d0ZSWE56Wlc0eERqQU1CZ05WQkJFTUJUUTFNVE13TVNNd0lRWURWUVFKREJwU3c3eDBkR1Z1YzJOb1pXbGtaWElnVTNSeVljT2ZaU0EzTmpFZE1Cc0dBMVVFQlJNVU9EQXlOelk0T0RNeE1UQXdNREF4TVRjNE9UUXhLakFvQmdOVkJBTU1JVlZ1Wm1Gc2JHdHlZVzVyWlc1b1lYVnpJR0Z0SUZObFpWUkZVMVF0VDA1TVdUQmFNQlFHQnlxR1NNNDlBZ0VHQ1Nza0F3TUNDQUVCQndOQ0FBU2JicVJ4R1ZHQkxBRUJiMnRuYmJWeXBYMWtNTTdsVjVhdUZ5VGV3a08rcGdJNS9vUW9yU1c1SjJZVVZ6MS9ML083aWtLUE15OW5MYU0rVUIrWkw1WXdvNElCVHpDQ0FVc3dEQVlEVlIwVEFRSC9CQUl3QURBNEJnZ3JCZ0VGQlFjQkFRUXNNQ293S0FZSUt3WUJCUVVITUFHR0hHaDBkSEE2THk5bGFHTmhMbWRsYldGMGFXc3VaR1V2YjJOemNDOHdFd1lEVlIwbEJBd3dDZ1lJS3dZQkJRVUhBd0l3SHdZRFZSMGpCQmd3Rm9BVVlvaWF4Tjc4by9PVE9jdWZrT2NUbWoySnpIVXdIUVlEVlIwT0JCWUVGSnY2elk0clpKTTVrQjRaMEVpeG15eDRuOEQrTUE0R0ExVWREd0VCL3dRRUF3SUhnREFnQmdOVkhTQUVHVEFYTUFvR0NDcUNGQUJNQklFak1Ba0dCeXFDRkFCTUJFMHdlZ1lGS3lRSUF3TUVjVEJ2cENnd0pqRUxNQWtHQTFVRUJoTUNSRVV4RnpBVkJnTlZCQW9NRG1kbGJXRjBhV3NnUW1WeWJHbHVNRU13UVRBL01EMHdEUXdMUzNKaGJtdGxibWhoZFhNd0NRWUhLb0lVQUV3RU5STWhOUzFUVFVNdFFpMVVaWE4wYTJGeWRHVXRPRGd6TVRFd01EQXdNVEUzT0RrME1Bb0dDQ3FHU000OUJBTUNBMGdBTUVVQ0lCQTRCUDgrS1JqSmZCWDNGa2hHQUtoenlsY3JBWTlVU1JaRXcvZURZZWdKQWlFQXAzUHYya2EvSEtpWU9VQkMzaGJSMUVrTzVuQi8rd2x3QUpocS83VkM3MlU9Il0sImFsZyI6IkVTMjU2In0.eyJpYXQiOjE3MjU2MjI3ODIsImV4cCI6MTcyNTYyMzk4MiwiYXVkaXRFdmlkZW5jZSI6IldERXhNRFF6TlRBek1URTNNalUyTWpJM09EQlZXREZqd1FiYWprZWZwN3BobEhPYWVKcnRFYVJmNEw2WHQrYz0ifQ.LI0VMjGvsT3JPD2EaZ3El53YJ7wsuTgFuTKm2qIT1wxhdw-q-KAqNc5R8kj1BfmCNCVnoSrTlHtuUs_2N3q8Og</pre></div></article></div></div></div></span></h1><div class="tile is-ancestor pe-3"><div class="tile is-vertical is-parent pe-3"><div class="tile is-child box notification pe-3 is-primary"><h2 class="title">Headers<span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogQ7gSOkslY4h92DtCTpFd" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogQ7gSOkslY4h92DtCTpFd" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.body.jwt.content.header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogQ7gSOkslY4h92DtCTpFd"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogQ7gSOkslY4h92DtCTpFd" style="white-space: pre-wrap;word-wrap: break-word;">{&quot;typ&quot;:&quot;JWT&quot;,&quot;x5c&quot;:[&quot;MIIDfzCCAyWgAwIBAgIHALvc77kRDDAKBggqhkjOPQQDAjCBmTELMAkGA1UEBhMCREUxHzAdBgNVBAoMFmdlbWF0aWsgR21iSCBOT1QtVkFMSUQxSDBGBgNVBAsMP0luc3RpdHV0aW9uIGRlcyBHZXN1bmRoZWl0c3dlc2Vucy1DQSBkZXIgVGVsZW1hdGlraW5mcmFzdHJ1a3R1cjEfMB0GA1UEAwwWR0VNLlNNQ0ItQ0E5IFRFU1QtT05MWTAeFw0yMDAxMjcwMDAwMDBaFw0yNDEyMTEyMzU5NTlaMIGdMQswCQYDVQQGEwJERTEOMAwGA1UEBwwFRXNzZW4xDjAMBgNVBBEMBTQ1MTMwMSMwIQYDVQQJDBpSw7x0dGVuc2NoZWlkZXIgU3RyYcOfZSA3NjEdMBsGA1UEBRMUODAyNzY4ODMxMTAwMDAxMTc4OTQxKjAoBgNVBAMMIVVuZmFsbGtyYW5rZW5oYXVzIGFtIFNlZVRFU1QtT05MWTBaMBQGByqGSM49AgEGCSskAwMCCAEBBwNCAASbbqRxGVGBLAEBb2tnbbVypX1kMM7lV5auFyTewkO+pgI5/oQorSW5J2YUVz1/L/O7ikKPMy9nLaM+UB+ZL5Ywo4IBTzCCAUswDAYDVR0TAQH/BAIwADA4BggrBgEFBQcBAQQsMCowKAYIKwYBBQUHMAGGHGh0dHA6Ly9laGNhLmdlbWF0aWsuZGUvb2NzcC8wEwYDVR0lBAwwCgYIKwYBBQUHAwIwHwYDVR0jBBgwFoAUYoiaxN78o/OTOcufkOcTmj2JzHUwHQYDVR0OBBYEFJv6zY4rZJM5kB4Z0Eixmyx4n8D+MA4GA1UdDwEB/wQEAwIHgDAgBgNVHSAEGTAXMAoGCCqCFABMBIEjMAkGByqCFABMBE0wegYFKyQIAwMEcTBvpCgwJjELMAkGA1UEBhMCREUxFzAVBgNVBAoMDmdlbWF0aWsgQmVybGluMEMwQTA/MD0wDQwLS3JhbmtlbmhhdXMwCQYHKoIUAEwENRMhNS1TTUMtQi1UZXN0a2FydGUtODgzMTEwMDAwMTE3ODk0MAoGCCqGSM49BAMCA0gAMEUCIBA4BP8+KRjJfBX3FkhGAKhzylcrAY9USRZEw/eDYegJAiEAp3Pv2ka/HKiYOUBC3hbR1EkO5nB/+wlwAJhq/7VC72U=&quot;],&quot;alg&quot;:&quot;ES256&quot;}</pre></div></article></div></div></div></span><div class="tile is-ancestor pe-3"><div class="tile is-vertical is-parent pe-3"><div class="tile is-child pe-3"><pre class="json language-json">{
+  "typ" : "JWT",
+  "x5c" : [ "MIIDfzCCAyWgAwIBAgIHALvc77kRDDAKBggqhkjOPQQDAjCBmTELMAkGA1UEBhMCREUxHzAdBgNVBAoMFmdlbWF0aWsgR21iSCBOT1QtVkFMSUQxSDBGBgNVBAsMP0luc3RpdHV0aW9uIGRlcyBHZXN1bmRoZWl0c3dlc2Vucy1DQSBkZXIgVGVsZW1hdGlraW5mcmFzdHJ1a3R1cjEfMB0GA1UEAwwWR0VNLlNNQ0ItQ0E5IFRFU1QtT05MWTAeFw0yMDAxMjcwMDAwMDBaFw0yNDEyMTEyMzU5NTlaMIGdMQswCQYDVQQGEwJERTEOMAwGA1UEBwwFRXNzZW4xDjAMBgNVBBEMBTQ1MTMwMSMwIQYDVQQJDBpSw7x0dGVuc2NoZWlkZXIgU3RyYcOfZSA3NjEdMBsGA1UEBRMUODAyNzY4ODMxMTAwMDAxMTc4OTQxKjAoBgNVBAMMIVVuZmFsbGtyYW5rZW5oYXVzIGFtIFNlZVRFU1QtT05MWTBaMBQGByqGSM49AgEGCSskAwMCCAEBBwNCAASbbqRxGVGBLAEBb2tnbbVypX1kMM7lV5auFyTewkO+pgI5/oQorSW5J2YUVz1/L/O7ikKPMy9nLaM+UB+ZL5Ywo4IBTzCCAUswDAYDVR0TAQH/BAIwADA4BggrBgEFBQcBAQQsMCowKAYIKwYBBQUHMAGGHGh0dHA6Ly9laGNhLmdlbWF0aWsuZGUvb2NzcC8wEwYDVR0lBAwwCgYIKwYBBQUHAwIwHwYDVR0jBBgwFoAUYoiaxN78o/OTOcufkOcTmj2JzHUwHQYDVR0OBBYEFJv6zY4rZJM5kB4Z0Eixmyx4n8D+MA4GA1UdDwEB/wQEAwIHgDAgBgNVHSAEGTAXMAoGCCqCFABMBIEjMAkGByqCFABMBE0wegYFKyQIAwMEcTBvpCgwJjELMAkGA1UEBhMCREUxFzAVBgNVBAoMDmdlbWF0aWsgQmVybGluMEMwQTA/MD0wDQwLS3JhbmtlbmhhdXMwCQYHKoIUAEwENRMhNS1TTUMtQi1UZXN0a2FydGUtODgzMTEwMDAwMTE3ODk0MAoGCCqGSM49BAMCA0gAMEUCIBA4BP8+KRjJfBX3FkhGAKhzylcrAY9USRZEw/eDYegJAiEAp3Pv2ka/HKiYOUBC3hbR1EkO5nB/+wlwAJhq/7VC72U=" ],
+  "alg" : "ES256"
+}</pre></div></div></div></h2></div><div class="tile is-child box notification pe-3 is-info"><h2 class="title">Body<span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogzT3zM59R2wEV3k8KmVWs" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogzT3zM59R2wEV3k8KmVWs" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.body.jwt.content.body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogzT3zM59R2wEV3k8KmVWs"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogzT3zM59R2wEV3k8KmVWs" style="white-space: pre-wrap;word-wrap: break-word;">{&quot;iat&quot;:1725622782,&quot;exp&quot;:1725623982,&quot;auditEvidence&quot;:&quot;WDExMDQzNTAzMTE3MjU2MjI3ODBVWDFjwQbajkefp7phlHOaeJrtEaRf4L6Xt+c=&quot;}</pre></div></article></div></div></div></span></h2><div class="tile is-ancestor pe-3"><div class="tile is-vertical is-parent pe-3"><div class="tile is-child pe-3"><pre class="json language-json">{
+  "iat" : 1725622782,
+  "exp" : 1725623982,
+  "auditEvidence" : "WDExMDQzNTAzMTE3MjU2MjI3ODBVWDFjwQbajkefp7phlHOaeJrtEaRf4L6Xt+c="
+}</pre></div></div></div></div><div class="tile is-child box notification pe-3 is-primary"><h2 class="title">Signature</h2><p>Was verified using Key <b></b></p></div></div></div></div></div></div></article></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><div><div class="container page-break mx-3 mt-2"><div class="card full-width test-card msg-card"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="full-width"><a name="2e95af6d-1651-4c1a-9120-73984fcdae0d"></a><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 msg-toggle has-text-success"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogerToqYLfndVwLrjCE632" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogerToqYLfndVwLrjCE632" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of </p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogerToqYLfndVwLrjCE632"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogerToqYLfndVwLrjCE632" style="white-space: pre-wrap;word-wrap: break-word;">485454502f312e3120323030204f4b0d0a436f6e74656e742d547970653a206170706c69636174696f6e2f6f637465742d73747265616d0d0a436f6e74656e742d4c656e6774683a203232320d0a0d0a0200020000000000000005f3a155c7e69d659dfe54bdea7a49681143c8cb56a3f1cfbb4c8c3d50bdbdb65c47dcf49200000000000000056ab4e9759f9c5b6bc169690a616af06eefd6bf1e421a722d08328fb868fbddd9b430b960fa1b8640e33f67be7639066310cbdd0a479ae399573693ebf1b8d9b7775a8f5bd127cdbafb51f93bd75a7309c6b723aa9a36e4f2da211c3d9b6e1a61784a2c228bd1c8124a9bb518e6e6cb7593db8bf40e2a10b8131a43af6ba05cf17943aaeddcffbf2bbe6b4eb1891ef5760b34466e097b39804f34dc7ce09e71163c4bc7aae9d932</pre></div></article></div></div></div></span><span><a class="btn modal-button modal-button-details float-end partner-message-button" onclick="scrollToMessage(&#x27;08862bda-caef-4912-a763-9d78388dce75&#x27;,0)"><span class="icon is-small"><i class="fas fa-right-left"></i></span></a></span><h1 class="title ms-3 text-ellipsis has-text-success" style="overflow: hidden;"><span class="msg-sequence tag is-info is-light me-3 is-size-4 test-message-number">2</span><i class="fas fa-reply me-1" title="Response"></i><span></span><span class="font-monospace title ms-3">200</span><span></span><span style=""><span class="is-size-7 ms-4 "><span class="icon"><i class="fas fa-clock"></i></span>11:39:43.270921907Z</span><span class="is-size-7 ms-4">172.18.0.1:41500<span class="icon"><i class="fas fa-arrow-left"></i></span>vau-proxy-server:8080</span></span></h1></div></div></header><div class="card-content test-card-content msg-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-ancestor pe-3"><div class="tile is-parent is-vertical pe-3"><div><div class="container page-break my-3"><div class="card full-width test-card is-primary notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-danger header-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogzwhP7X9SLn2jlzFSxbpi" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogzwhP7X9SLn2jlzFSxbpi" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogzwhP7X9SLn2jlzFSxbpi"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogzwhP7X9SLn2jlzFSxbpi" style="white-space: pre-wrap;word-wrap: break-word;">Content-Type: application/octet-stream
+Content-Length: 222</pre></div></article></div></div></div></span><div class="text-danger"><h2 class="title">RES Headers</h2></div></div></div></header><div class="card-content test-card-content msg-header-content test-msg-header-content"><div><table class="table"><tbody><tr><td><pre>Content-Type</pre></td><td><pre class="value"><span class="is-size-7">application/octet-stream</span></pre></td></tr><tr><td><pre>Content-Length</pre></td><td><pre class="value"><span class="is-size-7">222</span></pre></td></tr></tbody></table></div></div></div></div></div><div><div class="container page-break my-3"><div class="card full-width test-card is-info notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-info body-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogQZqTxRYV3lLHQRXiPTld" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogQZqTxRYV3lLHQRXiPTld" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogQZqTxRYV3lLHQRXiPTld"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogQZqTxRYV3lLHQRXiPTld" style="white-space: pre-wrap;word-wrap: break-word;">0200020000000000000005f3a155c7e69d659dfe54bdea7a49681143c8cb56a3f1cfbb4c8c3d50bdbdb65c47dcf49200000000000000056ab4e9759f9c5b6bc169690a616af06eefd6bf1e421a722d08328fb868fbddd9b430b960fa1b8640e33f67be7639066310cbdd0a479ae399573693ebf1b8d9b7775a8f5bd127cdbafb51f93bd75a7309c6b723aa9a36e4f2da211c3d9b6e1a61784a2c228bd1c8124a9bb518e6e6cb7593db8bf40e2a10b8131a43af6ba05cf17943aaeddcffbf2bbe6b4eb1891ef5760b34466e097b39804f34dc7ce09e71163c4bc7aae9d932</pre></div></article></div></div></div></span><div class="text-info"><h2 class="title">RES Body</h2></div></div></div></header><div class="card-content test-card-content msg-body-content test-msg-body-content"><div><div style="width:100%;"><h1 class="font-monospace title">VAU EPA 3 Encrypted Message<span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogmElK8KVonNzDYgICRKm6" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogmElK8KVonNzDYgICRKm6" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogmElK8KVonNzDYgICRKm6"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogmElK8KVonNzDYgICRKm6" style="white-space: pre-wrap;word-wrap: break-word;">0200020000000000000005f3a155c7e69d659dfe54bdea7a49681143c8cb56a3f1cfbb4c8c3d50bdbdb65c47dcf49200000000000000056ab4e9759f9c5b6bc169690a616af06eefd6bf1e421a722d08328fb868fbddd9b430b960fa1b8640e33f67be7639066310cbdd0a479ae399573693ebf1b8d9b7775a8f5bd127cdbafb51f93bd75a7309c6b723aa9a36e4f2da211c3d9b6e1a61784a2c228bd1c8124a9bb518e6e6cb7593db8bf40e2a10b8131a43af6ba05cf17943aaeddcffbf2bbe6b4eb1891ef5760b34466e097b39804f34dc7ce09e71163c4bc7aae9d932</pre></div></article></div></div></div></span></h1><div class="tile is-ancestor pe-3"><div class="tile is-vertical is-parent pe-3"><div class="tile is-child box notification pe-3 is-primary"><h2 class="title">Header</h2><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogLAJQqnpKHz6GiPuZh6QA" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogLAJQqnpKHz6GiPuZh6QA" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogLAJQqnpKHz6GiPuZh6QA"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogLAJQqnpKHz6GiPuZh6QA" style="white-space: pre-wrap;word-wrap: break-word;">0200020000000000000005f3a155c7e69d659dfe54bdea7a49681143c8cb56a3f1cfbb4c8c3d50bdbdb65c</pre></div></article></div></div></div></span><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Version: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">02</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>PU: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">00</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Request?: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">02</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Request Counter: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">5</span></div></div><div class="row is-multiline is-mobile"><div class="col-sm-4"><b>Key ID: </b></div><div class="col"><span style="font-family: monospace; padding-right: 0.3rem;">f3a155c7e69d659dfe54bdea7a49681143c8cb56a3f1cfbb4c8c3d50bdbdb65c</span></div></div></div><div class="tile is-child box notification pe-3 is-info"><h2 class="title">Message</h2><div class="container page-break mx-3 mt-2"><div class="card full-width test-card msg-card"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="full-width"><a name="aa8c9af6-3151-4f07-b44f-12171a11cbe8"></a><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 msg-toggle has-text-success"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogbKiDfzCmXLyVYHxSlsMb" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogbKiDfzCmXLyVYHxSlsMb" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogbKiDfzCmXLyVYHxSlsMb"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogbKiDfzCmXLyVYHxSlsMb" style="white-space: pre-wrap;word-wrap: break-word;">HTTP/1.1 201 Created
+date: Fri, 6 Sep 2024 11:39:43 GMT
+content-type: application/json
+content-length: 39
+
+{&quot;validTo&quot;:&quot;2024-12-05T12:39:43+01:00&quot;}</pre></div></article></div></div></div></span><h1 class="title ms-3 text-ellipsis has-text-success" style="overflow: hidden;"><span></span><i class="fas fa-reply me-1" title="Response"></i><span></span><span class="font-monospace title ms-3">201</span><span></span><span style=""><span></span><span></span></span></h1></div></div></header><div class="card-content test-card-content msg-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-ancestor pe-3"><div class="tile is-parent is-vertical pe-3"><div><div class="container page-break my-3"><div class="card full-width test-card is-primary notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-danger header-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialog5D6dGOiTnkvXJW1ji5Ih" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialog5D6dGOiTnkvXJW1ji5Ih" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.header</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialog5D6dGOiTnkvXJW1ji5Ih"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialog5D6dGOiTnkvXJW1ji5Ih" style="white-space: pre-wrap;word-wrap: break-word;">date: Fri, 6 Sep 2024 11:39:43 GMT
+content-type: application/json
+content-length: 39</pre></div></article></div></div></div></span><div class="text-danger"><h2 class="title">RES Headers</h2></div></div></div></header><div class="card-content test-card-content msg-header-content test-msg-header-content"><div><table class="table"><tbody><tr><td><pre>date</pre></td><td><pre class="value"><span class="is-size-7">Fri, 6 Sep 2024 11:39:43 GMT</span></pre></td></tr><tr><td><pre>content-type</pre></td><td><pre class="value"><span class="is-size-7">application/json</span></pre></td></tr><tr><td><pre>content-length</pre></td><td><pre class="value"><span class="is-size-7">39</span></pre></td></tr></tbody></table></div></div></div></div></div><div><div class="container page-break my-3"><div class="card full-width test-card is-info notification"><header class="card-header test-card-header"><div class="card-header-title test-card-header-title card-toggle"><div class="tile is-child pe-3"><i class="fa-solid fa-toggle-on toggle-icon float-end me-3 is-size-3 text-info body-toggle"></i><span><a class="btn modal-button modal-button-details float-end mx-2 test-modal-content" data-bs-target="#dialogdM1TC573X6ZAXgxB6pA8" data-bs-toggle="modal"><span class="icon is-small"><i class="fas fa-align-left"></i></span></a><div class="modal" id="dialogdM1TC573X6ZAXgxB6pA8" role="dialog"><div class="modal-dialog"><div class="modal-background"></div><div class="modal-content" role="document" style="width: 900px;"><div class="modal-header bg-dark"><div style="display: inline-flex;"><p style="align-self: center;color:#ffff;" class="modal-title">Raw content of body.decrypted.body</p><button class="btn btn-sm copyToClipboard-button" data-target="text-dialogdM1TC573X6ZAXgxB6pA8"><i class="fa fa-clipboard"></i></button></div><button class="btn btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div><article class="message"><div class="message-body"><pre id="text-dialogdM1TC573X6ZAXgxB6pA8" style="white-space: pre-wrap;word-wrap: break-word;">{&quot;validTo&quot;:&quot;2024-12-05T12:39:43+01:00&quot;}</pre></div></article></div></div></div></span><div class="text-info"><h2 class="title">RES Body</h2></div></div></div></header><div class="card-content test-card-content msg-body-content test-msg-body-content"><div><div class="tile is-ancestor pe-3"><div class="tile is-vertical is-parent pe-3"><div class="tile is-child pe-3"><pre class="json language-json">{
+  "validTo" : "2024-12-05T12:39:43+01:00"
+}</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><div class="created fst-italic is-size-6 float-end me-6">Created Fri, 6 Sep 2024 11:39:46 GMT</div></div></section></body><script id="mainWebUiScript">/*
+ * Copyright 2024 gematik GmbH
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const menuHtmlTemplateRequest =
+    "<div class=\"ms-1 is-size-7\">\n"
+    + "  <a onclick=\"scrollToMessage('${uuid}',${sequenceNumber})\" class=\"mt-3 is-block\">\n"
+    + "    <div class=\"has-text-link d-flex align-items-center\">\n"
+    + "      <span class=\"tag is-info is-light me-1\">${sequence}</span>\n"
+    + "      <i class=\"fas fa-share\"></i>\n"
+    + "      <span class=\"mx-1\">REQ</span>\n"
+    + "      <span class=\"has-text-dark text-ellipsis ms-auto\">${timestamp}</span>\n"
+    + "    </div>\n"
+    + "    <div class=\"ms-4 has-text-link d-flex align-items-center\">\n"
+    + "      <span class=\"ms-1 has-text-weight-bold text-ellipsis\""
+    + "        title=\"${menuInfoString}\">${menuInfoString}"
+    + "      </span>\n"
+    + "    </div>\n"
+    + "    <div class=\"ms-4 has-text-link d-flex align-items-center\">\n"
+    + "      <span class=\"ms-3 text-ellipsis\""
+    + "        title=\"${additionalInformation}\">${additionalInformation}"
+    + "      </span>\n"
+    + "    </div>\n"
+    + "  </a></div>";
+const menuHtmlTemplateResponse =
+    "<div class=\"ms-1 mb-4 is-size-7\">"
+    + "  <a onclick=\"scrollToMessage('${uuid}',${sequenceNumber})\" class=\"mt-3 is-block\">\n"
+    + "    <div class=\"mb-1 text-success d-flex align-items-center\">\n"
+    + "      <span class=\"tag is-info is-light me-1\">${sequence}</span>\n"
+    + "      <i class=\"fas fa-reply\"></i>\n"
+    + "      <span class=\"ms-1\">RES</span>\n"
+    + "      <span class=\"mx-1 has-text-weight-bold\"\n"
+    + "         title=\"${menuInfoString}\">${menuInfoString}"
+    + "      </span>\n"
+    + "      <span class=\"has-text-dark text-ellipsis ms-auto\">${timestamp}</span>\n"
+    + "    </div>\n"
+    + "    <div class=\"ms-5 mb-4 text-success d-flex align-items-center\">${additionalInformation}\n"
+    + "    </div>\n"
+    + "  </a></div>";
+
+const menuHtmlTemplateSubResponse =
+    "      <i class=\"fas fa-reply\"></i>\n"
+    + "      <span class=\"ms-1\">RES</span>\n"
+    + "      <span class=\"mx-1\" \n"
+    + "         title=\"${additionalInformation}\">${additionalInformation}"
+    + "      </span>\n";
+
+let msgIndex = 1;
+
+// called implicitly by the HTML code created by the server at
+// de.gematik.rbellogger.renderer.RbelHtmlRenderingToolkit.renderDocument (end of method)
+function createMenuEntry(msgMetaData) {
+    let isRequest = msgMetaData.request;
+
+    let menuItem;
+    if (isRequest) {
+        menuItem = menuHtmlTemplateRequest;
+    } else {
+        menuItem = menuHtmlTemplateResponse;
+    }
+    menuItem = menuItem
+        .replace("${uuid}", msgMetaData.uuid)
+        .replace("${sequence}", msgMetaData.sequenceNumber + 1)
+        .replace("${sequenceNumber}", msgMetaData.sequenceNumber);
+    if (msgMetaData.menuInfoString != null) {
+        menuItem = menuItem
+            .replaceAll("${menuInfoString}", msgMetaData.menuInfoString);
+    } else {
+        menuItem = menuItem
+            .replaceAll("${menuInfoString}", " ");
+    }
+    if (msgMetaData.additionalInformation != null &&
+        msgMetaData.additionalInformation.length > 0) {
+        if (isRequest) {
+            menuItem = menuItem
+                .replaceAll("${additionalInformation}",
+                    msgMetaData.additionalInformation[0]);
+        } else {
+            let subMenu = menuHtmlTemplateSubResponse
+                .replaceAll("${additionalInformation}",
+                    msgMetaData.additionalInformation[0]);
+            menuItem = menuItem
+                .replaceAll("${additionalInformation}",
+                    subMenu);
+        }
+    } else {
+        menuItem = menuItem
+            .replaceAll("${additionalInformation}", " ");
+    }
+    if (msgMetaData.timestamp != null) {
+        menuItem = menuItem
+            .replace("${timestamp}",
+                formatTimeStamp(msgMetaData.timestamp));
+    } else {
+        menuItem = menuItem
+            .replace("${timestamp}", " ");
+    }
+    document.getElementById("sidebar-menu")
+        .appendChild(htmlToElement(menuItem));
+}
+
+function formatTimeStamp(timestampIsoString) {
+    const containsZoneId = timestampIsoString.includes('[');
+    let stringToConvert = timestampIsoString;
+    if (containsZoneId) {
+        stringToConvert = timestampIsoString.substring(0,
+            timestampIsoString.indexOf('['));
+    }
+    return dayjs(stringToConvert).format("HH:mm:ss.SSS");
+}
+
+
+function htmlToElement(html) {
+    const template = document.createElement('template');
+    html = html.trim(); // Never return a text node of whitespace as the result
+    template.innerHTML = html;
+    return template.content.firstChild;
+}
+
+
+// noinspection JSUnusedLocalSymbols the sequence number is only used in the tigerProxy context
+function scrollToMessage(uuid, sequenceNumber) {
+    scrollMessageIntoView(uuid);
+}
+
+function scrollMessageIntoView(uuid) {
+    let elements = document.getElementsByName(uuid);
+    if (elements.length > 0) {
+        elements[0].scrollIntoView(true);
+    }
+
+}
+
+function getAll(selector, baseEl) {
+    if (!baseEl) {
+        baseEl = document;
+    }
+    return Array.prototype.slice.call(baseEl.querySelectorAll(selector), 0);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Modals
+    const $modalButtons = getAll('.modal-button');
+    const $copyButtons = getAll('.copyToClipboard-button');
+
+    if ($modalButtons.length > 0) {
+        $modalButtons.forEach(function ($el) {
+            $el.addEventListener('click', function (e) {
+                e.preventDefault();
+                return false;
+            });
+        });
+    }
+
+    if ($copyButtons.length > 0) {
+        $copyButtons.forEach(function ($el) {
+            $el.addEventListener('click', function (e) {
+                let target = $el.dataset.target;
+                let $target = document.getElementById(target);
+                navigator.clipboard.writeText($target.textContent);
+                e.preventDefault();
+                return false;
+            });
+        });
+    }
+});
+
+function toggleCollapsableIcon(target) {
+    const classList = target.classList;
+    const flag = classList.contains("fa-toggle-on");
+    classList.toggle("fa-toggle-on", !flag);
+    classList.toggle("fa-toggle-off", flag);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    let msgCards = document.getElementsByClassName('msg-card');
+    for (let i = 0; i < msgCards.length; i++) {
+        msgCards[i].children[0].children[0].children[0].children[1].addEventListener(
+            'click', e => {
+                e.currentTarget
+                    .parentElement.parentElement.parentElement.parentElement
+                    .childNodes[1].classList.toggle('d-none');
+                toggleCollapsableIcon(e.currentTarget);
+                e.preventDefault();
+                return false;
+            });
+
+        document.querySelectorAll('pre.json').forEach(el => {
+            if (el.getAttribute("data-hljs-highlighted") !== "true") {
+                hljs.highlightElement(el);
+                el.setAttribute("data-hljs-highlighted", "true");
+            }
+        });
+    }
+
+    let notification = document.getElementsByClassName('card notification');
+    for (let i = 0; i < notification.length; i++) {
+        notification[i].children[0].children[0].children[0].children[0].addEventListener(
+            'click', e => {
+                e.currentTarget
+                    .parentElement.parentElement.parentElement.parentElement
+                    .childNodes[1].classList.toggle('d-none');
+                toggleCollapsableIcon(e.currentTarget);
+                e.preventDefault();
+                return false;
+            });
+    }
+});
+</script><script>createMenuEntry({"sequenceNumber":0,"request":true,"menuInfoString":"POST /1725622308751","uuid":"08862bda-caef-4912-a763-9d78388dce75","timestamp":"2024-09-06T11:39:43.200171698Z"})
+createMenuEntry({"sequenceNumber":1,"request":false,"menuInfoString":"200","uuid":"2e95af6d-1651-4c1a-9120-73984fcdae0d","timestamp":"2024-09-06T11:39:43.270921907Z"})</script></html>
