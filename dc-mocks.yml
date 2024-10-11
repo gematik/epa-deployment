@@ -19,6 +19,8 @@ services:
     environment:
       - SPRING_CONFIG_LOCATION=/app/config/application.yaml
       - MANAGEMENT_SERVER_PORT=
+      - TIGERPROXY_ADMINPORT=8080
+      - TIGERPROXY_PROXYPORT=443
     networks:
       - mock-network
     volumes:
@@ -28,7 +30,7 @@ services:
       - "${TIGER_PROXY_ADMIN_PORT}:8080"
 
   vau-proxy-server:
-    image: gematik1/epa-vau-proxy-server:1.0.10
+    image: gematik1/epa-vau-proxy-server:1.0.11
     container_name: vau-proxy-server
     restart: 'always'
     healthcheck:
@@ -63,7 +65,7 @@ services:
       - "${INFORMATION_SERVICE_PORT}:8080"
 
   authorization-service:
-    image: gematik1/asforepa:2.0.3
+    image: gematik1/asforepa:3.0.0
     container_name: authorization-service
     restart: 'always'
     healthcheck:
@@ -75,7 +77,7 @@ services:
       - ASFOREPA_IDP_DIENST_URL=https://idp-ref.app.ti-dienste.de/auth
       - ASFOREPA_CLIENT_ID=GEMgemaePAAHdL9ZU23R
       - ASFOREPA_REDIRECT_URI=https://test-ps.gematik.de/ePA
-      - ASFOREPA_SCOPES=gem-auth,openid
+      - ASFOREPA_SCOPES=ePA-PS-gemtk,openid
       - ASFOREPA_LOGLEVEL=debug
       - MANAGEMENT_PORT=8186
     networks:
@@ -93,7 +95,7 @@ services:
       - "${MEDICATION_SERVICE_PORT}:8080"
 
   medication-render-service:
-    image: gematik1/epa-medication-render:1.0.5
+    image: gematik1/epa-medication-render:1.0.6
     container_name: medication-render-service
     restart: 'always'
     healthcheck:
@@ -110,7 +112,7 @@ services:
       - "${MEDICATION_RENDER_SERVICE_PORT}:8080"
 
   entitlement-service:
-    image: gematik1/epa-entitlement:1.0.3
+    image: gematik1/epa-entitlement:1.0.4
     container_name: entitlement-service
     restart: 'always'
     healthcheck:

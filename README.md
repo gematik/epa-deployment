@@ -365,13 +365,13 @@ The service is described in the following openAPI specification: [MedicationRend
 To retrieve the eML as XHTML execute the following curl command:
 
 ```bash
-curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/xhtml --header 'Accept: text/html' --header 'x-insurantid: Z1234567891'
+curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/xhtml --header 'Accept: text/html' --header 'x-insurantid: Z123456783'
 ```
 
 To retrieve the same eML as PDF/A document execute the following curl command:
 
 ```bash
-curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/pdf --header 'Accept: application/pdf' --header 'x-insurantid: Z1234567891' --output eml.pdf
+curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/pdf --header 'Accept: application/pdf' --header 'x-insurantid: Z123456783' --output eml.pdf
 ```
 
 To retrieve the eML as FHIR Resource execute the following curl command:

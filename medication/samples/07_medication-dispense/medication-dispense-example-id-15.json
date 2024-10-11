@@ -8,13 +8,19 @@
       "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication-dispense"
     ]
   },
+  "identifier": [
+    {
+      "system": "https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier",
+      "value": "86d65df3-5ca4-457d-8859-285830fe091b_160.153.303.257.459"
+    }
+  ],
   "subject": {
     "identifier": {
       "system": "http://fhir.de/sid/gkv/kvid-10",
-      "value": "Z1234567891"
+      "value": "Z123456783"
     }
   },
-  "whenHandedOver": "2024-01-14T07:13:00+05:00",
+  "whenHandedOver": "2024-01-14",
   "performer": [
     {
       "actor": {

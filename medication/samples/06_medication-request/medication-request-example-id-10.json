@@ -14,10 +14,20 @@
   "authoredOn": "2024-01-13T12:22:48Z",
   "subject": {
     "identifier": {
-      "value": "Z1234567891",
+      "value": "Z123456783",
       "system": "http://fhir.de/sid/gkv/kvid-10"
     }
   },
+  "identifier": [
+    {
+      "system": "https://gematik.de/fhir/epa-medication/sid/rx-prescription-process-identifier",
+      "value": "160.153.303.257.459_20250122"
+    },
+    {
+      "system": "https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier",
+      "value": "6ae6a7ca-c9b5-46bf-9411-2ba49d96f988_160.153.303.257.459"
+    }
+  ],
   "dosageInstruction": [
     {
       "text": "1-0-1"
