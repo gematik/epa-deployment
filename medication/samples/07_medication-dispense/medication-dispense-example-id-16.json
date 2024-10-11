@@ -11,10 +11,10 @@
   "subject": {
     "identifier": {
       "system": "http://fhir.de/sid/gkv/kvid-10",
-      "value": "Z1234567891"
+      "value": "Z123456783"
     }
   },
-  "whenHandedOver": "2024-02-16T07:13:00+05:00",
+  "whenHandedOver": "2024-02-16",
   "performer": [
     {
       "actor": {

@@ -5,6 +5,7 @@
 README_INTERNAL.md
 dc-clients.yml
 dc-mocks-internal.yml
+dc-clients-ru.yml
 certs
 jenkinsfiles
 vau-proxy/application-client-prod.yaml

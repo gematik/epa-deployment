@@ -13,7 +13,7 @@ zion:
         200permitPermit:
           response:
             statusCode: 200
-            body: '[{ "functionId": "medication", "decision": "permit" }, { "functionId": "erp-submission", "decision": "permit" }]'
+            body: '{"data":[{ "functionId": "medication", "decision": "permit" }, { "functionId": "erp-submission", "decision": "permit" }]}'
         200permitDeny:
           importance: +1
           request-criterions:
@@ -21,7 +21,7 @@ zion:
             - "'${insurantId}' == 'X110421334'"
           response:
             statusCode: 200
-            body: '[{ "functionId": "medication", "decision": "deny" }, { "functionId": "erp-submission", "decision": "permit" }]'
+            body: '{"data":[{ "functionId": "medication", "decision": "deny" }, { "functionId": "erp-submission", "decision": "permit" }]}'
         200denyDeny:
           importance: +1
           request-criterions:
@@ -29,7 +29,7 @@ zion:
             - "'${insurantId}' == 'X110426931'"
           response:
             statusCode: 200
-            body: '[{ "functionId": "medication", "decision": "deny" }, { "functionId": "erp-submission", "decision": "deny" }]'
+            body: '{"data":[{ "functionId": "medication", "decision": "deny" }, { "functionId": "erp-submission", "decision": "deny" }]}'
         400:
           importance: +1
           request-criterions:

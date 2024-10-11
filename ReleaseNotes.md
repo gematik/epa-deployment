@@ -2,6 +2,11 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.15
+- Updated version of medication-render service to 1.0.6
+- Updated version of vau-proxy-server to 1.0.11
+- Updated information and entitlement services
+
 ## Release 1.0.14
 
 ### updated
@@ -16,7 +21,6 @@
 - Updated ReadMe
   - update RBEL traffic examples showing raw (encoded/encrypted) data as well as HTTP request and responses
   - update RBEL traffic of VAU handshake and user session showing the IDP communication as it is needed for OIDC flow
-  - 
 
 ## Release 1.0.13
 
