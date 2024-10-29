@@ -1,0 +1,73 @@
+{
+  "resourceType": "Medication",
+  "id": "example-epa-medication-snomed-8",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2024-01-01T01:01:01.000+00:00",
+    "profile":  [
+      "https://gematik.de/fhir/epa-medication/StructureDefinition/epa-medication"
+    ]
+  },
+  "identifier":  [
+    {
+      "system": "https://gematik.de/fhir/epa-medication/sid/epa-medication-unique-identifier",
+      "value": "48E951DFE10F5669D3C66D581E5767DE32CFD788C94693E5C78193DB2D3F095B"
+    }
+  ],
+  "code": {
+    "coding":  [
+      {
+        "system": "http://fhir.de/CodeSystem/ifa/pzn",
+        "code": "03953522",
+        "display": "Metoprolol-ratiopharm® 100 mg Tabletten"
+      },
+      {
+        "system": "http://fhir.de/CodeSystem/bfarm/atc",
+        "code": "C07AB02",
+        "display": "Metoprolol",
+        "version": "2022"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "7092007",
+        "version": "http://snomed.info/sct/11000274103/version/20240515",
+        "display": "Product containing metoprolol (medicinal product)"
+      }
+    ]
+  },
+  "form": {
+    "coding":  [
+      {
+        "system": "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM",
+        "code": "TAB",
+        "display": "Tabletten",
+        "version": "1.10"
+      },
+      {
+        "system": "http://standardterms.edqm.eu",
+        "code": "12200",
+        "display": "Tablet"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385055001",
+        "version": "http://snomed.info/sct/11000274103/version/20240515",
+        "display": "Tablet (basic dose form)"
+      }
+    ]
+  },
+  "amount": {
+    "numerator": {
+      "value": 100,
+      "code": "mg",
+      "system": "http://unitsofmeasure.org",
+      "unit": "MilliGram"
+    },
+    "denominator": {
+      "value": 1,
+      "code": "{Tablet}",
+      "system": "http://unitsofmeasure.org",
+      "unit": "Tablet"
+    }
+  }
+}

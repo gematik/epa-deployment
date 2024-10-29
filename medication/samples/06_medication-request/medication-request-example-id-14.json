@@ -9,12 +9,12 @@
   "intent": "order",
   "priority": "asap",
   "medicationReference": {
-    "reference": "Medication/6"
+    "reference": "Medication/9"
   },
-  "authoredOn": "2024-01-12T12:22:48Z",
+  "authoredOn": "2024-07-01T12:22:48Z",
   "subject": {
     "identifier": {
-      "value": "Z1234567891",
+      "value": "Z123456783",
       "system": "http://fhir.de/sid/gkv/kvid-10"
     }
   },

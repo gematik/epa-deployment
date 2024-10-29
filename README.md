@@ -11,7 +11,7 @@ In particular, the following uses cases are covered:
 
 - Perform VAU handshake and send and receive encrypted data
 - Create a user session with the ePA authorization service and IDP (RU)
-- Create an entitlement **(not included yet)**
+- Create an entitlement
 - Get the medication list (eML) for a patient as XHTML and PDF/A document
 
 ## Setup
@@ -36,11 +36,13 @@ You need the following system resources to run the services:
 ### Running the services with docker-compose
 
 Start the mock services with the following command
+
 ```bash
 docker-compose -f dc-mocks.yml up
 ```
 
 Stop these services with the following command
+
 ```bash
 docker-compose -f dc-mocks.yml down
 ```
@@ -51,22 +53,23 @@ To import medications related data to the medication-service execute the followi
 
 ```bash
 cd medication
-./import.sh
+./import-tx.sh
 ```
 
 After successful import the data can be accessed via the following curl commands (placeholder <docker-host> have to be replaced with the actual host IP or name):
 
 ```bash
-curl --location http://<docker-host>:8084/fhir/Organization/1
-curl --location http://<docker-host>:8084/fhir/Practitioner/2
-curl --location http://<docker-host>:8084/fhir/PractitionerRole/3
-curl --location http://<docker-host>:8084/fhir/Patient/4
-curl --location http://<docker-host>:8084/fhir/Medication/5
-curl --location http://<docker-host>:8084/fhir/MedicationRequest/8
-curl --location http://<docker-host>:8084/fhir/MedicationDispense/13
+curl --location http://<docker-host>:8084/fhir/Organization
+curl --location http://<docker-host>:8084/fhir/Practitioner
+curl --location http://<docker-host>:8084/fhir/PractitionerRole
+curl --location http://<docker-host>:8084/fhir/Patient
+curl --location http://<docker-host>:8084/fhir/Medication
+curl --location http://<docker-host>:8084/fhir/MedicationRequest
+curl --location http://<docker-host>:8084/fhir/MedicationDispense
 ```
 
 Searching by including references in the result:
+
 - Query PractitionerRole with the related Organization
 
 ```bash
@@ -74,6 +77,7 @@ curl --location http://<docker-host>:8084/fhir/PractitionerRole?_include=Practit
 ```
 
 - Query  MedicationRequest with requester (PractitionerRole) and the Organization related to it
+
 ```bash
 curl --location http://<docker-host>:8084/fhir/MedicationRequest?_include=MedicationRequest:requester&_include:iterate=PractitionerRole:organization
 ```
@@ -92,34 +96,42 @@ The mock application vau-proxy-server sets specific HTTP headers `VAU-DEBUG-S_K1
 > This not specification compliant and is only supported by this mock implementation (vau-proxy-server in combination with the tiger-proxy).
 
 #### User data
+
 The ePA client has to set a specific HTTP header `VAU-nonPU-Tracing` in the request to indicate the encrypted data within nonPU environments ([A_24477](https://gemspec.gematik.de/docs/gemSpec/gemSpec_Krypt/latest/index.html#7.7)). Thus, the tiger-proxy decrypts and shows the decrypted data in the request & response body.
 
 ### Information traffic
 
 #### Record Status traffic example
-The offline page [./doc/html/InformationRecordStatus.mhtml](./doc/html/InformationRecordStatus.mhtml) shows an example traffic of retrieving the status of a patient health record with information service (mock).
+
+The offline page [./doc/html/InformationRecordStatus.html](./doc/html/InformationRecordStatus.html) shows an example traffic of retrieving the status of a patient health record with information service (mock).
 
 #### Consent Decisions traffic example
-The offline page [./doc/html/InformationConsentDecisions.mhtml](./doc/html/InformationConsentDecisions.mhtml) shows an example traffic of retrieving the consent decisions of a patient with information service (mock).
+
+The offline page [./doc/html/InformationConsentDecision.html](./doc/html/InformationConsentDecision.html) shows an example traffic of retrieving the consent decisions of a patient with information service (mock).
 
 #### VAU and Authorization traffic example
-The offline page [./doc/html/VauHandshakeAndUserSession.mhtml](./doc/html/VauHandshakeAndUserSession.mhtml)  shows a decrypted example traffic of the VAU handshake between the client and the VAU Proxy Server as well as the user session creation with authorization service (mock) & IDP (RU).
+
+The offline page [./doc/html/VauHandshakeAndUserSession.html](./doc/html/VauHandshakeAndUserSession.html)  shows a decrypted example traffic of the VAU handshake between the client and the VAU Proxy Server as well as the user session creation with authorization service (mock) & IDP (RU).
 
 ### Entitlement decrypted traffic
 
 #### New entitlement traffic example
-The offline page [./doc/html/SetEntitlement.mhtml](./doc/html/SetEntitlement.mhtml) shows a decrypted example traffic of adding a new entitlement with entitlement service (mock).
+
+The offline page [./doc/html/SetEntitlement.html](./doc/html/SetEntitlement.html) shows a decrypted example traffic of adding a new entitlement with entitlement service (mock).
 
 ### Medication decrypted traffic
 
 #### Electronic Medication List (eML) as PDF/A traffic example
-The offline page [./doc/html/MedicationPDF.mhtml](./doc/html/MedicationPDF.mhtml) shows a decrypted example traffic of retrieving the entire medication list as PDF/A document with medication render service (mock).
+
+The offline page [./doc/html/MedicationPDF.html](./doc/html/MedicationPDF.html) shows a decrypted example traffic of retrieving the entire medication list as PDF/A document with medication render service (mock).
 
 #### Electronic Medication List (eML) as XHTML traffic example
+
 The offline page [./doc/html/MedicationXHTML.mhtml](./doc/html/MedicationXHTML.mhtml) shows a decrypted example traffic of retrieving the entire medication list as XHTML document with medication render service (mock).
 
 #### Electronic Medication List (eML) as FHIR Resource traffic example
-The offline page [./doc/html/MedicationFHIR.mhtml](./doc/html/MedicationFHIR.mhtml) shows a decrypted example traffic of retrieving the entire medication list as FHIR resource with medication service (mock).
+
+The offline page [./doc/html/MedicationFHIR.html](./doc/html/MedicationFHIR.html) shows a decrypted example traffic of retrieving the entire medication list as FHIR resource with medication service (mock).
 
 ## PS-Testsuite
 
@@ -147,66 +159,78 @@ To do this, the following entries must be adjusted:
 ### Running the PS-Testsuite Container in Docker
 
 Start the testsuite container with the following command
+
 ```bash
 docker-compose -f dc-testsuite.yml up
 ```
 
 When the container log shows the following message, the testsuite is ready to be used and a webbrowser should call the URL [http://\<docker-host\>:8123](http://localhost:8123) to go on. Otherwise, the timeout will stop the testsuite and the container stops automatically. In this case you have to rerun the testsuite with the command above.
+
 ```bash
 ========================================================================================================================
-  ____ _____  _    ____ _____ ___ _   _  ____  __        _____  ____  _  _______ _     _____        __  _   _ ___         
- / ___|_   _|/ \  |  _ \_   _|_ _| \ | |/ ___| \ \      / / _ \|  _ \| |/ /  ___| |   / _ \ \      / / | | | |_ _|        
- \___ \ | | / _ \ | |_) || |  | ||  \| | |  _   \ \ /\ / / | | | |_) | ' /| |_  | |  | | | \ \ /\ / /  | | | || |         
+  ____ _____  _    ____ _____ ___ _   _  ____  __        _____  ____  _  _______ _     _____        __  _   _ ___       
+ / ___|_   _|/ \  |  _ \_   _|_ _| \ | |/ ___| \ \      / / _ \|  _ \| |/ /  ___| |   / _ \ \      / / | | | |_ _|      
+ \___ \ | | / _ \ | |_) || |  | ||  \| | |  _   \ \ /\ / / | | | |_) | ' /| |_  | |  | | | \ \ /\ / /  | | | || |       
   ___) || |/ ___ \|  _ < | |  | || |\  | |_| |   \ V  V /| |_| |  _ <| . \|  _| | |__| |_| |\ V  V /   | |_| || |   _ _ _ 
  |____/ |_/_/   \_\_| \_\|_| |___|_| \_|\____|    \_/\_/  \___/|_| \_\_|\_\_|   |_____\___/  \_/\_/     \___/|___| (_|_|_)
-                                                                                                                          
+                                                                                                                        
 ========================================================================================================================
 09:21:12.065 [main ] INFO  d.g.t.t.l.TigerDirector - Waiting for workflow Ui to fetch status...
 09:21:12.065 [main ] INFO  d.g.t.t.l.TigerDirector - Workflow UI http://localhost:8123
 ```
 
 Stop the testsuite container with the following command
+
 ```bash
 docker-compose -f dc-testsuite.yml down
 ```
 
 ### Execute the testcases
 
-After calling the URL [http://\<docker-host\>:8123](http://localhost:8123) in a webbrowser, the workflowUI will be shown. 
+After calling the URL [http://\<docker-host\>:8123](http://localhost:8123) in a webbrowser, the workflowUI will be shown.
 As depicted in [Waiting WorkflowUI](./doc/img/testsuite/workflowUI%20-%20start%20and%20wait.png) the testcase for VAU handshake is automatically selected. Now, the testsuite will trace any traffic flow between the client and the mock services on [https://\<docker-host\>:443](https://localhost:443).
 On the bottom of the page you can see the request to trigger a specific functionality within your PS application. Do so and after the finished execution click on the "Continue" button on the bottom of the page.
 
-Now, the traffic will be analyzed and the results will be shown in the workflowUI. If everything is fine, the testcase will be marked as successful as depicted in [Successful WorkflowUI](./doc/img/testsuite/workflowUI%20-%20successful%20finished.png). 
+Now, the traffic will be analyzed and the results will be shown in the workflowUI. If everything is fine, the testcase will be marked as successful as depicted in [Successful WorkflowUI](./doc/img/testsuite/workflowUI%20-%20successful%20finished.png).
 
 If the testcase failed, the testcase will be marked as failed as depicted in [Failed WorkflowUI](./doc/img/testsuite/workflowUI%20-%20failed%20finished.png) and you can analyze the reason for the failure e.g. within message flow traced during the execution. Click in the upper right corner button to open the "Rbel Log Details" to have a closer look on the messages itself.
 
 ### Choose a testcase
+
 By default, the execution of the VAU handshake test case is selected. To select a different test case, you must configure it via the .env file, in which you must adjust the value for ‘PS_TESTSUITE_TESTS’ accordingly.
 
 ### Testcases
 
 #### Record Status
+
 The testcase verifies the message with the information service (mock) necessary to retrieve the status of a patient health record. The testcase will be successful if the record status is successfully retrieved with the GET message.
 
 #### Consent Decisions
+
 The testcase verifies the message with the information service (mock) necessary to retrieve the consent decisions of a patient. The testcase will be successful if the consent decisions are successfully retrieved with the GET message.
 
 #### VAU Handshake
+
 The testcase verifies the VAU handshake between the client and the VAU Proxy Server (mock). The testcase will be successful if the VAU handshake is successfully completed with messages M1 to M4.
 
 #### User Session (login)
+
 The testcase verifies the message with the authorization service (mock) necessary to create a user session, but **NOT** the messages with the IDP (RU). The testcase will be successful if the user session is successfully created with messages `getNonce`, `send_authorization_request_sc` and `send_authcode_sc`.
 
 #### Entitlement
+
 The testcase verifies the message with the entitlement service (mock) necessary to create an entitlement. The testcase will be successful if the entitlement is successfully created with the POST message.
 
 #### Medication List (eML) as PDF/A
+
 The testcase verifies the message with the medication render service (mock) necessary to retrieve the entire medication list as PDF/A document. The testcase will be successful if the medication list is successfully retrieved with the GET message.
 
 #### Medication List (eML) as XHTML
+
 The testcase verifies the message with the medication render service (mock) necessary to retrieve the entire medication list as XHTML document. The testcase will be successful if the medication list is successfully retrieved with the GET message.
 
 #### Medication List (eML) as FHIR Resource
+
 The testcase verifies the message with the medication service (mock) necessary to retrieve the entire medication list as FHIR resource. The testcase will be successful if the medication list is successfully retrieved with the GET message.
 
 ## Overview of the backend mock services
@@ -217,8 +241,9 @@ The services can be accessed directly by using the exposed ports.
 The following table shows the services and the related ports and protocols.
 This should also give an overview of the ports to be opened in your setup.
 
+
 | Service                                | Port | Protocol |
-|----------------------------------------| ---- |----------|
+| -------------------------------------- | ---- | -------- |
 | ePA health record system (tiger-proxy) | 443  | https    |
 | vau-proxy-server                       | 8081 | http     |
 | information-service                    | 8082 | http     |
@@ -244,18 +269,42 @@ The tiger proxy is a reverse proxy which is used to route the incoming requests 
 
 #### Limitations:
 
-* server certificate is generated on-the-fly using the `/tiger-proxy/ca.p12` as authority chain
+* server certificate is generated on-the-fly using the `/tiger-proxy/root.p12` as authority chain
 * OCSP stabling is currently not supported
 
 ### VAU Proxy Server (vau-proxy-server)
 
 By specification some services inside the ePA has to be encrypted/decrypted by the VAU. The VAU Proxy Client handles the VAU handshake for a given PS instance. This handshake enables the VAU Proxy Client to encrypt messages which can be decrypted by the VAU Proxy Server before the messages are passed onto ePA services.
 
+#### Triggering a VAU Restart
+
+To trigger a restart of a VAU connection, you can send the request with the user data to `/<VAU-CID>/restart` instead of `/<VAU-CID>`. This will cause the VAU proxy server to release the connection by deleting the VAU-CID on the server side and the server state machine will be removed. A new VAU session is NOT created automatically. VAU proxy server sends a response as specified in A_24772. The VAU client must therefore start a new handshake.
+
+#### Lib-vau traces for troubleshooting
+
+To additionally activate trace information in this container, set the variable [LIB_VAU_LOGGING_LEVEL](.env) to the value TRACE. It gives you additional information like the encrypted message right before it is decrypted. Therefore, you have to redeploy the container (not only restart).
+
+```
+EncryptedVauMessage: trying to decrypt:
+Complete message     : 0200010000000000000003e807d37d434aa2f5c2e279782efb541bf85f4a4bf52902a3eb4b017b065975c0cbd935c10000000000000003e24c47b1a0c573f1abb8e606d7d0742a25c3b822fdc427192afed5156ebb21991819c6b45872703314ed3377cd96a...
+Message size (Bytes) : 3967
+Complete header      : 0200010000000000000003e807d37d434aa2f5c2e279782efb541bf85f4a4bf52902a3eb4b017b065975c0
+Key to decrypt (K2_c2s_app_data): 25cb56e13d31ecc8e49f88dea29271780ba6d6c03b0869f54f8d86ed14581c7e
+-------------------------------
+Version  (1 Byte): 02
+PU       (1 Byte): 00
+Request  (1 Byte): 01
+Counter  (8 Byte): 0000000000000003
+KeyId   (32 Byte): e807d37d434aa2f5c2e279782efb541bf85f4a4bf52902a3eb4b017b065975c0
+IV      (12 Byte): cbd935c10000000000000003
+CT + GMAC        : e24c47b1a0c573f1abb8e606d7d0742a25c3b822fdc427192afed5156ebb21991819c6b45872703314ed3377cd96a...
+```
+
 #### Limitations:
 
 * interface operation/path to request the status of user authentication is not fully supported (A_25143) > `/VAU-Status as HTTP-GET`
   * "User-Authentication" is always "None"
-  * "Connnection-Start" is the timestamp when M3 message of VAU handshake was successfully validated & completed on backend side (typo in gemSpec_Krypt <= 2.32.0)
+  * "Connection-Start" is the timestamp when M3 message of VAU handshake was successfully validated & completed on backend side
 * interface operation/path to request AUT-VAU certificate + certificate chain via /CertData as HTTP-GET is not fully supported (A_24957) *
   * rch_chain uses certificates from https://download.tsl.ti-dienste.de as array content (> RCA5)
 
@@ -266,7 +315,7 @@ This service provides information about the health record of a patient. The capa
 #### Limitations:
 
 * for consent decisions it will always send "permit" for "medication" as well as "erp-submission"
-* for record status it will always send HTTP code 200 (OK)
+* for record status it will always send HTTP code 204 (OK)
 * false case for both operations:
   * to get HTTP code 404 use "X000000404" as header parameter 'x-insurantid'
   * to get HTTP code 409 use "X000000409" as header parameter 'x-insurantid'
@@ -303,6 +352,7 @@ All necessary configurations like clientID are already set in the IDP.
 The medication service is a HAPI FHIR server which provides the medication relevant data. The details about ePA Medication can be found in the related repository: [ePA-Medication](https://github.com/gematik/ePA-Medication/tree/ePA-3.0).
 
 #### Limitations:
+
 - Currently, the HAPI FHIR does not support searching resources by logical references. Therefore, the medication service does not support searching for medication requests by the patient reference. A request like `GET /MedicationRequest?subject:identifier=....` will return an error message, that it is not supported. There is already an open issue in the HAPI FHIR repository: [Issue 4723](https://github.com/hapifhir/hapi-fhir/issues/4723).
 
 ### Medication Render Service (medication-render-service)
@@ -315,23 +365,24 @@ The service is described in the following openAPI specification: [MedicationRend
 To retrieve the eML as XHTML execute the following curl command:
 
 ```bash
-curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/xhtml --header 'Accept: text/html' --header 'x-insurantid: Z1234567891'
+curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/xhtml --header 'Accept: text/html' --header 'x-insurantid: Z123456783'
 ```
 
 To retrieve the same eML as PDF/A document execute the following curl command:
 
 ```bash
-curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/pdf --header 'Accept: application/pdf' --header 'x-insurantid: Z1234567891' --output eml.pdf
+curl --location --request GET http://<docker-host>:8085/epa/medication/render/v1/eml/pdf --header 'Accept: application/pdf' --header 'x-insurantid: Z123456783' --output eml.pdf
 ```
 
 To retrieve the eML as FHIR Resource execute the following curl command:
 
 ```bash
-curl --location http://localhost:8084/fhir/Medication?status=active
+curl --location http://<docker-host>:8084/fhir/Medication?status=active
 ```
 
 ### Entitlement Service (entitlement-service)
-The entitlement Service is responsible for managing entitlements. 
+
+The entitlement Service is responsible for managing entitlements.
 The service is described in the following openAPI specification: [EntitlementService](https://github.com/gematik/ePA-Basic/blob/ePA-3.0.1/src/openapi/I_Entitlement_Management.yaml).
 
 The entitlement service is NOT linked with the other services, and therefore, if an entitlement is missing, no error message is returned by the other services.
@@ -339,6 +390,7 @@ The entitlement service is NOT linked with the other services, and therefore, if
 #### Direct example request:
 
 Adding a new entitlement:
+
 ```bash
 curl --location --request POST \
   'http://<docker-host>:8087/epa/basic/api/v1/ps/entitlements' \
@@ -361,11 +413,22 @@ curl --location 'http://localhost:8087/epa/basic/api/v1/entitlements' \
 ```
 
 #### Limitations
+
 - No JWT signature verification
 - No OCSP check during the validation of the client certificate
 - HMAC validation work only with gematik test cards
 
 ## Troubleshooting / FAQs
+
+### PS-Testsuite
+
+In case of a failed test run and the writing of a support ticket in the gematik Service Desk, it is useful to attach the *.tgr file with the recorded messages. This makes it possible to import the traces into a local Tiger application in order to display the communication and its message details.
+
+To do this, you must execute the following command to copy the *.tgr from the ps-testsuite container to the local directory.
+
+```bash
+docker cp ps-testsuite:/app/tiger-proxy.tgr .
+```
 
 ### VAU-Proxy-Server
 
@@ -373,17 +436,34 @@ curl --location 'http://localhost:8087/epa/basic/api/v1/entitlements' \
 
 The decryption of the incoming message was faulty. In this case, a look at the logs from the VAU proxy server can help. Additional information about the exact cause of the error should be written in the log.
 
+You can enable additional TRACE information, too. Please have a look at section [Lib-vau traces for troubleshooting](#lib-vau-traces-for-troubleshooting) 
+
 If this does not help, please send us the log file in a service ticket.
 
 ```bash
 docker logs vau-proxy-server > vau-proxy-server.log
 ```
 
+#### Response with Transcript Error: Cannot invoke "io.netty.handler.codec.http.FullHttpRequest.uri()" because "innerRequest" is null
+
+The decryption was successful, and you can see the decrypted message in vau-proxy-server logs.
+But the netty lib was not able to convert the incoming HTTP request string into an object. This could be, due to a malformed inner HTTP Request. Please make sure you follow the RFC specification.
+
+Example Requests:
+```
+GET /epa/authz/v1/getNonce HTTP/1.1<CRLF>
+Content-Length: 0<CRLF>
+x-useragent: PSSIM123456789012345/1.2.4<CRLF>
+Host: localhost:443<CRLF>
+<CRLF>
+<CRLF>
+```
+
 ### IDP
 
 #### IDP sends HTTP Response Code 403
 
-Please make sure that you use HTTP/1.1 when communicating with the IDP. 
+Please make sure that you use HTTP/1.1 when communicating with the IDP.
 
 ## Resources
 

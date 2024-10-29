@@ -1,15 +1,24 @@
-server:
-  port: 443
 tigerProxy:
   adminPort: 8080
   proxyPort: 443
   tls:
     domainName: tiger-proxy
-    serverRootCa: "/app/config/ca.p12;changeit"
+    serverRootCa: "/app/config/root.p12;changeit"
     #ocspSignerIdentity: "myOcspSigner.p12;Password"
   proxyRoutes:
+    # IDP Routing
+    - from: /.well-known/openid-configuration
+      to: https://idp-ref.app.ti-dienste.de/.well-known/openid-configuration
+    - from: /certs/puk_idp_sig
+      to: https://idp-ref.app.ti-dienste.de/certs/puk_idp_sig
+    - from: /certs/puk_idp_enc
+      to: https://idp-ref.app.ti-dienste.de/certs/puk_idp_enc
+    - from: /auth
+      to: https://idp-ref.app.ti-dienste.de/auth
+    # ePA Routing
     - from: /information
       to: http://information-service:8080/information
     - from: /
       to: http://vau-proxy-server:8080/
-  activateEpa3VauAnalysis: true
+  activateRbelParsingFor:
+    - epa3-vau

@@ -10,12 +10,17 @@ x-healthcheck-config: &healthcheck-ref
 x-name: dc-mocks
 services:
   tiger-proxy:
-    image: gematik1/tiger-proxy-image:3.1.3
+    image: gematik1/tiger-proxy-image:3.3.0
     container_name: tiger-proxy
     restart: 'always'
+    healthcheck:
+      <<: *healthcheck-ref
+      test: "wget -T5 -qO- http://localhost:8080/actuator/health | grep UP || exit 1"
     environment:
       - SPRING_CONFIG_LOCATION=/app/config/application.yaml
       - MANAGEMENT_SERVER_PORT=
+      - TIGERPROXY_ADMINPORT=8080
+      - TIGERPROXY_PROXYPORT=443
     networks:
       - mock-network
     volumes:
@@ -25,7 +30,7 @@ services:
       - "${TIGER_PROXY_ADMIN_PORT}:8080"
 
   vau-proxy-server:
-    image: gematik1/epa-vau-proxy-server:1.0.8
+    image: gematik1/epa-vau-proxy-server:1.0.11
     container_name: vau-proxy-server
     restart: 'always'
     healthcheck:
@@ -38,6 +43,7 @@ services:
       - SERVICES_MEDICATION_SERVICE_URL=http://medication-service:8080
       - SERVICES_MEDICATION_RENDER_SERVICE_URL=http://medication-render-service:8080
       - SERVICES_ENTITLEMENT_SERVICE_URL=http://entitlement-service:8080
+      - LIB_VAU_LOGGING_LEVEL=${LIB_VAU_LOGGING_LEVEL}
     networks:
       - mock-network
     volumes:
@@ -46,7 +52,7 @@ services:
       - "${VAU_PROXY_SERVER_PORT}:8080"
 
   information-service:
-    image: gematik1/tiger-zion-image:3.1.3
+    image: gematik1/tiger-zion-image:3.3.0
     container_name: information-service
     restart: 'always'
     environment:
@@ -59,7 +65,7 @@ services:
       - "${INFORMATION_SERVICE_PORT}:8080"
 
   authorization-service:
-    image: gematik1/asforepa:2.0.3
+    image: gematik1/asforepa:3.0.0
     container_name: authorization-service
     restart: 'always'
     healthcheck:
@@ -68,10 +74,10 @@ services:
     environment:
       - SERVER_PORT=8086
       # RU
-      - ASFOREPA_IDP_DIENST_URL=https://idp-ref.app.ti-dienste.de
+      - ASFOREPA_IDP_DIENST_URL=https://idp-ref.app.ti-dienste.de/auth
       - ASFOREPA_CLIENT_ID=GEMgemaePAAHdL9ZU23R
       - ASFOREPA_REDIRECT_URI=https://test-ps.gematik.de/ePA
-      - ASFOREPA_SCOPES=gem-auth,openid
+      - ASFOREPA_SCOPES=ePA-PS-gemtk,openid
       - ASFOREPA_LOGLEVEL=debug
       - MANAGEMENT_PORT=8186
     networks:
@@ -89,7 +95,7 @@ services:
       - "${MEDICATION_SERVICE_PORT}:8080"
 
   medication-render-service:
-    image: gematik1/epa-medication-render:1.0.3
+    image: gematik1/epa-medication-render:1.0.6
     container_name: medication-render-service
     restart: 'always'
     healthcheck:
@@ -106,7 +112,7 @@ services:
       - "${MEDICATION_RENDER_SERVICE_PORT}:8080"
 
   entitlement-service:
-    image: gematik1/epa-entitlement:1.0.2
+    image: gematik1/epa-entitlement:1.0.4
     container_name: entitlement-service
     restart: 'always'
     healthcheck:

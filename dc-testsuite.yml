@@ -10,7 +10,7 @@ x-healthcheck-config: &healthcheck-ref
 name: dc-testsuite
 services:
   ps-testsuite:
-    image: gematik1/ps-testsuite:1.0.8
+    image: gematik1/ps-testsuite:1.0.12
     container_name: ps-testsuite
     restart: 'no'
     environment:
