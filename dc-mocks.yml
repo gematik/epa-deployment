@@ -7,7 +7,7 @@ x-healthcheck-config: &healthcheck-ref
   retries: 100
   start_period: 30s
 
-name: dc-mocks
+x-name: dc-mocks
 services:
   tiger-proxy:
     image: gematik1/tiger-proxy-image:3.1.3
