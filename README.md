@@ -2,7 +2,7 @@
 
 ## Motivation
 
-The project is intended to provide a simple way to run the ePA backend services in a local docker environment and includes docker-compose and other relevant files. This should help to get a better understanding of the ePA services and should help to develop & test **ePA 3.0.x** for PS applications.
+The project is intended to provide a simple way to run the ePA backend services in a local docker environment and includes `docker compose` and other relevant files. This should help to get a better understanding of the ePA services and should help to develop & test **ePA 3.0.x** for PS applications.
 
 > [!IMPORTANT]
 > This project uses mock implementations based on the ePA specification and focuses on some selected backend services. The mock implementations try to realize many aspects of the specification, but are not 1:1 equivalent to a productive environment. The specification is always leading and should be used as a reference.
@@ -22,7 +22,6 @@ You the following tools to run the services:
 
 - [Git](https://git-scm.com/)
 - [Docker](https://www.docker.com/products/docker-desktop/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
 - [Curl](https://curl.se/)
 
 You need the following system resources to run the services:
@@ -38,13 +37,13 @@ You need the following system resources to run the services:
 Start the mock services with the following command
 
 ```bash
-docker-compose -f dc-mocks.yml up
+docker compose -f dc-mocks.yml up
 ```
 
 Stop these services with the following command
 
 ```bash
-docker-compose -f dc-mocks.yml down
+docker compose -f dc-mocks.yml down
 ```
 
 ### Importing default data to the Medication Service
@@ -161,7 +160,7 @@ To do this, the following entries must be adjusted:
 Start the testsuite container with the following command
 
 ```bash
-docker-compose -f dc-testsuite.yml up
+docker compose -f dc-testsuite.yml up
 ```
 
 When the container log shows the following message, the testsuite is ready to be used and a webbrowser should call the URL [http://\<docker-host\>:8123](http://localhost:8123) to go on. Otherwise, the timeout will stop the testsuite and the container stops automatically. In this case you have to rerun the testsuite with the command above.
