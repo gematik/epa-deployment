@@ -10,3 +10,4 @@ lib:
   workflowUiPort: 8123
   startBrowser: false
   trafficVisualization: true
+  runTestsOnStart: false # to select & run tests via Workflow UI (default is true)

@@ -1,0 +1,126 @@
+version: "3.8"
+
+# Common Health Check Properties
+x-healthcheck-config: &healthcheck-ref
+  interval: 15s
+  timeout: 10s
+  retries: 100
+  start_period: 30s
+
+name: dc-ps-ru
+services:
+  # ePA client services
+  ps-sim:
+    image: europe-west3-docker.pkg.dev/gematik-all-infra-prod/epa/ps-sim:latest
+    container_name: ps-sim
+    restart: 'no'
+    healthcheck:
+      <<: *healthcheck-ref
+      test: "wget -T5 -qO- http://localhost:8081/actuator/health | grep UP || exit 1"
+    environment:
+      - SPRING_PROFILES_ACTIVE=mock
+
+      # PsSim - Ports
+      - SERVER_PORT=8080
+      - MANAGEMENT_SERVER_PORT=8081
+
+      # Vau-Proxy-Client
+      - AUTH_SERVER_HOST=vau-proxy-ps-sim
+      - AUTH_SERVER_PORT=8080
+      - VAU_PROXY_HOST=vau-proxy-ps-sim
+      - VAU_PROXY_PORT=8080
+      - FHIR_SERVER_HOST=vau-proxy-ps-sim
+      - FHIR_SERVER_PORT=8080
+      - FHIR_SERVER_PATH=epa/medication/api/v1/fhir
+      - EML_RENDER_HOST=vau-proxy-ps-sim
+      - EML_RENDER_PORT=8080
+      - ENTITLEMENT_SERVER_HOST=vau-proxy-ps-sim
+      - ENTITLEMENT_SERVER_PORT=8080
+      - DOCUMENT_SERVICE_MOCK_CONNECTION_ADDRESS_HOST=vau-proxy-ps-sim
+      - DOCUMENT_SERVICE_MOCK_CONNECTION_ADDRESS_PORT=8080
+
+      # IDP
+      - IDP_SERVER_HOST=idp-ref.zentral.idp.splitdns.ti-dienste.de
+      - IDP_SERVER_PROTOCOL=https
+      - IDP_SERVER_PORT=443
+      - IDP_SERVER_PATH=.well-known/openid-configuration
+
+      # IBM - Aktensystem
+      - INF_SERVER1_HOST=epa-as-1.dev.epa4all.de
+      - INF_SERVER1_PROTOCOL=https
+      - INF_SERVER1_PORT=443
+
+      # RISE - Aktensystem
+      - INF_SERVER2_HOST=epa-as-2.dev.epa4all.de
+      - INF_SERVER2_PROTOCOL=https
+      - INF_SERVER2_PORT=443
+
+      # --- Konnektor - RISE (146) - TU ---
+      - KONNEKTOR_HOST=10.11.216.146
+      - KONNEKTOR_PORT=80
+      - KONNEKTOR_PROTOCOL=http
+      - KONNEKTOR_CONNECTION_ADDRESS_PROTOCOL=http
+        # --- Ende RISE (146) ---
+
+      - BASIC_AUTHENTICATION_ENABLED=false
+      - BASIC_AUTHENTICATION_USERNAME=user1
+      - BASIC_AUTHENTICATION_PASSWORD=SnV?:bTT+mUK
+      - KONNEKTOR_CONNECTION_ADDRESS_PATH=
+
+      # Artica Proxy (with VPN)
+      #- EPA_PROXY_HOST=10.11.216.146
+      #- EPA_PROXY_PORT=80
+
+      # Workaround RISE
+      #- DOCUMENT_SERVICE_MOCK_CONNECTION_ADDRESS_PATH=epa/
+
+      # logging
+      - LOGGING_LEVEL_DE.GEMATIK.EPA=DEBUG
+      - LOGGING_LEVEL_ORG:APPACHE:CXF:SERVICES=DEBUG
+
+    networks:
+      - client-network
+    ports:
+      - "8080:8080"
+      - "6000:6000"
+
+  vau-proxy-ps-sim:
+    image: europe-west3-docker.pkg.dev/gematik-all-infra-prod/epa/vau-proxy-client:latest
+    container_name: vau-proxy-client
+    restart: 'no'
+    healthcheck:
+      <<: *healthcheck-ref
+      test: "wget -T5 -qO- http://localhost:8080/actuator/health | grep UP || exit 1"
+    environment:
+      - SPRING_PROFILES_ACTIVE=client-tu-and-ru
+      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=*:6000,server=y,suspend=n
+
+      # Server-Zertifikat soll nicht geprüft werden
+      - CLIENT_SSL_ENABLED=false
+      #- CLIENT_SSL_TRUST_STORE=file:///app/config/root.p12
+
+      # Default Aktensystem
+      - VAU_PROXY_SERVER_URL=https://epa-as-1.dev.epa4all.de:443
+
+      # Setzen des NonPU-Flags (für RISE)
+      - VAU_PROXY_SERVER_PU=false
+
+      # Proxy
+      #- SPRING_CLOUD_GATEWAY_HTTPCLIENT_PROXY_HOST=10.11.216.146
+      #- SPRING_CLOUD_GATEWAY_HTTPCLIENT_PROXY_PORT=80
+
+    networks:
+      - client-network
+    volumes:
+      - ./tiger-proxy/root.p12:/app/config/root.p12
+      - ./vau-proxy/application-client-tu-and-ru.yaml:/app/config/application-client-tu-and-ru.yaml
+
+      # Wenn der vau-proxy-client aus einer lokalen jar gestartet werden soll
+      #- ./vau-proxy/vau-proxy-client-1.0.12-SNAPSHOT-docker.jar:/app/app.jar
+
+    ports:
+      - "6001:6000"
+
+networks:
+  client-network:
+    name: client-network

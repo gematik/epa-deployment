@@ -2,6 +2,21 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.16 (ePA 3.0.x)
+- Updated version of asforepa (authorization-service) to 3.0.1
+- Updated version of vau-proxy-server to 1.0.16
+- Updated version of ps-testsuite to 1.0.14
+  - fix for the scope check in the OIDC flow
+  - select & execute test cases via webpage
+  - validations of reason phrase in HTTP responses are now case-insensitive 
+- Updated version of entitlement service to 1.0.6
+  - updated TSL to support new SMCBs with actual issuer CAs
+  - updated OpenAPI to latest ePA 3.0.x version
+- Updated version of tiger to 3.4.6 (information service / tiger-proxy)
+  - see [release notes](https://github.com/gematik/app-Tiger/blob/master/ReleaseNotes.md) for details
+- Updated version of HAPI FHIR (medication service) to 7.6.0
+- Minor changes in the documentation
+
 ## Release 1.0.15
 - Updated version of medication-render service to 1.0.6
 - Updated version of vau-proxy-server to 1.0.11

@@ -10,7 +10,7 @@ x-healthcheck-config: &healthcheck-ref
 name: dc-mocks
 services:
   tiger-proxy:
-    image: gematik1/tiger-proxy-image:3.3.0
+    image: gematik1/tiger-proxy-image:3.4.6
     container_name: tiger-proxy
     restart: 'always'
     healthcheck:
@@ -30,7 +30,7 @@ services:
       - "${TIGER_PROXY_ADMIN_PORT}:8080"
 
   vau-proxy-server:
-    image: gematik1/epa-vau-proxy-server:1.0.11
+    image: gematik1/epa-vau-proxy-server:1.0.16
     container_name: vau-proxy-server
     restart: 'always'
     healthcheck:
@@ -52,7 +52,7 @@ services:
       - "${VAU_PROXY_SERVER_PORT}:8080"
 
   information-service:
-    image: gematik1/tiger-zion-image:3.3.0
+    image: gematik1/tiger-zion-image:3.4.6
     container_name: information-service
     restart: 'always'
     environment:
@@ -65,7 +65,7 @@ services:
       - "${INFORMATION_SERVICE_PORT}:8080"
 
   authorization-service:
-    image: gematik1/asforepa:3.0.0
+    image: gematik1/asforepa:3.0.1
     container_name: authorization-service
     restart: 'always'
     healthcheck:
@@ -86,7 +86,7 @@ services:
       - "${AUTHORIZATION_SERVICE_PORT}:8086"
 
   medication-service:
-    image: hapiproject/hapi:v7.2.0
+    image: hapiproject/hapi:v7.6.0
     container_name: medication-service
     restart: 'always'
     networks:
@@ -112,7 +112,7 @@ services:
       - "${MEDICATION_RENDER_SERVICE_PORT}:8080"
 
   entitlement-service:
-    image: gematik1/epa-entitlement:1.0.4
+    image: gematik1/epa-entitlement:1.0.6
     container_name: entitlement-service
     restart: 'always'
     healthcheck:
