@@ -10,11 +10,11 @@ x-healthcheck-config: &healthcheck-ref
 name: dc-testsuite
 services:
   ps-testsuite:
-    image: gematik1/ps-testsuite:1.0.12
+    image: gematik1/ps-testsuite:1.0.15
     container_name: ps-testsuite
     restart: 'no'
-    environment:
-      - MAVEN_OPTS=-Dcucumber.filter.tags=${PS_TESTSUITE_TESTS}
+    #environment:
+    #  - MAVEN_OPTS=-Dcucumber.filter.tags=
     networks:
       - mock-network
     volumes:
