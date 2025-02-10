@@ -10,7 +10,7 @@ x-healthcheck-config: &healthcheck-ref
 name: dc-mocks
 services:
   tiger-proxy:
-    image: gematik1/tiger-proxy-image:3.4.6
+    image: gematik1/tiger-proxy-image:3.6.0
     container_name: tiger-proxy
     restart: 'always'
     healthcheck:
@@ -52,7 +52,7 @@ services:
       - "${VAU_PROXY_SERVER_PORT}:8080"
 
   information-service:
-    image: gematik1/tiger-zion-image:3.4.6
+    image: gematik1/tiger-zion-image:3.6.0
     container_name: information-service
     restart: 'always'
     environment:
@@ -120,6 +120,7 @@ services:
       test: "curl --fail --silent http://localhost:8080/health | grep UP || exit 1"
     environment:
       - SERVER_PORT=8080
+      - ENFORCE_HCV_CHECK = true
     networks:
       - mock-network
     ports:

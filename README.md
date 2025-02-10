@@ -418,6 +418,34 @@ The service is described in the following openAPI specification: [EntitlementSer
 
 The entitlement service is NOT linked with the other services, and therefore, if an entitlement is missing, no error message is returned by the other services.
 
+##### C_12143 - Support for VSDM-Prüfziffer Version 2
+
+###### Entitlement Service Configuration
+
+The Entitlement Service includes a switch `enforce_hcv_check` that can be set to `true` or `false` to trigger the corresponding validation:
+
+- **enforce_hcv_check**:
+  - `true`: Enforces the hcv check.
+  - `false`: Bypasses the hcv check.
+
+You can configure this switch in the `dc-mocks.yml` file under the `environment` section for the Entitlement Service.
+
+The check is based on A_27279 - VSDM-Prüfziffer Version 2: Prüfung und Entschlüsselung. 
+- The setEntitlementsPs operation supports the following:
+
+  - PZ Version Check: Determines if the PZ version is PZ1 or PZ2.
+  - PZ1 Validation: Performs old PZ1 validation if the PZ version is PZ1.
+  - PZ2 Validation:
+    - If enforce_check_hcv is false, it validates only PZ2 value without checking hcv_jwt.
+    - If enforce_check_hcv is true, it checks for the existence of hcv_jwt. (Default)
+      - If hcv_jwt is missing, it returns HTTP 409 (hcvMissing).
+      - If hcv_jwt exists, it validates PZ2 and compares hcv_jwt with hcv_pz.
+        - If they do not match, it returns HTTP 403 (invalidToken).
+        - If they match, it returns success.
+
+**Note**: `hcv_jwt` is a value extracted from the JWT, while `hcv_pz` is derived from the PZ (Prüfziffer).
+
+
 ##### Direct example request:
 
 Adding a new entitlement:
