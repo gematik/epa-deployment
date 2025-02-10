@@ -2,8 +2,21 @@
 
 # Release notes epa-deployment for ePA 3.x and above
 
+## Release 1.0.17 (ePA 3.0.x)
+- Updated version of tiger to 3.6.0 (information service / tiger-proxy)
+  - see [release notes](https://github.com/gematik/app-Tiger/blob/master/ReleaseNotes.md) for details
+- Updated version of ps-testsuite to 1.0.16
+  - added check for HTTP Header `x-useragent` in outer HTTP request (not VAU encrypted part) within KOB and optional testcase
+  - added regex check for HTTP Header `x-useragent` in inner HTTP request within optional testcases
+  - checking HTTP header field name `x-useragent`, `x-insurantid` & `VAU-nonPU-Tracing` is now case-insensitive (as in standard RFC-9110 Section-5.1 )
+  - added regex check for hcv and auditEvidence in jwt of inner entitlement request
+- Updated version of entitlement service to 1.0.7
+  - Updated setEntitlementsPs - C_12143 support for VSDM-Prüfziffer Version 2
+
 ## Release 1.0.16 (ePA 3.0.x)
 - Updated version of asforepa (authorization-service) to 3.0.1
+  - see [release notes](https://github.com/gematik/app-asforepa/blob/main/ReleaseNotes.md) for details
+  e.g. add validation for length of client attest signature
 - Updated version of vau-proxy-server to 1.0.16
 - Updated version of ps-testsuite to 1.0.14
   - fix for the scope check in the OIDC flow
@@ -16,6 +29,7 @@
   - see [release notes](https://github.com/gematik/app-Tiger/blob/master/ReleaseNotes.md) for details
 - Updated version of HAPI FHIR (medication service) to 7.6.0
 - Minor changes in the documentation
+  - test case selection and execution via webpage (instead of environment variable)
 
 ## Release 1.0.15
 - Updated version of medication-render service to 1.0.6

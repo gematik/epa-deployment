@@ -3,15 +3,16 @@
 /certs/*.p12
 
 README_INTERNAL.md
-dc-clients.yml
-dc-mocks-internal.yml
-dc-clients-ru.yml
-dc-clients-kob.yml
 certs
 jenkinsfiles
 vau-proxy/application-client-prod.yaml
 vau-proxy/application-client-tu-and-ru.yaml
 vau-proxy/application-client-ru-dev.yaml
-dc-ps-tu.yaml
-dc-ps-ru.yaml
+dc-clients.yml
+dc-clients-kob.yml
+dc-clients-ru.yml
+dc-clients-tu.yml
+dc-mocks-internal.yml
+dc-ps-tu.yml
+dc-ps-ru.yml
 
