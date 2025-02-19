@@ -1,6 +1,13 @@
 <img align="right" width="200" height="37" src="Gematik_Logo_Flag_With_Background.png" alt="Gematik Logo"/> <br/>
 
 # Release notes epa-deployment for ePA 3.x and above
+## Release 1.0.18 (ePA 3.0.x)
+- Updated version of tiger to 3.6.1 (information service / tiger-proxy)
+- Updated version of entitlement service to 1.0.8
+  - improve error handling and messaging for pruefziffer validation
+- Fixed spaces around the equals sign in Docker Compose environment variables
+- Updated version of ps-testsuite to 1.0.17
+  - fixed entitlement test case
 
 ## Release 1.0.17 (ePA 3.0.x)
 - Updated version of tiger to 3.6.0 (information service / tiger-proxy)
