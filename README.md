@@ -431,20 +431,42 @@ The Entitlement Service includes a switch `enforce_hcv_check` that can be set to
 You can configure this switch in the `dc-mocks.yml` file under the `environment` section for the Entitlement Service.
 
 The check is based on A_27279 - VSDM-Prüfziffer Version 2: Prüfung und Entschlüsselung. 
+
+
+![PZ UML Diagram](pz.png)
+
 - The setEntitlementsPs operation supports the following:
 
-  - PZ Version Check: Determines if the PZ version is PZ1 or PZ2.
+  - PZ Version Check: Determines if data is a PZ and which version (PZ1 or PZ2).
   - PZ1 Validation: Performs old PZ1 validation if the PZ version is PZ1.
   - PZ2 Validation:
-    - If enforce_check_hcv is false, it validates only PZ2 value without checking hcv_jwt.
-    - If enforce_check_hcv is true, it checks for the existence of hcv_jwt. (Default)
-      - If hcv_jwt is missing, it returns HTTP 409 (hcvMissing).
-      - If hcv_jwt exists, it validates PZ2 and compares hcv_jwt with hcv_pz.
-        - If they do not match, it returns HTTP 403 (invalidToken).
-        - If they match, it returns success.
+    - If hcv_jwt exists, it validates PZ2 and compares hcv_jwt with hcv_pz:
+      - If hcv-values do not match, it returns HTTP 403 (invalidToken).
+      - If hcv-values match, it returns success.
+    - If hcv_jwt is missing and enforce_hcv_chek = true, it returns HTTP 409 (hcvMissing)
+    - If hcv_jwt is missing and enforce_hcv_chek = false, it validates PZ2 without comparing hcv
+
+Here is the detailed validation:
+
+![PZ UML Diagram](validation.png)
+
+#### Encoding of the hcv:
+
+1. Base64 Encoding: Encode the hcv 5-byte array (10-character string) to a Base64 string, resulting in an 8-character string.
+2. JWT Storage: Store the 8-character Base64 string in a JWT.
+
+#### Decoding of the hcv:
+
+1. Base64 Decoding: Decode the 8-character Base64 string from the JWT to retrieve the original 5-byte array.
+2. Byte Array to Hexadecimal: Convert the byte array back to the original 10-character string.
+
+#### Example Length and Format of the hcv:
+
+- Base64 String: 8 characters (NTZGtcg=).
+- Hexadecimal String: 10 characters (353646b5c8).
 
 **Note**: `hcv_jwt` is a value extracted from the JWT, while `hcv_pz` is derived from the PZ (Prüfziffer).
-
+This entitlement-mock does not support the counting of the failed comparison checks of the hcv mentioned in the C_12143.
 
 ##### Direct example request:
 
