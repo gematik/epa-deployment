@@ -1,6 +1,12 @@
 <img align="right" width="200" height="37" src="Gematik_Logo_Flag_With_Background.png" alt="Gematik Logo"/> <br/>
 
 # Release notes epa-deployment for ePA 3.x and above
+## Release 1.0.19 (ePA 3.0.x)
+- Updated version of entitlement service to 1.0.9
+  - fixed decoding of hcv in jwt
+- Updated version of ps-testsuite to 1.0.18
+  - fixed hcv regex in entitlement testcase
+  
 ## Release 1.0.18 (ePA 3.0.x)
 - Updated version of tiger to 3.6.1 (information service / tiger-proxy)
 - Updated version of entitlement service to 1.0.8
