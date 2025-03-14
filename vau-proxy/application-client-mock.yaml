@@ -16,5 +16,6 @@ vau-proxy-server:
     # medication-render-service
     - /epa/medication/render/v1/eml/xhtml
     - /epa/medication/render/v1/eml/pdf
+    - /epa/medication/api/v1/fhir/$medication-list
     # entitlement-service
     - /epa/basic/api/v1/ps/entitlements

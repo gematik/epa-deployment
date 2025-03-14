@@ -1,6 +1,19 @@
 <img align="right" width="200" height="37" src="Gematik_Logo_Flag_With_Background.png" alt="Gematik Logo"/> <br/>
 
 # Release notes epa-deployment for ePA 3.x and above
+
+## Release 1.0.20 (ePA 3.0.x)
+- Updated version of medication-render service to 1.0.7
+  - added endpoint (ePA 3.0.5 feature) to retrieve medication list as FHIR as specified here: [gemSpec_Aktensystem_ePAfueralle_V1.2.0](https://gemspec.gematik.de/docs/gemSpec/gemSpec_Aktensystem_ePAfueralle/gemSpec_Aktensystem_ePAfueralle_V1.2.0/#A_24868-01)
+- Updated version of vau-proxy-server to 1.0.18
+  - changed handling of routing
+- Updated version of ps-testsuite to 1.0.19
+  - added test for medication list retrieval as FHIR
+- Updated version of tiger to 3.7.0 (information service / tiger-proxy)
+  - see [release notes](https://github.com/gematik/app-Tiger/blob/master/ReleaseNotes.md) for details
+- Updated version of entitlement service to 1.0.10
+  - added changes from C_12143 - the validation of iat and exp in the JWT is omitted but still required
+
 ## Release 1.0.19 (ePA 3.0.x)
 - Updated version of entitlement service to 1.0.9
   - fixed decoding of hcv in jwt
