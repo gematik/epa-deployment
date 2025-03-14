@@ -109,6 +109,13 @@ curl --location http://<docker-host>:8084/fhir/PractitionerRole?_include=Practit
 curl --location http://<docker-host>:8084/fhir/MedicationRequest?_include=MedicationRequest:requester&_include:iterate=PractitionerRole:organization
 ```
 
+- Retrieving medication list as FHIR by calling the operation $medication-list (since [ePA 3.0.5](https://gemspec.gematik.de/fhir/ig/epa-medication/1.0.5/op-get-medication-list.html)) and using e.g. date to limit the result:
+```bash
+curl --location http://<docker-host>:8084/fhir/$medication-list?date=ge2024-01-01&date=le2024-07-01
+```
+
+```bash
+
 ### Traffic in Tiger WebUI
 
 The Tiger WebUI is a simple web interface to visualize the traffic between the client and the backend services. The WebUI is accessible via the following URL: [http://\<docker-host\>:8086/webui](http://localhost:8086/webui).
@@ -262,6 +269,10 @@ The testcase verifies the message with the medication render service (mock) nece
 ##### Medication List (eML) as FHIR Resource
 
 The testcase verifies the message with the medication service (mock) necessary to retrieve the entire medication list as FHIR resource. The testcase will be successful if the medication list is successfully retrieved with the GET message.
+
+##### Medication List (eML) as FHIR Resource from custom endpoint
+
+The testcase verifies the message with the medication render service (mock) necessary to retrieve the medication list as FHIR from the custom endpoint $medication-list
 
 ### Overview of the backend mock services
 
